@@ -54,14 +54,14 @@ const transform: AxiosTransform = {
 
     const reject = Promise.reject;
 
-    const { data } = res;
+    const resData = res.data;
 
-    if (!data) {
+    if (!resData) {
       // return '[HTTP] Request has no return value';
-      return reject(data);
+      return reject(resData);
     }
     //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-    const { code, result, message } = data;
+    const { code, data, message } = resData;
     // 请求成功
     const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS;
     // 是否显示提示信息
@@ -85,7 +85,7 @@ const transform: AxiosTransform = {
 
     // 接口请求成功，直接返回结果
     if (code === ResultEnum.SUCCESS) {
-      return result;
+      return data;
     }
     // 接口请求错误，统一提示错误信息
     if (code === ResultEnum.ERROR) {
@@ -220,7 +220,7 @@ const transform: AxiosTransform = {
         return;
       }
     } catch (error) {
-      throw new Error(error);
+      throw error;
     }
     // 请求是否被取消
     const isCancel = axios.isCancel(error);

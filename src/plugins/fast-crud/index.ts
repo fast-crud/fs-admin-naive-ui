@@ -1,6 +1,5 @@
 import { App } from 'vue';
 
-import '/src/mock';
 import { FastCrud } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import { FsExtendsUploader, FsExtendsEditor } from '@fast-crud/fast-extends';
@@ -22,6 +21,7 @@ function install(app, options: any = {}) {
      * @param context，useCrud的参数
      */
     commonOptions(context: any = {}) {
+      console.log('commonOptions execute ,context:', context);
       const opts = {
         table: {
           size: 'small',
@@ -71,9 +71,10 @@ function install(app, options: any = {}) {
         },
       };
 
+      return opts;
       // 从 useCrud({permission}) 里获取permission参数，去设置各个按钮的权限
-      const crudPermission = useCrudPermission(context);
-      return crudPermission.merge(opts);
+      // const crudPermission = useCrudPermission(context);
+      // return crudPermission.merge(opts);
     },
   });
 
@@ -82,7 +83,6 @@ function install(app, options: any = {}) {
   app.use(FsExtendsEditor, {
     //编辑器的公共配置
     wangEditor: {},
-    quillEditor: {},
   });
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
@@ -93,21 +93,23 @@ function install(app, options: any = {}) {
       region: 'ap-guangzhou',
       secretId: '', //
       secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
-      getAuthorization(custom) {
+      async getAuthorization() {
         // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-        return request({
-          url: 'http://www.docmirror.cn:7070/api/upload/cos/getAuthorization',
-          method: 'get',
-        }).then((ret) => {
-          // 返回结构如下
-          // ret.data:{
-          //   TmpSecretId,
-          //   TmpSecretKey,
-          //   XCosSecurityToken,
-          //   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
-          // }
-          return ret;
-        });
+        return await http
+          .request({
+            url: 'http://www.docmirror.cn:7070/api/upload/cos/getAuthorization',
+            method: 'get',
+          })
+          .then((ret) => {
+            // 返回结构如下
+            // ret.data:{
+            //   TmpSecretId,
+            //   TmpSecretKey,
+            //   XCosSecurityToken,
+            //   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
+            // }
+            return ret;
+          });
       },
       successHandle(ret) {
         // 上传完成后可以在此处处理结果，修改url什么的
@@ -121,9 +123,9 @@ function install(app, options: any = {}) {
       region: 'oss-cn-shenzhen',
       accessKeyId: '',
       accessKeySecret: '',
-      async getAuthorization(custom, context) {
+      async getAuthorization() {
         // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-        const ret = await request({
+        const ret = await http.request({
           url: 'http://www.docmirror.cn:7070/api/upload/alioss/getAuthorization',
           method: 'get',
         });
@@ -142,8 +144,8 @@ function install(app, options: any = {}) {
     },
     qiniu: {
       bucket: 'd2p-demo',
-      async getToken(options) {
-        const ret = await request({
+      async getToken() {
+        const ret = await http.request({
           url: 'http://www.docmirror.cn:7070/api/upload/qiniu/getToken',
           method: 'get',
         });
@@ -164,7 +166,7 @@ function install(app, options: any = {}) {
         // @ts-ignore
         const data = new FormData();
         data.append('file', file);
-        return await request({
+        return await http.request({
           url: action,
           method: 'post',
           headers: {

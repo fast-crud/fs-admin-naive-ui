@@ -1,9 +1,9 @@
 import Mock from 'mockjs';
 
-export function resultSuccess(result, { message = 'ok' } = {}) {
+export function resultSuccess(data, { message = 'ok' } = {}) {
   return Mock.mock({
-    code: 200,
-    result,
+    code: 0,
+    data,
     message,
     type: 'success',
   });
@@ -28,10 +28,10 @@ export function resultPageSuccess<T = any>(
   };
 }
 
-export function resultError(message = 'Request failed', { code = -1, result = null } = {}) {
+export function resultError(message = 'Request failed', { code = 1, data = null } = {}) {
   return {
     code,
-    result,
+    data,
     message,
     type: 'error',
   };

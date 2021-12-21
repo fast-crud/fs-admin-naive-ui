@@ -3,7 +3,7 @@ import http from '@/utils/http/axios';
 export interface BasicResponseModel<T = any> {
   code: number;
   message: string;
-  result: T;
+  data: T;
 }
 
 export interface BasicPageParams {
@@ -26,9 +26,10 @@ export function getUserInfo() {
  * @description: 用户登录
  */
 export function login(params) {
+  const noMock = import.meta.env.VITE_APP_PM_ENABLED === 'true' ? '/nomock' : '';
   return http.request<BasicResponseModel>(
     {
-      url: '/login',
+      url: noMock + '/login',
       method: 'POST',
       params,
     },

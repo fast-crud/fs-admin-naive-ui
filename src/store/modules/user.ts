@@ -61,14 +61,14 @@ export const useUserStore = defineStore({
     async login(userInfo) {
       try {
         const response = await login(userInfo);
-        const { result, code } = response;
+        const { data, code } = response;
         if (code === ResultEnum.SUCCESS) {
           const ex = 7 * 24 * 60 * 60 * 1000;
-          storage.set(ACCESS_TOKEN, result.token, ex);
-          storage.set(CURRENT_USER, result, ex);
+          storage.set(ACCESS_TOKEN, data.token, ex);
+          storage.set(CURRENT_USER, data, ex);
           storage.set(IS_LOCKSCREEN, false);
-          this.setToken(result.token);
-          this.setUserInfo(result);
+          this.setToken(data.token);
+          this.setUserInfo(data);
         }
         return Promise.resolve(response);
       } catch (e) {

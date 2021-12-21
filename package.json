@@ -11,6 +11,9 @@
     "bootstrap": "yarn install",
     "serve": "npm run dev",
     "dev": "vite",
+    "debug": "vite --mode debug",
+    "debug:pm": "vite --force --mode debugpm",
+    "debug:force": "vite --force --mode debug",
     "build": "vite build && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && npm run build",
     "report": "cross-env REPORT=true npm run build",
@@ -25,6 +28,9 @@
     "test prod gzip": "http-server dist --cors --gzip -c-1"
   },
   "dependencies": {
+    "@fast-crud/fast-crud": "^0.22.1",
+    "@fast-crud/fast-extends": "^0.22.1",
+    "@fast-crud/ui-naive": "^0.22.1",
     "@vicons/antd": "^0.10.0",
     "@vicons/ionicons5": "^0.10.0",
     "@vueup/vue-quill": "^1.0.0-beta.7",

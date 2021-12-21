@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import { Layout } from '@/router/constant';
+import { Layout, ParentLayout } from '@/router/constant';
 import { TableOutlined } from '@vicons/antd';
 import { renderIcon } from '@/utils/index';
 
@@ -17,22 +17,41 @@ import { renderIcon } from '@/utils/index';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/crud',
-    name: 'Crud',
-    redirect: '/crud/index',
+    name: 'crud',
+    redirect: '/crud/basic',
     component: Layout,
     meta: {
-      title: 'FastCrud示例',
+      title: 'Crud示例',
       icon: renderIcon(TableOutlined),
-      sort: 2,
+      sort: 1,
     },
     children: [
       {
-        path: 'basic-list',
-        name: 'basic-list',
+        path: 'basic',
+        name: 'CrudBasic',
         meta: {
-          title: '基础列表',
+          title: '基本示例',
         },
-        component: () => import('@/views/list/basicList/index.vue'),
+        component: () => import('@/views/crud/basic/index.vue'),
+      },
+      {
+        path: 'component',
+        name: 'CrudComponent',
+        redirect: '/crud/component/text',
+        meta: {
+          title: '组件示例',
+        },
+        component: ParentLayout,
+        children: [
+          {
+            path: 'text',
+            name: 'ComponentText',
+            meta: {
+              title: '文本组件',
+            },
+            component: () => import('@/views/crud/component/text/index.vue'),
+          },
+        ],
       },
     ],
   },
