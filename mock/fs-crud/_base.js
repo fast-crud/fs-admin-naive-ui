@@ -50,11 +50,11 @@ export default {
       copyList(options.list, list, options, null);
     }
     options.list = list;
-    const prefix = '/api';
+    const prefix = '/api/crud/';
     return [
       {
-        url: prefix + '/mock/' + name + '/page',
-        method: 'get',
+        url: prefix + name + '/page',
+        method: 'post',
         response(req) {
           let data = [...list];
           let limit = 20;
@@ -159,7 +159,7 @@ export default {
           }
           return {
             code: 0,
-            msg: 'success',
+            message: 'success',
             data: {
               records: records,
               total: data.length,
@@ -170,9 +170,9 @@ export default {
         },
       },
       {
-        path: prefix + '/mock/' + name + '/get',
-        method: 'get',
-        handle(req) {
+        url: prefix + name + '/get',
+        method: 'post',
+        response(req) {
           let id = req.params.id;
           id = parseInt(id);
           let current = null;
@@ -184,55 +184,55 @@ export default {
           }
           return {
             code: 0,
-            msg: 'success',
+            message: 'success',
             data: current,
           };
         },
       },
       {
-        path: prefix + '/mock/' + name + '/add',
+        url: prefix + name + '/add',
         method: 'post',
-        handle(req) {
+        response(req) {
           req.body.id = ++options.idGenerator;
           list.unshift(req.body);
           return {
             code: 0,
-            msg: 'success',
+            message: 'success',
             data: req.body.id,
           };
         },
       },
       {
-        path: prefix + '/mock/' + name + '/update',
+        url: prefix + name + '/update',
         method: 'post',
-        handle(req) {
+        response(req) {
           const item = findById(req.body.id, list);
           if (item) {
             Object.assign(item, req.body);
           }
           return {
             code: 0,
-            msg: 'success',
+            message: 'success',
             data: null,
           };
         },
       },
       {
-        path: prefix + '/mock/' + name + '/delete',
+        url: prefix + name + '/delete',
         method: 'post',
-        handle(req) {
+        response(req) {
           delById(req, list);
           return {
             code: 0,
-            msg: 'success',
+            message: 'success',
             data: null,
           };
         },
       },
       {
-        path: prefix + '/mock/' + name + '/batchDelete',
+        url: prefix + name + '/batchDelete',
         method: 'post',
-        handle(req) {
+        response(req) {
           const ids = req.body.ids;
           for (let i = list.length - 1; i >= 0; i--) {
             const item = list[i];
@@ -242,7 +242,7 @@ export default {
           }
           return {
             code: 0,
-            msg: 'success',
+            message: 'success',
             data: null,
           };
         },

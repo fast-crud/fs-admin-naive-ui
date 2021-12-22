@@ -1,16 +1,15 @@
 import http from '@/utils/http/axios';
-const request = http.request;
 const apiPrefix = '/crud/ComponentText';
 export function GetList(query) {
-  return request({
+  return http.request({
     url: apiPrefix + '/page',
-    method: 'get',
+    method: 'post',
     data: query,
   });
 }
 
 export function AddObj(obj) {
-  return request({
+  return http.request({
     url: apiPrefix + '/add',
     method: 'post',
     data: obj,
@@ -18,7 +17,7 @@ export function AddObj(obj) {
 }
 
 export function UpdateObj(obj) {
-  return request({
+  return http.request({
     url: apiPrefix + '/update',
     method: 'post',
     data: obj,
@@ -26,7 +25,7 @@ export function UpdateObj(obj) {
 }
 
 export function DelObj(id) {
-  return request({
+  return http.request({
     url: apiPrefix + '/delete',
     method: 'post',
     params: { id },
@@ -34,9 +33,9 @@ export function DelObj(id) {
 }
 
 export function GetObj(id) {
-  return request({
+  return http.request({
     url: apiPrefix + '/info',
-    method: 'get',
+    method: 'post',
     params: { id },
   });
 }

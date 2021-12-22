@@ -5,6 +5,7 @@ function getMenuKeys() {
   const newKeys = [];
   doCustomTimes(parseInt(Math.random() * 6), () => {
     const key = keys[Math.floor(Math.random() * keys.length)];
+    // @ts-ignore
     newKeys.push(key);
   });
   return Array.from(new Set(newKeys));

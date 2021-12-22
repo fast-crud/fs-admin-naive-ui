@@ -74,18 +74,18 @@ export default function ({ expose }) {
               render(context) {
                 console.log('context scope', context);
                 return (
-                  <el-input-group compact>
-                    <el-input
+                  <template>
+                    <n-input
                       placeholder={'render1 input'}
                       style="width: 50%"
                       v-model={[context.form.render, 'value']}
                     />
-                    <el-input
+                    <n-input
                       placeholder={'render2 input'}
                       style="width: 50%"
                       v-model={[context.form.render2, 'value']}
                     />
-                  </el-input-group>
+                  </template>
                 );
               },
             },

@@ -1,5 +1,5 @@
-import mockUtil from '../../mock/base';
-const options = {
+import mockUtil from '../_base';
+const options: any = {
   name: 'ComponentText',
   idGenerator: 0,
 };
