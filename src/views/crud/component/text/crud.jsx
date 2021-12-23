@@ -1,5 +1,6 @@
 import * as api from './api';
-export default function ({ expose }) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function ({ crudExpose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -34,14 +35,15 @@ export default function ({ expose }) {
           },
         },
         search: {
-          title: '搜索',
+          title: '前置后置',
           type: 'text',
           form: {
             component: {
-              addonAfter: '后置',
-              suffix: 'suffix',
               children: {
-                addonBefore() {
+                prefix() {
+                  return <SearchOutlined />;
+                },
+                suffix() {
                   return <SearchOutlined />;
                 },
               },
@@ -74,7 +76,7 @@ export default function ({ expose }) {
               render(context) {
                 console.log('context scope', context);
                 return (
-                  <template>
+                  <div>
                     <n-input
                       placeholder={'render1 input'}
                       style="width: 50%"
@@ -85,7 +87,7 @@ export default function ({ expose }) {
                       style="width: 50%"
                       v-model={[context.form.render2, 'value']}
                     />
-                  </template>
+                  </div>
                 );
               },
             },

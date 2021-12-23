@@ -1,6 +1,8 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <n-card :bordered="false" class="proCard page-card">
+      <fs-crud ref="crudRef" v-bind="crudBinding" />
+    </n-card>
   </fs-page>
 </template>
 
@@ -16,10 +18,10 @@
   // 暴露的方法
   const { crudExpose } = useExpose({ crudRef, crudBinding });
   // 你的crud配置
-  const { crudOptions } = createCrudOptions({ expose: crudExpose });
+  const { crudOptions } = createCrudOptions({ crudExpose });
   // 初始化crud配置
   // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-  const { resetCrudOptions } = useCrud({ expose: crudExpose, crudOptions });
+  const { resetCrudOptions } = useCrud({ crudExpose, crudOptions });
   // 你可以调用此方法，重新初始化crud配置
   // resetCrudOptions(options)
 

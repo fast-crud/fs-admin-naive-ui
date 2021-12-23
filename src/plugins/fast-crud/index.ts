@@ -27,14 +27,36 @@ function install(app, options: any = {}) {
           size: 'small',
           pagination: false,
         },
+        actionbar: {
+          buttons: {
+            add: { size: 'small' },
+          },
+        },
+        toolbar: {
+          buttons: {
+            search: { size: 'small' },
+            compact: { size: 'small' },
+            refresh: { size: 'small' },
+            columns: { size: 'small' },
+          },
+        },
+        search: {
+          options: {
+            size: 'small',
+          },
+          buttons: {
+            search: { size: 'small' },
+            reset: { size: 'small' },
+          },
+        },
         rowHandle: {
           buttons: {
-            view: { text: null, icon: 'ion:eye-outline' },
-            edit: { text: null, icon: 'ion:create-outline' },
-            remove: { type: 'danger', text: null, icon: 'ion:trash-outline' },
+            view: { text: null, icon: 'EyeOutlined', size: 'small' },
+            edit: { text: null, icon: 'EditOutlined', size: 'small' },
+            remove: { type: 'danger', text: null, icon: 'ion:trash-outline', size: 'small' },
           },
           dropdown: {
-            more: {},
+            more: { size: 'small' },
           },
         },
         request: {
