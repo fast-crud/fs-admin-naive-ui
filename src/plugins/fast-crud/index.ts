@@ -9,7 +9,7 @@ import http from '@/utils/http/axios';
 function install(app, options: any = {}) {
   app.use(UiNaive);
   app.use(FastCrud, {
-    i18n: options.i18n, //naive-ui 暂不支持国际化
+    i18n: options.i18n,
     async dictRequest({ url }) {
       // if (url && url.startsWith('/mock')) {
       //   //如果是crud开头的dict请求视为mock

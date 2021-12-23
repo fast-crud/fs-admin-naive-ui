@@ -7,7 +7,7 @@ import MakeitCaptcha from 'makeit-captcha';
 import 'makeit-captcha/dist/captcha.min.css';
 import { setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
 import { AppProvider } from '@/components/Application';
-
+import i18n from './i18n';
 async function bootstrap() {
   const appProvider = createApp(AppProvider);
 
@@ -18,8 +18,9 @@ async function bootstrap() {
   // 注册全局常用的 naive-ui 组件
   setupNaive(app);
 
+  app.use(i18n);
   // 注册fast-crud
-  setupFastCrud(app);
+  setupFastCrud(app, { i18n });
 
   // 注册全局自定义组件
   //setupCustomComponents();

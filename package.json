@@ -37,6 +37,7 @@
     "@vueuse/core": "^5.0.3",
     "axios": "^0.21.1",
     "blueimp-md5": "^2.18.0",
+    "china-division": "^2.4.0",
     "date-fns": "^2.23.0",
     "echarts": "^5.1.2",
     "element-resize-detector": "^1.2.3",
@@ -50,6 +51,7 @@
     "qs": "^6.10.1",
     "vfonts": "^0.1.0",
     "vue": "^3.2.16",
+    "vue-i18n": "^9.1.7",
     "vue-router": "^4.0.11",
     "vue-types": "^4.1.0",
     "vuedraggable": "^4.0.3"
