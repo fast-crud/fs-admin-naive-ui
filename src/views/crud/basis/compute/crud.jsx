@@ -41,15 +41,11 @@ export default function ({ crudExpose }) {
         delRequest,
       },
       table: {
-        scroll: {
-          x: 1500,
-        },
         //通过switch动态显隐table
         show: showTableComputed, //不仅支持computed，直接传showTableRef也是可以的
       },
       form: {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 14 },
+        labelWidth: 120,
       },
       rowHandle: {
         fixed: 'right',
@@ -145,6 +141,7 @@ export default function ({ crudExpose }) {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
                 async asyncFn(watchValue, context) {
                   const url = '/crud/dicts/OpenStatusEnum?remote';
+                  console.log('执行异步方法1', url, watchValue);
                   const opts = await http.request({ url });
                   return opts;
                 },
@@ -158,6 +155,7 @@ export default function ({ crudExpose }) {
           search: { show: false },
           type: 'text',
           form: {
+            title: '监听switch',
             component: {
               name: 'fs-dict-select',
               vModel: 'value',
@@ -165,13 +163,14 @@ export default function ({ crudExpose }) {
               // 这里el-select组件的options是通过计算获得的
               options: asyncCompute({
                 watch({ form }) {
-                  return form.compute;
+                  return form.compute || false;
                 },
                 async asyncFn(watchValue) {
                   message.info('监听switch,触发远程获取options');
                   const url = watchValue
                     ? '/crud/dicts/OpenStatusEnum?remote'
                     : '/crud/dicts/moreOpenStatusEnum?remote';
+                  console.log('执行异步方法2', url, watchValue);
                   return await http.request({ url });
                 },
               }),
