@@ -2,11 +2,10 @@
   <fs-page>
     <template #header>
       <div class="title">CRUD示例【国际化】</div>
-      <div class="more"><el-button @click="showDemo">更多</el-button></div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="warning" title="右上角切换语言查看效果" />
+        <n-alert class="ml-1" type="warning" title="右上角切换语言查看效果" />
       </template>
     </fs-crud>
   </fs-page>
@@ -39,13 +38,9 @@
         crudExpose.doRefresh();
       });
 
-      function showDemo() {
-        message('演示按钮');
-      }
       return {
         crudBinding,
         crudRef,
-        showDemo,
       };
     },
   });

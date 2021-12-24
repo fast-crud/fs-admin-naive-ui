@@ -63,7 +63,7 @@ export default function ({}) {
           search: { show: true },
           type: 'dict-radio',
           dict: dict({
-            url: '/mock/dicts/OpenStatusEnum?single',
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
         },
       },

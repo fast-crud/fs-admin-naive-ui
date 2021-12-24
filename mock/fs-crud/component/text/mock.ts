@@ -1,4 +1,4 @@
-import mockUtil from '../_base';
+import mockUtil from '../../_base';
 const options: any = {
   name: 'ComponentText',
   idGenerator: 0,

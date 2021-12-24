@@ -21,6 +21,7 @@ export default function ({ crudExpose }) {
   return {
     output: {},
     crudOptions: {
+      search: { show: false },
       request: {
         pageRequest,
         addRequest,

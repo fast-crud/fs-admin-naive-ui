@@ -1,6 +1,10 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding" />
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <n-alert class="ml-1" type="warning" title="打开编辑对话框，然后输入数据查看效果" />
+      </template>
+    </fs-crud>
   </fs-page>
 </template>
 

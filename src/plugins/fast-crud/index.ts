@@ -14,7 +14,7 @@ function install(app, options: any = {}) {
       // if (url && url.startsWith('/mock')) {
       //   //如果是crud开头的dict请求视为mock
       // }
-      return await http.request({ url, method: 'post' });
+      return await http.request({ url, method: 'get' });
     },
     /**
      * useCrud时会被执行

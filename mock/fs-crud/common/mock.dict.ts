@@ -5,19 +5,19 @@ import { TreeNodesLazyLoader, getPcaData } from './pcas-data';
 const openStatus = [
   { value: '1', label: '打开', color: 'success' },
   { value: '2', label: '停止', color: 'warning' },
-  { value: '0', label: '关闭', color: 'danger' },
+  { value: '0', label: '关闭', color: 'error' },
 ];
 
 const moreOpenStatus = [
   { value: '1', label: '打开(open)', color: 'success' },
   { value: '2', label: '停止(stop)', color: 'warning' },
-  { value: '0', label: '关闭(close)', color: 'danger' },
+  { value: '0', label: '关闭(close)', color: 'error' },
 ];
 
 const textStatus = [
   { id: '1', text: '打开', color: 'success' },
   { id: '2', text: '停止', color: 'warning' },
-  { id: '0', text: '关闭', color: 'danger' },
+  { id: '0', text: '关闭', color: 'error' },
 ];
 
 export function GetTreeChildrenByParentId(parentId) {
