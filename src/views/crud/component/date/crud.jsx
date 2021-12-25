@@ -1,7 +1,7 @@
-import * as api from "./api";
-import { utils } from "@fast-crud/fast-crud";
-import dayjs from "dayjs";
-console.log("utils", utils);
+import * as api from './api';
+import { utils } from '@fast-crud/fast-crud';
+import dayjs from 'dayjs';
+console.log('utils', utils);
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -23,31 +23,31 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       table: {
-        scroll: { x: 1700 }
+        scroll: { x: 1700 },
       },
-      rowHandle: { fixed: "right" },
+      rowHandle: { fixed: 'right' },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         timestamp: {
-          title: "时间戳",
-          type: "datetime",
+          title: '时间戳',
+          type: 'datetime',
           search: {
             show: true,
             width: 185,
-            component: {}
+            component: {},
           },
           valueBuilder({ value, row, key }) {
             if (value != null) {
@@ -58,55 +58,55 @@ export default function ({ expose }) {
             if (value != null) {
               row[key] = value.valueOf();
             }
-          }
+          },
         },
         datetime: {
-          title: "日期时间",
-          type: "datetime",
+          title: '日期时间',
+          type: 'datetime',
           valueBuilder({ value, row, key }) {
             if (value != null) {
               row[key] = dayjs(value);
             }
-          }
+          },
         },
         format: {
-          title: "格式化",
-          type: "datetime",
+          title: '格式化',
+          type: 'datetime',
           form: {
             component: {
-              format: "YYYY年MM月DD日 HH:mm"
+              format: 'YYYY年MM月DD日 HH:mm',
               //valueFormat: "YYYY年MM月DD日 HH:mm"
-            }
+            },
           },
           column: {
             width: 180,
             component: {
               // 行展示组件使用的dayjs，
-              format: "YYYY年MM月DD日 HH:mm"
-            }
-          }
+              format: 'YYYY年MM月DD日 HH:mm',
+            },
+          },
         },
         date: {
-          title: "仅日期",
-          type: "date",
+          title: '仅日期',
+          type: 'date',
           form: {
             component: {
               events: {
                 onChange(context) {
-                  console.log("change", context);
-                }
-              }
-            }
+                  console.log('change', context);
+                },
+              },
+            },
           },
           valueBuilder({ value, row, key }) {
             if (value != null) {
               row[key] = dayjs(value);
             }
-          }
+          },
         },
         disabledDate: {
-          title: "禁用日期",
-          type: "date",
+          title: '禁用日期',
+          type: 'date',
           form: {
             valueBuilder({ value, row, key }) {
               if (value) {
@@ -116,13 +116,13 @@ export default function ({ expose }) {
             component: {
               disabledDate(time) {
                 return time.getTime() < Date.now();
-              }
-            }
-          }
+              },
+            },
+          },
         },
         time: {
-          title: "仅时间",
-          type: "time",
+          title: '仅时间',
+          type: 'time',
           form: {
             valueBuilder({ value, row, key }) {
               if (value) {
@@ -130,23 +130,23 @@ export default function ({ expose }) {
               }
             },
             valueResolve({ value }) {
-              console.log("resolve:", value);
-            }
-          }
+              console.log('resolve:', value);
+            },
+          },
         },
         daterange: {
-          title: "日期范围",
-          type: "daterange",
+          title: '日期范围',
+          type: 'daterange',
           search: { show: true, width: 300 },
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.daterangeStart, row.daterangeEnd)) {
               row[key] = [dayjs(row.daterangeStart), dayjs(row.daterangeEnd)];
             }
-          }
+          },
         },
         datetimerange: {
-          title: "日期时间范围",
-          type: "datetimerange",
+          title: '日期时间范围',
+          type: 'datetimerange',
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.datetimerangeStart, row.datetimerangeEnd)) {
               row[key] = [dayjs(row.datetimerangeStart), dayjs(row.datetimerangeEnd)];
@@ -161,9 +161,9 @@ export default function ({ expose }) {
               row.datetimerangeStart = null;
               row.datetimerangeEnd = null;
             }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 }

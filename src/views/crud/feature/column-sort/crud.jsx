@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -18,78 +18,78 @@ export default function ({ expose }) {
         pageRequest: api.GetList,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       toolbar: {
         //工具按钮排序
         buttons: {
-          search: { order: 0 } // 查询按钮排到前面
-        }
+          search: { order: 0 }, // 查询按钮排到前面
+        },
       },
       form: {
         //表单跨列
         col: { span: 24 },
-        labelWidth: "150px"
+        labelWidth: '150px',
       },
       columns: {
         col1: {
-          title: "col.1",
+          title: 'col.1',
           search: { show: true },
-          type: "text"
+          type: 'text',
         },
         col2: {
-          title: "col.2,我排最后一个",
+          title: 'col.2,我排最后一个',
           search: {
             //控制查询字段顺序
             show: true,
             //字段默认order为1，比1大的放最后面
-            order: 2
+            order: 2,
           },
-          type: "text",
+          type: 'text',
           column: {
             //控制列字段顺序
             //字段默认order为1，比1大的放最后面
-            order: 2
+            order: 2,
           },
           form: {
             //控制表单字段顺序
             //字段默认order为1，比1大的放最后面
-            order: 2
-          }
+            order: 2,
+          },
         },
         col3: {
-          title: "col.3,我排第一个",
+          title: 'col.3,我排第一个',
           search: {
             show: true,
-            order: -1
+            order: -1,
           },
-          type: "text",
+          type: 'text',
           column: {
-            order: -1
+            order: -1,
           },
           form: {
-            order: -1
-          }
+            order: -1,
+          },
         },
         col4: {
-          title: "col.4,我在col3后面",
-          type: "text",
+          title: 'col.4,我在col3后面',
+          type: 'text',
           search: {
             show: true,
-            order: 0
+            order: 0,
           },
           column: {
-            order: 0
+            order: 0,
           },
           form: {
-            order: 0
-          }
+            order: 0,
+          },
         },
         col5: {
-          title: "col.5",
-          type: "text"
-        }
-      }
-    }
+          title: 'col.5',
+          type: 'text',
+        },
+      },
+    },
   };
 }

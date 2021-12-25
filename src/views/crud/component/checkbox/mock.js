@@ -1,18 +1,18 @@
-import mockUtil from "/src/mock/base";
+import mockUtil from '/src/mock/base';
 const options = {
-  name: "ComponentCheckbox",
-  idGenerator: 0
+  name: 'ComponentCheckbox',
+  idGenerator: 0,
 };
 const list = [
   {
-    checkbox: ["1", "2"]
+    checkbox: ['1', '2'],
   },
   {
-    checkbox: "2"
+    checkbox: '2',
   },
   {
-    checkbox: "0"
-  }
+    checkbox: '0',
+  },
 ];
 options.list = list;
 const mock = mockUtil.buildMock(options);

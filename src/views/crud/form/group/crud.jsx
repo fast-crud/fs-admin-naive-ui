@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -20,61 +20,61 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         title: {
-          title: "商品标题",
-          type: "text"
+          title: '商品标题',
+          type: 'text',
         },
         code: {
-          title: "商品代码",
+          title: '商品代码',
           search: { show: true },
-          type: "text"
+          type: 'text',
         },
         images: {
-          title: "图片",
-          type: "image-uploader"
+          title: '图片',
+          type: 'image-uploader',
         },
         price: {
-          title: "价格",
-          sortable: true
+          title: '价格',
+          sortable: true,
         },
         store: {
-          title: "库存",
-          type: "number"
+          title: '库存',
+          type: 'number',
         },
         intro: {
-          title: "简介",
-          type: "textarea",
+          title: '简介',
+          type: 'textarea',
           column: {
-            "show-overflow-tooltip": true
-          }
+            'show-overflow-tooltip': true,
+          },
         },
         content: {
-          title: "详情",
-          type: "editor-ueditor",
+          title: '详情',
+          type: 'editor-ueditor',
           form: {
-            itemProps: { labelWidth: "0px" }
-          }
+            itemProps: { labelWidth: '0px' },
+          },
         },
         slotField: {
-          title: "插槽示例",
-          type: "text"
+          title: '插槽示例',
+          type: 'text',
         },
         product: {
-          title: "未分组字段",
-          type: "text",
+          title: '未分组字段',
+          type: 'text',
           form: {
             col: { span: 24 },
-            helper: "未分组的字段会显示在这里，一般来说你应该把所有字段都编入分组内"
-          }
-        }
+            helper: '未分组的字段会显示在这里，一般来说你应该把所有字段都编入分组内',
+          },
+        },
       },
       form: {
-        labelWidth: "150px",
+        labelWidth: '150px',
         group: {
-          type: "collapse", // tab
+          type: 'collapse', // tab
           accordion: true, //手风琴模式
           groups: {
             base: {
@@ -82,24 +82,24 @@ export default function ({ expose }) {
                 //自定义header
                 header: () => {
                   return (
-                    <span style={"color:green"}>
+                    <span style={'color:green'}>
                       商品基础
-                      <CheckOutlined style={"margin-left:10px;"} />
+                      <CheckOutlined style={'margin-left:10px;'} />
                     </span>
                   );
-                }
+                },
               },
-              columns: ["code", "title", "images"]
+              columns: ['code', 'title', 'images'],
             },
             price: {
-              header: "库存价格",
-              columns: ["store", "price"]
+              header: '库存价格',
+              columns: ['store', 'price'],
             },
             info: {
-              header: "详情",
+              header: '详情',
               collapsed: true, //默认折叠
-              columns: ["intro", "content", "slotField"]
-            }
+              columns: ['intro', 'content', 'slotField'],
+            },
             // custom: {
             //   title: "自定义",
             //   collapsed: false,
@@ -108,12 +108,12 @@ export default function ({ expose }) {
             //     return context.mode === "view";
             //   },
             //   disabled: false,
-            //   icon: "el-icon-warning-outline",
+            //   icon: "n-icon-warning-outline",
             //   columns: ["custom", "custom2"]
             // }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 }

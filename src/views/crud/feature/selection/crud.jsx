@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-import { ref } from "vue";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+import { ref } from 'vue';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -19,7 +19,7 @@ export default function ({ expose }) {
   const selectedIds = ref([]);
 
   const onSelectionChange = (changed) => {
-    console.log("selection", changed);
+    console.log('selection', changed);
     selectedIds.value = changed.map((item) => item.id);
   };
   return {
@@ -29,45 +29,45 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       table: {
-        onSelectionChange
+        onSelectionChange,
       },
       columns: {
         $checked: {
-          title: "选择",
+          title: '选择',
           form: { show: false },
           column: {
-            type: "selection",
-            align: "center",
-            width: "55px",
+            type: 'selection',
+            align: 'center',
+            width: '55px',
             columnSetDisabled: true, //禁止在列设置中选择
             selectable(row, index) {
               return row.id !== 1; //设置第一行不允许选择
-            }
-          }
+            },
+          },
         },
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }

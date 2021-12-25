@@ -1,6 +1,4 @@
-import * as api from "./api";
-import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -22,54 +20,54 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         file: {
-          title: "腾讯云",
-          type: "file-uploader",
+          title: '腾讯云',
+          type: 'file-uploader',
           form: {
             component: {
               uploader: {
-                type: "cos"
-              }
-            }
-          }
+                type: 'cos',
+              },
+            },
+          },
         },
         pictureCard: {
-          title: "照片墙",
-          type: "image-uploader",
+          title: '照片墙',
+          type: 'image-uploader',
           form: {
             component: {
               uploader: {
-                type: "cos"
-              }
-            }
-          }
+                type: 'cos',
+              },
+            },
+          },
         },
         cropper: {
-          title: "裁剪",
-          type: "cropper-uploader",
+          title: '裁剪',
+          type: 'cropper-uploader',
           form: {
             component: {
               uploader: {
-                type: "cos"
-              }
-            }
-          }
-        }
-      }
-    }
+                type: 'cos',
+              },
+            },
+          },
+        },
+      },
+    },
   };
 }

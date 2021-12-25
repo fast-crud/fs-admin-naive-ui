@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,61 +21,61 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         tree: {
-          title: "树形选择",
+          title: '树形选择',
           search: { show: false },
-          type: "dict-tree",
+          type: 'dict-tree',
           dict: dict({
             isTree: true,
-            url: "/mock/dicts/cascaderData?single"
-          })
+            url: '/crud/dicts/cascaderData?single',
+          }),
         },
         multiple: {
-          title: "多选",
+          title: '多选',
           search: { show: false },
-          type: "dict-tree",
+          type: 'dict-tree',
           dict: dict({
             cloneable: false,
             isTree: true,
-            url: "/mock/dicts/cascaderData?single"
+            url: '/crud/dicts/cascaderData?single',
           }),
           form: {
             component: {
-              "tree-checkable": true
-            }
-          }
+              'tree-checkable': true,
+            },
+          },
         },
         fieldReplace: {
-          title: "数据value配置",
+          title: '数据value配置',
           search: { show: false },
-          type: "dict-tree",
+          type: 'dict-tree',
           dict: dict({
             isTree: true,
-            url: "/mock/dicts/littlePca",
-            value: "code",
-            label: "name"
+            url: '/crud/dicts/littlePca',
+            value: 'code',
+            label: 'name',
           }),
           form: {
             component: {
-              replaceFields: { title: "name", key: "code", value: "code" }
-            }
-          }
-        }
-      }
-    }
+              replaceFields: { title: 'name', key: 'code', value: 'code' },
+            },
+          },
+        },
+      },
+    },
   };
 }

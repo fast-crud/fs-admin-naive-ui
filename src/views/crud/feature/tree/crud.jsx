@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-import { ref } from "vue";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+import { ref } from 'vue';
 
 export default function ({ expose }) {
   const pageRequest = async (query) => {
@@ -23,60 +23,60 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       table: {},
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 100
+            width: 100,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         time: {
-          title: "时间",
-          type: "datetime",
+          title: '时间',
+          type: 'datetime',
           column: {
-            width: 180
-          }
+            width: 180,
+          },
         },
         province: {
-          title: "地区",
-          type: "dict-select",
+          title: '地区',
+          type: 'dict-select',
           search: { show: true },
           form: {
-            component: { filterable: true, multiple: true }
+            component: { filterable: true, multiple: true },
           },
           dict: dict({
             data: [
-              { value: "sz", label: "深圳" },
-              { value: "gz", label: "广州" },
-              { value: "wh", label: "武汉" },
-              { value: "sh", label: "上海" }
-            ]
+              { value: 'sz', label: '深圳' },
+              { value: 'gz', label: '广州' },
+              { value: 'wh', label: '武汉' },
+              { value: 'sh', label: '上海' },
+            ],
           }),
           column: {
-            width: 300
-          }
+            width: 300,
+          },
         },
         amount: {
-          title: "金额(元)",
-          key: "amount"
+          title: '金额(元)',
+          key: 'amount',
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }

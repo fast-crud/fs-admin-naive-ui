@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-import { ref } from "vue";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+import { ref } from 'vue';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -22,40 +22,40 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       table: {},
       columns: {
         $expand: {
-          title: "展开",
+          title: '展开',
           form: { show: false },
           column: {
-            type: "expand",
-            align: "center",
-            width: "55px",
-            columnSetDisabled: true //禁止在列设置中选择
-          }
+            type: 'expand',
+            align: 'center',
+            width: '55px',
+            columnSetDisabled: true, //禁止在列设置中选择
+          },
         },
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }

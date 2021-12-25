@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+export default function () {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -18,16 +18,16 @@ export default function ({ expose }) {
   const statusDict = dict({
     cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
     data: [
-      { value: "1", label: "开启", color: "success" },
-      { value: "2", label: "停止", color: null },
-      { value: "0", label: "关闭", color: null }
-    ]
+      { value: '1', label: '开启', color: 'success' },
+      { value: '2', label: '停止' },
+      { value: '0', label: '关闭' },
+    ],
   });
 
   const remoteDict = dict({
     cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
-    url: "/mock/dicts/OpenStatusEnum",
-    immediate: false
+    url: '/crud/dicts/OpenStatusEnum',
+    immediate: false,
   });
   // remoteDict.loadDict();
 
@@ -38,64 +38,64 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         status: {
-          title: "本地字典",
+          title: '本地字典',
           search: { show: false },
           dict: statusDict,
-          type: "dict-select"
+          type: 'dict-select',
         },
         remote: {
-          title: "远程字典",
+          title: '远程字典',
           search: { show: true },
           dict: remoteDict,
-          type: "dict-select"
+          type: 'dict-select',
         },
         modifyDict: {
-          title: "动态修改字典",
+          title: '动态修改字典',
           search: { show: false },
-          type: "text",
+          type: 'text',
           form: {
             component: {
-              name: "el-switch"
+              name: 'n-switch',
             },
             valueChange({ form }) {
-              console.log("changed", form.modifyDict);
+              console.log('changed', form.modifyDict);
               remoteDict.url = form.modifyDict
-                ? "/mock/dicts/moreOpenStatusEnum?remote"
-                : "/mock/dicts/OpenStatusEnum?remote";
+                ? '/crud/dicts/moreOpenStatusEnum?remote'
+                : '/crud/dicts/OpenStatusEnum?remote';
               // 由于remoteDict.cloneable =false,所以全局公用一个实例，修改会影响全部地方
               remoteDict.reloadDict();
-            }
+            },
           },
           column: {
             component: {
-              name: "el-switch",
+              name: 'n-switch',
               on: {
-                onChange({ $event }) {
+                'onUpdate:value': ({ $event }) => {
                   remoteDict.url = $event
-                    ? "/mock/dicts/moreOpenStatusEnum?remote"
-                    : "/mock/dicts/OpenStatusEnum?remote";
+                    ? '/crud/dicts/moreOpenStatusEnum?remote'
+                    : '/crud/dicts/OpenStatusEnum?remote';
                   remoteDict.reloadDict();
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   };
 }

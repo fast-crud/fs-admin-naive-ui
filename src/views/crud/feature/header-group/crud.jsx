@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,68 +21,68 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
-        layout: "flex",
-        labelWidth: "100px" //表单label宽度
+        layout: 'flex',
+        labelWidth: '100px', //表单label宽度
       },
-      table: { size: "small" },
+      table: { size: 'small' },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         user: {
-          title: "用户信息",
+          title: '用户信息',
           children: {
             name: {
-              title: "姓名",
-              type: "text"
+              title: '姓名',
+              type: 'text',
             },
             age: {
-              title: "年龄",
-              type: "number"
-            }
-          }
+              title: '年龄',
+              type: 'number',
+            },
+          },
         },
         address: {
-          title: "地址",
+          title: '地址',
           children: {
             area: {
-              title: "地区",
+              title: '地区',
               children: {
                 province: {
-                  title: "省",
+                  title: '省',
                   search: { show: true },
-                  type: "text"
+                  type: 'text',
                 },
                 city: {
-                  title: "市",
+                  title: '市',
                   search: { show: true },
-                  type: "text"
+                  type: 'text',
                 },
                 county: {
-                  title: "区",
+                  title: '区',
                   search: { show: true },
-                  type: "text"
-                }
-              }
+                  type: 'text',
+                },
+              },
             },
             street: {
-              title: "街道",
-              type: "text"
-            }
-          }
-        }
-      }
-    }
+              title: '街道',
+              type: 'text',
+            },
+          },
+        },
+      },
+    },
   };
 }

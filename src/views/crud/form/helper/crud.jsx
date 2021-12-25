@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -20,7 +20,7 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
         labelCol: { span: 6 },
@@ -28,45 +28,45 @@ export default function ({ expose }) {
         helper: {
           // position: "label" // helper的展示位置全局配置
           // tooltip:{}
-        }
+        },
       },
       columns: {
         name: {
-          title: "最简单",
-          type: "text",
+          title: '最简单',
+          type: 'text',
           form: {
-            helper: "最简单的helper"
-          }
+            helper: '最简单的helper',
+          },
         },
         age: {
-          title: "jsx",
-          type: "text",
+          title: 'jsx',
+          type: 'text',
           form: {
             helper: {
               render() {
-                return <div style={"color:blue"}>jsx自定义render</div>;
-              }
-            }
-          }
+                return <div style={'color:blue'}>jsx自定义render</div>;
+              },
+            },
+          },
         },
         status: {
-          title: "显示在label",
-          type: "text",
+          title: '显示在label',
+          type: 'text',
           form: {
-            rules: [{ required: true, message: "此项必填" }],
+            rules: [{ required: true, message: '此项必填' }],
             helper: {
-              position: "label",
+              position: 'label',
               tooltip: {
-                placement: "top-start"
+                placement: 'top-start',
               },
-              text: "在label通过tooltip方式显示的helper"
+              text: '在label通过tooltip方式显示的helper',
               // render() {
               //   return <div style={"color:red"}>在label通过tooltip方式显示的helper</div>;
               // }
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+    },
   };
 }

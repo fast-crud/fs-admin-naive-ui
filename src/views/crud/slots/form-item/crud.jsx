@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -20,29 +20,29 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         topics: {
-          title: "多行输入",
-          type: "text",
+          title: '多行输入',
+          type: 'text',
           search: { show: true },
           column: {
-            component: { name: "fs-values-format" }
-          }
-        }
-      }
-    }
+            component: { name: 'fs-values-format' },
+          },
+        },
+      },
+    },
   };
 }

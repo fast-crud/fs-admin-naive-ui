@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-import { ref } from "vue";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+import { ref } from 'vue';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -22,45 +22,45 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       search: {
-        layout: "multi-line",
+        layout: 'multi-line',
         col: {
-          span: 4
+          span: 4,
         },
         options: {
           labelCol: {
             style: {
-              width: "100px"
-            }
-          }
-        }
+              width: '100px',
+            },
+          },
+        },
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
           column: {
             filters: [
-              { text: "开", value: "1" },
-              { text: "关", value: "0" },
-              { text: "停", value: "2" }
+              { text: '开', value: '1' },
+              { text: '关', value: '0' },
+              { text: '停', value: '2' },
             ],
             // specify the condition of filtering result
             // here is that finding the name started with `value`
@@ -68,50 +68,50 @@ export default function ({ expose }) {
               return record.radio === value;
             },
             sorter: (a, b) => a.radio - b.radio,
-            sortDirections: ["descend"]
-          }
+            sortDirections: ['descend'],
+          },
         },
         text1: {
-          type: "text",
-          title: "text1",
-          search: { show: true }
+          type: 'text',
+          title: 'text1',
+          search: { show: true },
         },
         text2: {
-          type: "text",
-          title: "text2",
-          search: { show: true }
+          type: 'text',
+          title: 'text2',
+          search: { show: true },
         },
         text3: {
-          type: "text",
-          title: "text3",
-          search: { show: true }
+          type: 'text',
+          title: 'text3',
+          search: { show: true },
         },
         text4: {
-          type: "text",
-          title: "text4",
-          search: { show: true }
+          type: 'text',
+          title: 'text4',
+          search: { show: true },
         },
         text5: {
-          type: "text",
-          title: "text5",
-          search: { show: true }
+          type: 'text',
+          title: 'text5',
+          search: { show: true },
         },
         text6: {
-          type: "text",
-          title: "text6",
-          search: { show: true }
+          type: 'text',
+          title: 'text6',
+          search: { show: true },
         },
         text7: {
-          type: "text",
-          title: "text7",
-          search: { show: true }
+          type: 'text',
+          title: 'text7',
+          search: { show: true },
         },
         text8: {
-          type: "text",
-          title: "text8",
-          search: { show: true }
-        }
-      }
-    }
+          type: 'text',
+          title: 'text8',
+          search: { show: true },
+        },
+      },
+    },
   };
 }

@@ -1,6 +1,4 @@
-import * as api from "./api";
-import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -22,50 +20,50 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         integer: {
-          title: "整数",
+          title: '整数',
           search: { show: true },
-          type: "number"
+          type: 'number',
         },
         float: {
-          title: "小数",
-          type: "number",
+          title: '小数',
+          type: 'number',
           form: {
             component: {
-              step: 0.1
-            }
-          }
+              step: 0.1,
+            },
+          },
         },
         format: {
-          title: "格式化",
-          type: "number",
+          title: '格式化',
+          type: 'number',
           form: {
             component: {
               formatter: (value) => `${value}%`,
-              parser: (value) => value.replace("%", "")
-            }
+              parser: (value) => value.replace('%', ''),
+            },
           },
           column: {
             formatter({ value }) {
-              return value + "%";
-            }
-          }
-        }
-      }
-    }
+              return value + '%';
+            },
+          },
+        },
+      },
+    },
   };
 }

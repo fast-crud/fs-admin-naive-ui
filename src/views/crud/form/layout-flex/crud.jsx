@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,34 +21,34 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
-        display: "flex"
+        display: 'flex',
       },
       columns: {
         name: {
-          title: "姓名",
-          type: "text",
-          search: { show: true }
+          title: '姓名',
+          type: 'text',
+          search: { show: true },
         },
         order: {
-          title: "字段排序",
-          type: "text",
+          title: '字段排序',
+          type: 'text',
           form: {
-            order: 0
-          }
+            order: 0,
+          },
         },
         intro: {
-          title: "跨列",
+          title: '跨列',
           search: { show: true },
-          type: ["textarea", "colspan"],
+          type: ['textarea', 'colspan'],
           form: {
             // flex模式控制跨列, 需要配置如下三条，通过colspan可以简化
             // col: { span: 24 },
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 }

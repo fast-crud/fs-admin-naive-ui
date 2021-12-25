@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose, props, ctx }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -16,42 +16,42 @@ export default function ({ expose, props, ctx }) {
       table: {
         highlightCurrentRow: true,
         onCurrentChange: (currentRow) => {
-          ctx.emit("update:modelValue", currentRow.id);
-        }
+          ctx.emit('update:modelValue', currentRow.id);
+        },
       },
       request: {
         pageRequest: api.GetList,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       search: { show: false },
       form: {
         wrapper: {
-          is: "el-drawer"
-        }
+          is: 'n-drawer',
+        },
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         name: {
-          title: "用户姓名",
+          title: '用户姓名',
           search: { show: true },
-          type: "text",
+          type: 'text',
           column: {
-            sortable: true
-          }
-        }
-      }
-    }
+            sortable: true,
+          },
+        },
+      },
+    },
   };
 }

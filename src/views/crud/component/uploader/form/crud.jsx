@@ -1,7 +1,7 @@
-import * as api from "./api";
-import { AllUploadSuccessValidator } from "@fast-crud/fast-extends";
-import { dict } from "@fast-crud/fast-crud";
-import { nextTick } from "vue";
+import * as api from './api';
+import { AllUploadSuccessValidator } from '@fast-crud/fast-extends';
+import { dict } from '@fast-crud/fast-crud';
+import { nextTick } from 'vue';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -23,39 +23,39 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
         wrapper: {
           async onOpened() {
             // 异步组件实例的获取
-            const componentRef = await expose.getFormComponentRef("file", true);
-            console.log("componentRef", componentRef);
-          }
-        }
+            const componentRef = await expose.getFormComponentRef('file', true);
+            console.log('componentRef', componentRef);
+          },
+        },
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         file: {
-          title: "表单上传",
-          type: "file-uploader",
+          title: '表单上传',
+          type: 'file-uploader',
           form: {
             component: {
               multiple: true, //可选择多个
               uploader: {
-                type: "form"
-              }
-            }
+                type: 'form',
+              },
+            },
           },
           column: {
             component: {
@@ -64,79 +64,79 @@ export default function ({ expose }) {
               // 支持异步
               async buildUrl(value) {
                 return value;
-              }
-            }
-          }
+              },
+            },
+          },
         },
         pictureCard: {
-          title: "照片墙",
-          type: "image-uploader",
+          title: '照片墙',
+          type: 'image-uploader',
           form: {
             component: {
               limit: 1,
               uploader: {
-                type: "form"
-              }
+                type: 'form',
+              },
             },
-            helper: "最大可上传1个文件"
-          }
+            helper: '最大可上传1个文件',
+          },
         },
         cropper: {
-          title: "裁剪",
-          type: "cropper-uploader",
+          title: '裁剪',
+          type: 'cropper-uploader',
           form: {
             component: {
               uploader: {
-                type: "form"
-              }
-            }
-          }
+                type: 'form',
+              },
+            },
+          },
         },
         limit: {
-          title: "限制数量",
-          type: "file-uploader",
+          title: '限制数量',
+          type: 'file-uploader',
           form: {
             component: {
               limit: 2,
               uploader: {
-                type: "form"
-              }
+                type: 'form',
+              },
             },
-            helper: "最大可上传2个文件"
-          }
+            helper: '最大可上传2个文件',
+          },
         },
         sizeLimit: {
-          title: "限制大小",
-          type: "file-uploader",
+          title: '限制大小',
+          type: 'file-uploader',
           form: {
             component: {
               sizeLimit: 1024,
               uploader: {
-                type: "form"
-              }
+                type: 'form',
+              },
             },
-            helper: "大小不能超过1k"
-          }
+            helper: '大小不能超过1k',
+          },
         },
         validation: {
-          title: "校验",
-          type: "file-uploader",
+          title: '校验',
+          type: 'file-uploader',
           form: {
             rules: [
-              { required: true, message: "此项必传" },
+              { required: true, message: '此项必传' },
               {
                 validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
-                message: "还有文件正在上传，请稍候"
-              }
+                message: '还有文件正在上传，请稍候',
+              },
             ],
             component: {
               uploader: {
-                type: "form"
-              }
-            }
-          }
-        }
-      }
-    }
+                type: 'form',
+              },
+            },
+          },
+        },
+      },
+    },
   };
 }

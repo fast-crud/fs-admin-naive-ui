@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -18,54 +18,54 @@ export default function ({ expose }) {
         pageRequest: api.GetList,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         radio: {
-          title: "本地排序",
+          title: '本地排序',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortable: true
-          }
+            sortable: true,
+          },
         },
         radio1: {
-          title: "服务端排序1",
+          title: '服务端排序1',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortable: "custom"
-          }
+            sortable: 'custom',
+          },
         },
         radio2: {
-          title: "服务端排序2",
+          title: '服务端排序2',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortable: "custom"
-          }
-        }
-      }
-    }
+            sortable: 'custom',
+          },
+        },
+      },
+    },
   };
 }

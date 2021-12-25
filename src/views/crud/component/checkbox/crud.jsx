@@ -1,7 +1,6 @@
-import * as api from "./api";
-import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ crudRef }) {
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+export default function ({}) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -22,62 +21,62 @@ export default function ({ crudRef }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         checkbox: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-checkbox",
+          type: 'dict-checkbox',
           form: {
-            value: [] //element-plus要设置默认值
+            value: [], //element-plus要设置默认值
           },
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
         },
         buttonType: {
-          title: "按钮样式",
+          title: '按钮样式',
           search: { show: true },
-          type: "dict-checkbox",
+          type: 'dict-checkbox',
           form: {
             component: {
-              optionName: "el-checkbox-button"
+              optionName: 'n-checkbox-button',
             },
-            value: [] //element-plus要设置默认值
+            value: [], //element-plus要设置默认值
           },
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
         },
         border: {
-          title: "带边框",
+          title: '带边框',
           search: { show: true },
-          type: "dict-checkbox",
+          type: 'dict-checkbox',
           form: {
             component: {
               optionProps: {
-                border: true
-              }
+                border: true,
+              },
             },
-            value: [] //element-plus要设置默认值
+            value: [], //element-plus要设置默认值
           },
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }

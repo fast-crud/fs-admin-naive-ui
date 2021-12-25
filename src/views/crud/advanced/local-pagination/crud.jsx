@@ -1,6 +1,6 @@
-import * as api from "./api";
-import _ from "lodash-es";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import _ from 'lodash-es';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose, localDataRef }) {
   const pageRequest = async ({ page, query }) => {
     //总数据
@@ -30,7 +30,7 @@ export default function ({ expose, localDataRef }) {
       offset,
       limit,
       total: localDataRef.value.length,
-      records
+      records,
     };
   };
   const editRequest = async ({ form, row }) => {
@@ -73,29 +73,29 @@ export default function ({ expose, localDataRef }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         status: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-select",
+          type: 'dict-select',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }

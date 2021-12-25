@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { useRouter } from "vue-router";
+import * as api from './api';
+import { useRouter } from 'vue-router';
 export default function ({ expose }) {
   const router = useRouter();
 
@@ -27,70 +27,70 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       actionbar: {
         buttons: {
           add: {
             click() {
-              router.push("/crud/form/new-page/edit");
-            }
-          }
-        }
+              router.push('/crud/form/new-page/edit');
+            },
+          },
+        },
       },
       rowHandle: {
         buttons: {
           edit: {
             click(context) {
-              router.push("/crud/form/new-page/edit?id=" + context.row.id);
-            }
-          }
-        }
+              router.push('/crud/form/new-page/edit?id=' + context.row.id);
+            },
+          },
+        },
       },
       columns: {
         title: {
-          title: "商品标题",
-          type: "text"
+          title: '商品标题',
+          type: 'text',
         },
         code: {
-          title: "商品代码",
+          title: '商品代码',
           search: { show: true },
-          type: "text"
+          type: 'text',
         },
         images: {
-          title: "图片",
-          type: "image-uploader"
+          title: '图片',
+          type: 'image-uploader',
         },
         price: {
-          title: "价格",
-          sortable: true
+          title: '价格',
+          sortable: true,
         },
         store: {
-          title: "库存",
-          type: "number"
+          title: '库存',
+          type: 'number',
         },
         intro: {
-          title: "简介",
-          type: "textarea",
+          title: '简介',
+          type: 'textarea',
           column: {
-            ellipsis: true
-          }
+            ellipsis: true,
+          },
         },
         content: {
-          title: "详情",
-          type: ["editor-wang", "colspan"],
+          title: '详情',
+          type: ['editor-wang', 'colspan'],
           form: {
-            itemProps: { labelWidth: "0px" }
-          }
+            itemProps: { labelWidth: '0px' },
+          },
         },
         product: {
-          title: "未分组字段",
-          type: ["text", "colspan"],
+          title: '未分组字段',
+          type: ['text', 'colspan'],
           form: {
-            helper: "未分组的字段会显示在这里，一般来说你应该把所有字段都编入分组内"
-          }
-        }
-      }
-    }
+            helper: '未分组的字段会显示在这里，一般来说你应该把所有字段都编入分组内',
+          },
+        },
+      },
+    },
   };
 }

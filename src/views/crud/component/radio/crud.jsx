@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,57 +21,57 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
         },
         button: {
-          title: "按钮样式",
+          title: '按钮样式',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
           form: {
             component: {
-              optionName: "el-radio-button"
-            }
-          }
+              optionName: 'n-radio-button',
+            },
+          },
         },
         border: {
-          title: "边框",
+          title: '边框',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           form: {
             component: {
               optionProps: {
-                border: true
-              }
-            }
+                border: true,
+              },
+            },
           },
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }

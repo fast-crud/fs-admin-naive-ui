@@ -1,7 +1,7 @@
-import * as api from "./api";
-import { ref, shallowRef } from "vue";
-import { compute } from "@fast-crud/fast-crud";
-import SubTable from "./sub-table/index.vue";
+import * as api from './api';
+import { ref, shallowRef } from 'vue';
+import { compute } from '@fast-crud/fast-crud';
+import SubTable from './sub-table/index.vue';
 export default function ({ expose, asideTableRef }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -23,76 +23,76 @@ export default function ({ expose, asideTableRef }) {
   return {
     crudOptions: {
       table: {
-        "highlight-current-row": true,
-        // 监听 el-table的单行选中事件
+        'highlight-current-row': true,
+        // 监听 n-table的单行选中事件
         onCurrentChange(currentRow) {
-          console.log("选中行", currentRow);
+          console.log('选中行', currentRow);
           asideTableRef.value.setSearchFormData({ form: { gradeId: currentRow.id } });
           asideTableRef.value.doRefresh();
-        }
+        },
       },
       pagination: {},
       form: {
         wrapper: {
-          is: "el-drawer",
-          size: "50%"
-        }
+          is: 'n-drawer',
+          size: '50%',
+        },
       },
       request: {
         pageRequest: api.GetList,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       rowHandle: {
-        width: "240px"
+        width: '240px',
       },
       toolbar: {
-        compact: false
+        compact: false,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         grade: {
-          title: "年级",
+          title: '年级',
           search: { show: true },
-          type: "text",
+          type: 'text',
           column: {
-            sortable: true
-          }
+            sortable: true,
+          },
         },
         nestId: {
-          title: "嵌套表格",
+          title: '嵌套表格',
           //复合字段类型
-          type: ["number", "colspan"],
+          type: ['number', 'colspan'],
           form: {
             // 嵌套表格字段
-            rules: [{ required: true, message: "请选择用户" }],
+            rules: [{ required: true, message: '请选择用户' }],
             component: {
               //局部引用子表格，要用shallowRef包裹
               name: shallowRef(SubTable),
-              vModel: "modelValue",
+              vModel: 'modelValue',
               //将年级id传入子组件
               gradeId: compute(({ form }) => {
                 return form.id;
-              })
-            }
+              }),
+            },
             // antdv 的跨列配置，需要配置如下三个, 可以通过colspan简化
             // col: { span: 24 },
             // labelCol: { span: 2 },
             // wrapperCol: { span: 21 }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 }

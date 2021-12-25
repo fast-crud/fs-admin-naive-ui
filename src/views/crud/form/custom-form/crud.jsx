@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const { getFormRef, getFormData } = expose;
   const pageRequest = async (query) => {
@@ -22,22 +22,22 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
-        labelWidth: "150px"
+        labelWidth: '150px',
       },
       columns: {
         title: {
-          title: "商品标题",
-          type: "text"
+          title: '商品标题',
+          type: 'text',
         },
         code: {
-          title: "商品代码",
+          title: '商品代码',
           search: { show: true },
-          type: "text"
-        }
-      }
-    }
+          type: 'text',
+        },
+      },
+    },
   };
 }

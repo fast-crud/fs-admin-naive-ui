@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import PageCover from "./page-cover/index.vue";
-export default defineComponent({
-  components: { PageCover },
-  setup() {}
-});
+  import { defineComponent } from 'vue';
+  import PageCover from './page-cover/index.vue';
+  export default defineComponent({
+    components: { PageCover },
+    setup() {},
+  });
 </script>
 <style lang="less"></style>

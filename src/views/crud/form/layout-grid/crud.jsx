@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,35 +21,35 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
         // 具体可配置请参考 grid 布局： http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
-        display: "grid"
+        display: 'grid',
       },
       columns: {
         name: {
-          title: "姓名",
-          type: "text",
-          search: { show: true }
+          title: '姓名',
+          type: 'text',
+          search: { show: true },
         },
         order: {
-          title: "字段排序",
-          type: "text",
+          title: '字段排序',
+          type: 'text',
           form: {
-            order: 0
-          }
+            order: 0,
+          },
         },
         intro: {
-          title: "跨列",
-          type: "textarea",
+          title: '跨列',
+          type: 'textarea',
           form: {
             col: {
-              style: { gridColumn: "span 2" } // grid 模式控制跨列
-            }
-          }
-        }
-      }
-    }
+              style: { gridColumn: 'span 2' }, // grid 模式控制跨列
+            },
+          },
+        },
+      },
+    },
   };
 }

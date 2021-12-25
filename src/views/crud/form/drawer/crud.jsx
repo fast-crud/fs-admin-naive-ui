@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -20,27 +20,27 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
         wrapper: {
-          is: "el-drawer",
-          size: "50%" //抽屉宽度50%
-        }
+          is: 'n-drawer',
+          size: '50%', //抽屉宽度50%
+        },
       },
       columns: {
         name: {
-          title: "姓名",
-          type: "text", //虽然不写也能正确显示组件，但不建议省略它
+          title: '姓名',
+          type: 'text', //虽然不写也能正确显示组件，但不建议省略它
           search: { show: true },
           form: {
             component: {
-              "show-word-limit": true,
-              maxlength: 20
-            }
-          }
-        }
-      }
-    }
+              'show-word-limit': true,
+              maxlength: 20,
+            },
+          },
+        },
+      },
+    },
   };
 }

@@ -2,12 +2,12 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="info" title=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
+        <n-alert class="ml-1" type="info" title=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
       </template>
       <template #cell_like="scope">
-        <el-badge style="margin-top: 10px" :value="scope.row.like" class="item">
-          <el-button size="small">自定义复杂显示</el-button>
-        </el-badge>
+        <n-badge style="margin-top: 10px" :value="scope.row.like" class="item">
+          <n-button size="small">自定义复杂显示</n-button>
+        </n-badge>
       </template>
       <template #cell_createDate="scope">
         创建时间：{{ dateFormat(scope.row.createDate) }}<br />
@@ -18,42 +18,42 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
-import dayjs from "dayjs";
-import createCrudOptions from "./crud";
-export default defineComponent({
-  name: "SlotsCell",
-  setup() {
-    // crud组件的ref
-    const crudRef = ref();
-    // crud 配置的ref
-    const crudBinding = ref();
-    // 暴露的方法
-    const { expose } = useExpose({ crudRef, crudBinding });
-    // 你的crud配置
-    const { crudOptions, radioDict } = createCrudOptions({ expose });
-    // 初始化crud配置
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-    const { resetCrudOptions } = useCrud({ expose, crudOptions });
-    // 你可以调用此方法，重新初始化crud配置
-    // resetCrudOptions(options)
+  import { defineComponent, ref, onMounted } from 'vue';
+  import { useCrud, useExpose } from '@fast-crud/fast-crud';
+  import dayjs from 'dayjs';
+  import createCrudOptions from './crud';
+  export default defineComponent({
+    name: 'SlotsCell',
+    setup() {
+      // crud组件的ref
+      const crudRef = ref();
+      // crud 配置的ref
+      const crudBinding = ref();
+      // 暴露的方法
+      const { expose } = useExpose({ crudRef, crudBinding });
+      // 你的crud配置
+      const { crudOptions, radioDict } = createCrudOptions({ expose });
+      // 初始化crud配置
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
+      const { resetCrudOptions } = useCrud({ expose, crudOptions });
+      // 你可以调用此方法，重新初始化crud配置
+      // resetCrudOptions(options)
 
-    // 页面打开后获取列表数据
-    onMounted(() => {
-      expose.doRefresh();
-    });
+      // 页面打开后获取列表数据
+      onMounted(() => {
+        expose.doRefresh();
+      });
 
-    function dateFormat(time, formatter = "YYYY-MM-DD") {
-      return dayjs(time).format(formatter);
-    }
+      function dateFormat(time, formatter = 'YYYY-MM-DD') {
+        return dayjs(time).format(formatter);
+      }
 
-    return {
-      crudBinding,
-      crudRef,
-      radioDict,
-      dateFormat
-    };
-  }
-});
+      return {
+        crudBinding,
+        crudRef,
+        radioDict,
+        dateFormat,
+      };
+    },
+  });
 </script>

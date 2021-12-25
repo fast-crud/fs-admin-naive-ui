@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { utils, dict, compute } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { utils, dict, compute } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,49 +21,49 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         title: {
-          title: "标题",
-          type: ["text", "colspan"],
+          title: '标题',
+          type: ['text', 'colspan'],
           column: {
-            width: 400
-          }
+            width: 400,
+          },
         },
         text: {
-          title: "摘要",
-          type: ["textarea", "colspan"],
+          title: '摘要',
+          type: ['textarea', 'colspan'],
           viewForm: {
             component: {
               name: null,
               render(h, scope) {
                 return <div>{scope.value}</div>;
-              }
-            }
-          }
+              },
+            },
+          },
         },
         disabled: {
-          title: "禁用启用",
+          title: '禁用启用',
           search: { show: false },
-          type: ["dict-switch", "colspan"],
+          type: ['dict-switch', 'colspan'],
           dict: dict({
             data: [
-              { value: true, label: "禁用" },
-              { value: false, label: "启用" }
-            ]
-          })
+              { value: true, label: '禁用' },
+              { value: false, label: '启用' },
+            ],
+          }),
         },
         // 放弃支持quill，两年没有更新了，关键是bug修复不了
         // change: {
@@ -106,34 +106,34 @@ export default function ({ expose }) {
         //   }
         // },
         content_wang: {
-          title: "内容",
+          title: '内容',
           column: {
             width: 300,
-            show: false
+            show: false,
           },
-          type: ["editor-wang", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+          type: ['editor-wang', 'colspan'], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
             // 动态显隐字段
             // show: compute(({ form }) => {
             //   return form.change === "wang";
             // }),
-            rules: [{ required: true, message: "此项必填" }],
+            rules: [{ required: true, message: '此项必填' }],
             component: {
               disabled: compute(({ form }) => {
                 return form.disabled;
               }),
-              id: "1", // 当同一个页面有多个editor时，需要配置不同的id
+              id: '1', // 当同一个页面有多个editor时，需要配置不同的id
               config: {},
               uploader: {
-                type: "form",
+                type: 'form',
                 buildUrl(res) {
                   return res.url;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   };
 }

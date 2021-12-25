@@ -1,12 +1,12 @@
-import mockUtil from "/src/mock/base";
+import mockUtil from '/src/mock/base';
 const options = {
-  name: "SlotsForm",
-  idGenerator: 0
+  name: 'SlotsForm',
+  idGenerator: 0,
 };
 const list = [
   {
-    text: "文本输入"
-  }
+    text: '文本输入',
+  },
 ];
 options.list = list;
 const mock = mockUtil.buildMock(options);

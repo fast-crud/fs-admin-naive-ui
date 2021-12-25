@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -18,37 +18,37 @@ export default function ({ expose }) {
         pageRequest: api.GetList,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         name: {
-          title: "姓名",
-          type: "text"
+          title: '姓名',
+          type: 'text',
         },
         roles: {
-          title: "角色",
+          title: '角色',
           search: { show: true },
-          type: "dict-select",
+          type: 'dict-select',
           dict: dict({
-            value: "id",
-            label: "name",
+            value: 'id',
+            label: 'name',
             data: [
-              { id: 1, name: "管理员" },
-              { id: 2, name: "普通用户" }
-            ]
+              { id: 1, name: '管理员' },
+              { id: 2, name: '普通用户' },
+            ],
           }),
           form: {
             component: {
-              multiple: true
+              multiple: true,
             },
             valueBuilder({ form }) {
               if (form.roles) {
                 form.roles = form.roles.map((item) => item.id);
               }
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+    },
   };
 }

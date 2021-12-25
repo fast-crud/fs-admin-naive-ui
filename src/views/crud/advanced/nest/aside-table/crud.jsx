@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
@@ -16,41 +16,41 @@ export default function ({ expose }) {
     crudOptions: {
       pagination: {
         showSizeChanger: false, // antdv
-        showQuickJumper: false // antdv
+        showQuickJumper: false, // antdv
       },
       request: {
         pageRequest: api.GetList,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       toolbar: {
-        compact: false
+        compact: false,
       },
       rowHandle: {
-        width: "230px"
+        width: '230px',
       },
       table: {},
       columns: {
         gradeId: {
-          title: "年级Id",
+          title: '年级Id',
           search: { show: true },
-          type: "number",
+          type: 'number',
           column: {
             width: 80,
-            align: "center",
-            sortable: true
-          }
+            align: 'center',
+            sortable: true,
+          },
         },
         class: {
-          title: "班级",
+          title: '班级',
           search: { show: false },
-          type: "text",
+          type: 'text',
           column: {
-            sortable: true
-          }
-        }
-      }
-    }
+            sortable: true,
+          },
+        },
+      },
+    },
   };
 }

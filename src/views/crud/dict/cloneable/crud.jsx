@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -18,7 +18,7 @@ export default function ({ expose }) {
 
   const remoteDict = dict({
     cloneable: true,
-    url: "/mock/dicts/OpenStatusEnum"
+    url: '/crud/dicts/OpenStatusEnum',
   });
 
   return {
@@ -28,41 +28,41 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         remote: {
-          title: "远程字典",
+          title: '远程字典',
           search: { show: true },
           dict: remoteDict,
-          type: "dict-select",
+          type: 'dict-select',
           form: {
-            component: { dict: { cache: false } }
-          }
+            component: { dict: { cache: false } },
+          },
         },
         modifyDict: {
-          title: "动态修改字典",
+          title: '动态修改字典',
           search: { show: false },
-          type: "text",
+          type: 'text',
           column: {
             component: {
-              name: "el-switch"
+              name: 'n-switch',
             },
             valueChange({ row, getComponentRef }) {
               // 这里不能使用remoteDict,因为在分发时已经clone到column配置中了
               // 这里dict修改不会影响form里面的字典数据，但会影响所有列里面的字典
-              let componentRef = getComponentRef("remote");
+              let componentRef = getComponentRef('remote');
               if (componentRef == null) {
                 return;
               }
@@ -71,30 +71,30 @@ export default function ({ expose }) {
                 return;
               }
               targetDict.url = row.modifyDict
-                ? "/mock/dicts/moreOpenStatusEnum?remote"
-                : "/mock/dicts/OpenStatusEnum?remote";
+                ? '/crud/dicts/moreOpenStatusEnum?remote'
+                : '/crud/dicts/OpenStatusEnum?remote';
               targetDict.reloadDict();
-            }
+            },
           },
           form: {
             component: {
-              name: "el-switch"
+              name: 'n-switch',
             },
             valueChange({ form, getComponentRef }) {
               // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
               // 这里dict修改不会影响列里面的数据
-              const targetDict = getComponentRef("remote").dict;
+              const targetDict = getComponentRef('remote').dict;
               if (targetDict == null) {
                 return;
               }
               targetDict.url = form.modifyDict
-                ? "/mock/dicts/moreOpenStatusEnum?remote"
-                : "/mock/dicts/OpenStatusEnum?remote";
+                ? '/crud/dicts/moreOpenStatusEnum?remote'
+                : '/crud/dicts/OpenStatusEnum?remote';
               targetDict.reloadDict();
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+    },
   };
 }

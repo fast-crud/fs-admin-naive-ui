@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict, compute } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict, compute } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -21,87 +21,87 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         switch: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-switch",
+          type: 'dict-switch',
           dict: dict({
             data: [
-              { value: true, label: "开启" },
-              { value: false, label: "关闭" }
-            ]
-          })
+              { value: true, label: '开启' },
+              { value: false, label: '关闭' },
+            ],
+          }),
         },
         cellSwitch: {
-          title: "cell显示",
+          title: 'cell显示',
           search: { show: true },
-          type: "dict-switch",
+          type: 'dict-switch',
           form: {
             component: {
               onChange: compute((context) => {
                 //动态onChange方法测试
                 return () => {
-                  console.log("onChange", context.form.switch);
+                  console.log('onChange', context.form.switch);
                 };
-              })
-            }
+              }),
+            },
           },
           column: {
             component: {
-              name: "fs-dict-switch",
+              name: 'fs-dict-switch',
               onChange: compute((context) => {
                 //动态onChange方法测试
                 return () => {
-                  console.log("onChange", context.row.switch);
+                  console.log('onChange', context.row.switch);
                 };
-              })
-            }
+              }),
+            },
           },
           dict: dict({
             data: [
-              { value: true, label: "开启" },
-              { value: false, label: "关闭" }
-            ]
-          })
+              { value: true, label: '开启' },
+              { value: false, label: '关闭' },
+            ],
+          }),
         },
         showTarget: {
-          title: "显隐目标",
-          type: "text",
+          title: '显隐目标',
+          type: 'text',
           column: {
             component: {
-              name: "fs-values-format",
+              name: 'fs-values-format',
               show: compute((context) => {
                 //根据cellSwitch字段显隐
                 return context.row.cellSwitch === true;
-              })
-            }
+              }),
+            },
           },
           search: {
-            show: false
+            show: false,
           },
           form: {
             show: compute((context) => {
-              console.log("context", context);
+              console.log('context', context);
               //根据cellSwitch字段显隐
               return context.form.cellSwitch === true;
-            })
-          }
-        }
-      }
-    }
+            }),
+          },
+        },
+      },
+    },
   };
 }

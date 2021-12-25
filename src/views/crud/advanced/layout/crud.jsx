@@ -1,7 +1,6 @@
-import * as api from "./api";
-import { requestForMock } from "/src/api/service";
-import { dict, compute } from "@fast-crud/fast-crud";
-import { ElMessage } from "element-plus";
+import * as api from './api';
+import { dict, compute } from '@fast-crud/fast-crud';
+import { ElMessage } from 'element-plus';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -23,28 +22,28 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
         //配置表单label的宽度
-        labelCol: { span: 6 }
+        labelCol: { span: 6 },
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         button: {
-          title: "按钮",
+          title: '按钮',
           search: { show: true },
-          type: "button",
+          type: 'button',
           column: {
             component: {
               show: compute(({ value }) => {
@@ -53,24 +52,24 @@ export default function ({ expose }) {
               }),
               on: {
                 onClick({ row }) {
-                  ElMessage.success("按钮点击:" + row.button);
-                }
-              }
-            }
-          }
+                  ElMessage.success('按钮点击:' + row.button);
+                },
+              },
+            },
+          },
         },
         url: {
-          title: "url",
+          title: 'url',
           search: { show: true },
-          type: "text",
+          type: 'text',
           column: {
-            show: false
-          }
+            show: false,
+          },
         },
         link: {
-          title: "链接",
+          title: '链接',
           search: { show: true },
-          type: "link",
+          type: 'link',
           column: {
             component: {
               on: {
@@ -78,35 +77,35 @@ export default function ({ expose }) {
                   if (row.url) {
                     window.open(row.url);
                   }
-                }
-              }
-            }
+                },
+              },
+            },
           },
           form: {
-            title: "按钮文字"
-          }
+            title: '按钮文字',
+          },
         },
         link2: {
-          title: "手写link配置",
+          title: '手写link配置',
           search: { show: true },
-          type: "text", //form组件用input
+          type: 'text', //form组件用input
           column: {
             component: {
-              name: "fs-button", //列展示组件为button
-              vModel: "text", // 将row.link2的值赋值给text属性
-              type: "text", // 按钮展示为链接样式
+              name: 'fs-button', //列展示组件为button
+              vModel: 'text', // 将row.link2的值赋值给text属性
+              type: 'text', // 按钮展示为链接样式
               on: {
                 //注册点击事件
                 onClick({ row }) {
                   if (row.url) {
                     window.open(row.url);
                   }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+                },
+              },
+            },
+          },
+        },
+      },
+    },
   };
 }

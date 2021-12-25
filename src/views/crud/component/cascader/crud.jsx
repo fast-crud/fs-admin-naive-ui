@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { requestForMock } from '/src/api/service';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ crudRef }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -22,43 +22,43 @@ export default function ({ crudRef }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       form: {
         // 单列布局
         col: { span: 24 },
         // 表单label宽度
-        labelWidth: "150px"
+        labelWidth: '150px',
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         cascader: {
-          title: "级联",
+          title: '级联',
           search: { show: true },
-          type: "dict-cascader",
+          type: 'dict-cascader',
           dict: dict({
             cloneable: false,
             isTree: true,
-            url: "/mock/dicts/cascaderData?single"
-          })
+            url: '/crud/dicts/cascaderData?single',
+          }),
         },
         lazyLoad: {
-          title: "懒加载",
-          type: "dict-cascader",
+          title: '懒加载',
+          type: 'dict-cascader',
           dict: dict({
-            url: "/mock/tree/GetTreeChildrenByParentId?lazyLoad",
-            value: "code",
-            label: "name",
+            url: '/mock/tree/GetTreeChildrenByParentId?lazyLoad',
+            value: 'code',
+            label: 'name',
             isTree: true,
             cache: true,
             prototype: true,
@@ -68,73 +68,73 @@ export default function ({ crudRef }) {
               }
               //用于单元格展示
               const ret = await requestForMock({
-                url: "/mock/tree/GetNodesByValues",
-                params: { values }
+                url: '/mock/tree/GetNodesByValues',
+                params: { values },
               });
-              console.log("getNodes", ret);
+              console.log('getNodes', ret);
               return ret;
-            }
+            },
           }),
           form: {
             component: {
               props: {
                 props: {
                   lazy: true,
-                  value: "code",
-                  label: "name",
+                  value: 'code',
+                  label: 'name',
                   async lazyLoad(node, resolve) {
-                    console.log("node", node);
+                    console.log('node', node);
                     const { value } = node;
                     const ret = await requestForMock({
-                      url: "/mock/tree/GetTreeChildrenByParentId",
-                      params: { parentId: value }
+                      url: '/mock/tree/GetTreeChildrenByParentId',
+                      params: { parentId: value },
                     });
                     resolve(ret);
-                  }
-                }
-              }
-            }
-          }
+                  },
+                },
+              },
+            },
+          },
         },
         strictly: {
-          title: "只选父级",
-          type: "dict-cascader",
+          title: '只选父级',
+          type: 'dict-cascader',
           dict: dict({
             isTree: true,
-            url: "/mock/dicts/cascaderData"
+            url: '/crud/dicts/cascaderData',
           }),
           form: {
             component: {
               filterable: true,
-              // props下配置属性跟配置在component下是一样的效果，而el-cascade下也有一个叫props的属性，所以需要配置两层
-              props: { props: { checkStrictly: true } }
+              // props下配置属性跟配置在component下是一样的效果，而n-cascade下也有一个叫props的属性，所以需要配置两层
+              props: { props: { checkStrictly: true } },
             },
-            helper: "只选父节点"
-          }
+            helper: '只选父节点',
+          },
         },
         multiple: {
-          title: "多选",
-          type: "dict-cascader",
+          title: '多选',
+          type: 'dict-cascader',
           dict: dict({
             isTree: true,
-            url: "/mock/dicts/cascaderData?multiple"
+            url: '/crud/dicts/cascaderData?multiple',
           }),
           form: {
             component: {
               filterable: true,
-              // props下配置属性跟配置在component下是一样的效果，而el-cascade下也有一个叫props的属性，所以需要配置两层
-              props: { props: { multiple: true, checkStrictly: true } }
+              // props下配置属性跟配置在component下是一样的效果，而n-cascade下也有一个叫props的属性，所以需要配置两层
+              props: { props: { multiple: true, checkStrictly: true } },
             },
-            helper: "可搜索，多选，可只选父节点"
+            helper: '可搜索，多选，可只选父节点',
           },
           column: {
             //级联多选展示
             component: {
-              multiple: true
-            }
-          }
-        }
-      }
-    }
+              multiple: true,
+            },
+          },
+        },
+      },
+    },
   };
 }

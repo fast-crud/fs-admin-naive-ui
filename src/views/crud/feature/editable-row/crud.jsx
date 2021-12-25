@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -23,54 +23,54 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       actionbar: { buttons: { add: { show: false }, addRow: { show: true } } },
       table: {
         editable: {
           enabled: true,
-          mode: "row",
-          activeTrigger: false
-        }
+          mode: 'row',
+          activeTrigger: false,
+        },
       },
       columns: {
         id: {
-          title: "ID",
-          type: "number",
+          title: 'ID',
+          type: 'number',
           form: {
-            show: false
+            show: false,
           },
-          column: { width: 80, align: "center" }
+          column: { width: 80, align: 'center' },
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
+            url: '/crud/dicts/OpenStatusEnum?single',
+          }),
         },
         name: {
-          title: "姓名",
-          type: "text"
+          title: '姓名',
+          type: 'text',
         },
         province: {
-          title: "省份",
+          title: '省份',
           search: { show: true },
-          type: "dict-select",
+          type: 'dict-select',
           dict: dict({
-            value: "id",
-            label: "text",
+            value: 'id',
+            label: 'text',
             data: [
-              { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "primary" },
-              { id: "bj", text: "北京" },
-              { id: "wh", text: "武汉" },
-              { id: "sh", text: "上海" }
-            ]
-          })
-        }
-      }
-    }
+              { id: 'sz', text: '深圳', color: 'success' },
+              { id: 'gz', text: '广州', color: 'primary' },
+              { id: 'bj', text: '北京' },
+              { id: 'wh', text: '武汉' },
+              { id: 'sh', text: '上海' },
+            ],
+          }),
+        },
+      },
+    },
   };
 }

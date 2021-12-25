@@ -1,6 +1,6 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-import moment from "moment";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
+import moment from 'moment';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -17,7 +17,7 @@ export default function ({ expose }) {
     return await api.AddObj(form);
   };
   const radioDict = dict({
-    url: "/mock/dicts/OpenStatusEnum?single"
+    url: '/crud/dicts/OpenStatusEnum?single',
   });
   return {
     radioDict,
@@ -26,47 +26,47 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         like: {
-          title: "like",
-          type: "number",
-          search: { show: true }
+          title: 'like',
+          type: 'number',
+          search: { show: true },
         },
         createDate: {
-          title: "时间",
-          type: "datetime",
+          title: '时间',
+          type: 'datetime',
           column: {
-            align: "left",
-            width: 300
+            align: 'left',
+            width: 300,
           },
           valueBuilder({ key, row }) {
             row[key] = moment(row[key]);
-          }
+          },
         },
         updateDate: {
-          title: "修改时间",
-          type: "datetime",
+          title: '修改时间',
+          type: 'datetime',
           column: {
-            show: false
+            show: false,
           },
           valueBuilder({ key, row }) {
             row[key] = moment(row[key]);
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
 }

@@ -1,4 +1,4 @@
-import * as api from "./api";
+import * as api from './api';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -20,44 +20,44 @@ export default function ({ expose }) {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         icon: {
-          title: "icon",
+          title: 'icon',
           search: { show: true },
-          type: "text",
+          type: 'text',
           column: {
             component: {
-              name: "fs-icon",
-              vModel: "icon",
-              style: "font-size:18px"
-            }
+              name: 'fs-icon',
+              vModel: 'icon',
+              style: 'font-size:18px',
+            },
           },
           form: {
             helper: {
               render() {
                 return (
-                  <a target={"_blank"} href={"https://iconify.design/icon-sets/ion/"}>
+                  <a target={'_blank'} href={'https://iconify.design/icon-sets/ion/'}>
                     点击此处选择图标名称
                   </a>
                 );
-              }
-            }
-          }
-        }
-      }
-    }
+              },
+            },
+          },
+        },
+      },
+    },
   };
 }
