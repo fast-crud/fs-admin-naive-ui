@@ -1,6 +1,6 @@
 import * as api from './api';
-import { requestForMock } from '/src/api/service';
 import { dict } from '@fast-crud/fast-crud';
+import http from '@/utils/http/axios';
 import { ref } from 'vue';
 import _ from 'lodash-es';
 function useSearchRemote() {
@@ -24,7 +24,7 @@ function useSearchRemote() {
       return;
     }
     const data = body.results.map((user) => ({
-      text: `${user.name.first} ${user.name.last}`,
+      label: `${user.name.first} ${user.name.last}`,
       value: user.login.username,
     }));
     state.data.value = data;
@@ -36,7 +36,7 @@ function useSearchRemote() {
     searchState: state,
   };
 }
-export default function ({ expose }) {
+export default function () {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -72,12 +72,7 @@ export default function ({ expose }) {
         fixed: 'right',
         align: 'center',
       },
-      table: {
-        scroll: {
-          //启用横向滚动条，设置一个大于所有列宽之和的值，一般大于表格宽度
-          x: 1400,
-        },
-      },
+      table: {},
       columns: {
         id: {
           title: 'ID',
@@ -98,7 +93,7 @@ export default function ({ expose }) {
             label: 'text',
             data: [
               { id: 'sz', text: '深圳', color: 'success' },
-              { id: 'gz', text: '广州', color: null },
+              { id: 'gz', text: '广州' },
               { id: 'bj', text: '北京' },
               { id: 'wh', text: '武汉' },
               { id: 'sh', text: '上海' },
@@ -154,7 +149,7 @@ export default function ({ expose }) {
               'reserve-keyword': true,
               placeholder: '输入远程搜索',
               options: searchState.data,
-              remoteMethod: (query) => {
+              onSearch: (query) => {
                 if (query !== '') {
                   fetchUser();
                 } else {
@@ -172,9 +167,8 @@ export default function ({ expose }) {
             getData({ dict }) {
               // 覆盖全局获取字典请求配置
               console.log(`我是从自定义的getData方法中加载的数据字典`, dict);
-              return requestForMock({
+              return http.request({
                 url: '/crud/dicts/OpenStatusEnum?cache',
-                method: 'get',
               });
             },
           }),
@@ -262,7 +256,7 @@ export default function ({ expose }) {
               { value: 'wh', label: '武汉' },
               { value: 'sh', label: '上海' },
               { value: 'hz', label: '杭州' },
-              { value: 'bj', label: '北京', color: 'danger' },
+              { value: 'bj', label: '北京', color: 'error' },
             ],
           }),
           column: {
@@ -279,11 +273,8 @@ export default function ({ expose }) {
             helper: '直接使用n-select组件',
             component: {
               name: 'n-select',
-              slots: {
-                default() {
-                  return <n-option value={'1'} label={'test'} />;
-                },
-              },
+              vModel: 'value',
+              options: [{ value: '1', label: 'test' }],
             },
           },
         },

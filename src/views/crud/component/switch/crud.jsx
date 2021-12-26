@@ -1,6 +1,6 @@
 import * as api from './api';
 import { dict, compute } from '@fast-crud/fast-crud';
-export default function ({ expose }) {
+export default function ({}) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -52,8 +52,9 @@ export default function ({ expose }) {
           type: 'dict-switch',
           form: {
             component: {
-              onChange: compute((context) => {
-                //动态onChange方法测试
+              'onUpdate:value': compute((context) => {
+                //动态onChange方法测试,可以在事件中获取row数据
+                console.log('动态onChange方法', context);
                 return () => {
                   console.log('onChange', context.form.switch);
                 };
@@ -63,7 +64,8 @@ export default function ({ expose }) {
           column: {
             component: {
               name: 'fs-dict-switch',
-              onChange: compute((context) => {
+              vModel: 'value',
+              'onUpdate:value': compute((context) => {
                 //动态onChange方法测试
                 return () => {
                   console.log('onChange', context.row.switch);

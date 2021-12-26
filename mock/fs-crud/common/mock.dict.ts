@@ -88,7 +88,7 @@ export default [
   {
     url: '/api/crud/dicts/littlePca',
     method: 'get',
-    async response() {
+    response() {
       return {
         code: 0,
         message: 'success',
@@ -99,8 +99,8 @@ export default [
   {
     url: '/api/crud/tree/GetTreeChildrenByParentId',
     method: 'get',
-    async response({ params }) {
-      const list = await GetTreeChildrenByParentId(params.parentId);
+    response({ query }) {
+      const list = GetTreeChildrenByParentId(query.parentId);
       return {
         code: 0,
         message: 'success',
@@ -111,8 +111,9 @@ export default [
   {
     url: '/api/crud/tree/GetNodesByValues',
     method: 'get',
-    async response({ params }) {
-      const list = await GetNodesByValues(params.values);
+    response(req) {
+      console.log('req', req);
+      const list = GetNodesByValues(req.query.values);
       return {
         code: 0,
         message: 'success',

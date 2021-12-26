@@ -131,11 +131,6 @@ export class VAxios {
    */
   request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
     let conf: AxiosRequestConfig = cloneDeep(config);
-    if (conf.url.indexOf('?') >= 0) {
-      conf.url += '&t=' + new Date().getTime();
-    } else {
-      conf.url += '?t=' + new Date().getTime();
-    }
     const transform = this.getTransform();
 
     const { requestOptions } = this.options;

@@ -2,7 +2,7 @@ import * as api from './api';
 import { utils } from '@fast-crud/fast-crud';
 import dayjs from 'dayjs';
 console.log('utils', utils);
-export default function ({ expose }) {
+export default function ({}) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -26,7 +26,7 @@ export default function ({ expose }) {
         delRequest,
       },
       table: {
-        scroll: { x: 1700 },
+        scrollX: 1700,
       },
       rowHandle: { fixed: 'right' },
       columns: {
@@ -42,40 +42,37 @@ export default function ({ expose }) {
           },
         },
         timestamp: {
-          title: '时间戳',
+          // naive 默认仅支持时间戳作为日期输入与输出
+          title: '时间戳输入',
           type: 'datetime',
           search: {
             show: true,
             width: 185,
-            component: {},
-          },
-          valueBuilder({ value, row, key }) {
-            if (value != null) {
-              row[key] = dayjs(value);
-            }
-          },
-          valueResolve({ value, row, key }) {
-            if (value != null) {
-              row[key] = value.valueOf();
-            }
           },
         },
         datetime: {
-          title: '日期时间',
+          title: '字符串时间',
           type: 'datetime',
           valueBuilder({ value, row, key }) {
             if (value != null) {
-              row[key] = dayjs(value);
+              // naive 默认仅支持时间戳作为日期输入与输出
+              row[key] = dayjs(value).valueOf();
+            }
+          },
+          valueResolver({ value, form, key }) {
+            if (value != null) {
+              // naive 默认仅支持时间戳作为日期输入与输出
+              form[key] = dayjs(value).format('YYYY-MM-DD HH:mm:ss');
             }
           },
         },
         format: {
-          title: '格式化',
+          title: '显示格式化',
           type: 'datetime',
           form: {
             component: {
-              format: 'YYYY年MM月DD日 HH:mm',
-              //valueFormat: "YYYY年MM月DD日 HH:mm"
+              // naive的日期格式化应该用小写的yyyy
+              format: 'yyyy年MM月dd日 HH:mm',
             },
           },
           column: {
@@ -89,30 +86,11 @@ export default function ({ expose }) {
         date: {
           title: '仅日期',
           type: 'date',
-          form: {
-            component: {
-              events: {
-                onChange(context) {
-                  console.log('change', context);
-                },
-              },
-            },
-          },
-          valueBuilder({ value, row, key }) {
-            if (value != null) {
-              row[key] = dayjs(value);
-            }
-          },
         },
         disabledDate: {
           title: '禁用日期',
           type: 'date',
           form: {
-            valueBuilder({ value, row, key }) {
-              if (value) {
-                row[key] = dayjs(value);
-              }
-            },
             component: {
               disabledDate(time) {
                 return time.getTime() < Date.now();
@@ -123,43 +101,38 @@ export default function ({ expose }) {
         time: {
           title: '仅时间',
           type: 'time',
-          form: {
-            valueBuilder({ value, row, key }) {
-              if (value) {
-                row[key] = dayjs(value);
-              }
-            },
-            valueResolve({ value }) {
-              console.log('resolve:', value);
-            },
+          column: {
+            width: 100,
           },
         },
         daterange: {
           title: '日期范围',
           type: 'daterange',
           search: { show: true, width: 300 },
-          valueBuilder({ row, key }) {
-            if (!utils.strings.hasEmpty(row.daterangeStart, row.daterangeEnd)) {
-              row[key] = [dayjs(row.daterangeStart), dayjs(row.daterangeEnd)];
+          valueBuilder({ row }) {
+            if (row.daterangeStart && row.daterangeEnd) {
+              row.daterange = [row.daterangeStart, row.daterangeEnd];
+            }
+          },
+          valueResolve({ form }) {
+            if (form.daterange) {
+              form.daterangeStart = form.daterange[0];
+              form.daterangeEnd = form.daterange[1];
             }
           },
         },
         datetimerange: {
           title: '日期时间范围',
           type: 'datetimerange',
-          valueBuilder({ row, key }) {
-            if (!utils.strings.hasEmpty(row.datetimerangeStart, row.datetimerangeEnd)) {
-              row[key] = [dayjs(row.datetimerangeStart), dayjs(row.datetimerangeEnd)];
+          valueBuilder({ row }) {
+            if (row.datetimerangeStart && row.datetimerangeEnd) {
+              row.datetimerange = [row.datetimerangeStart, row.datetimerangeEnd];
             }
           },
-          valueResolve({ form, key }) {
-            const row = form;
-            if (row[key] != null && !utils.strings.hasEmpty(row[key])) {
-              row.datetimerangeStart = row[key][0];
-              row.datetimerangeEnd = row[key][1];
-            } else {
-              row.datetimerangeStart = null;
-              row.datetimerangeEnd = null;
+          valueResolve({ form }) {
+            if (form.datetimerange) {
+              form.datetimerangeStart = form.datetimerange[0];
+              form.datetimerangeEnd = form.datetimerange[1];
             }
           },
         },

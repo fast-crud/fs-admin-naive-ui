@@ -1,8 +1,7 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
-import { requestForMock } from '../../../../api/service';
-
-export default function ({ expose }) {
+import http from '@/utils/http/axios';
+export default function () {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -27,6 +26,7 @@ export default function ({ expose }) {
     cache: true,
     prototype: true, //这个dict只是一个原型，引用它的dict组件初始化时都会把此dict对象clone一份
     url({ row }) {
+      //动态构建url
       return row.switch ? '/crud/dicts/moreOpenStatusEnum' : '/crud/dicts/OpenStatusEnum';
     },
   });
@@ -34,10 +34,12 @@ export default function ({ expose }) {
     cache: true,
     prototype: true, //这个dict只是一个原型，引用它的dict组件初始化时都会把此dict对象clone一份
     url({ row }) {
+      //动态构建url
       return row.switch ? '/crud/dicts/moreOpenStatusEnum' : '/crud/dicts/OpenStatusEnum';
     },
     async getData({ url }) {
-      return await requestForMock({ url });
+      //自定义dict 的请求方式
+      return await http.request({ url });
     },
   });
 
@@ -92,6 +94,7 @@ export default function ({ expose }) {
           column: {
             component: {
               name: 'n-switch',
+              vModel: 'value',
             },
             valueChange({ value, getComponentRef }) {
               console.log('value', value);
@@ -113,8 +116,7 @@ export default function ({ expose }) {
             ],
           }),
           form: {
-            helper:
-              '动态getData和动态Url根据此字段的值获取不同的dictData，此处无法动态切换，仅在打开对话框时生效',
+            helper: '动态getData和动态Url根据此字段的值获取不同的dictData',
           },
         },
         dynamicGetData: {

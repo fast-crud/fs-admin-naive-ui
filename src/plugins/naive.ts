@@ -66,6 +66,8 @@ import {
   NTimePicker,
   NBackTop,
   NSkeleton,
+  NCascader,
+  NRadioButton,
 } from 'naive-ui';
 
 const naive = create({
@@ -135,6 +137,8 @@ const naive = create({
     NTimePicker,
     NBackTop,
     NSkeleton,
+    NCascader,
+    NRadioButton,
   ],
 });
 

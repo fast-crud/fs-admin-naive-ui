@@ -2,7 +2,7 @@ import http from '@/utils/http/axios';
 const request = (req) => {
   return http.request(req);
 };
-const apiPrefix = '/cruf/FeatureFixed';
+const apiPrefix = '/crud/FeatureFixed';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',

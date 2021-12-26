@@ -6,7 +6,7 @@ import { checkStatus } from './checkStatus';
 import { joinTimestamp, formatRequestDate } from './helper';
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '@/enums/httpEnum';
 import { PageEnum } from '@/enums/pageEnum';
-
+import qs from 'qs';
 import { useGlobSetting } from '@/hooks/setting';
 
 import { isString } from '@/utils/is/';
@@ -150,6 +150,14 @@ const transform: AxiosTransform = {
       if (!isString(params)) {
         // 给 get 请求加上时间戳参数，避免从缓存中拿数据。
         config.params = Object.assign(params || {}, joinTimestamp(joinTime, false));
+        if (config.url) {
+          if (config.url.indexOf('?') < 0) {
+            config.url = config.url + '?' + qs.stringify(params, { indices: false });
+          } else {
+            config.url = config.url + '&' + qs.stringify(params, { indices: false });
+          }
+        }
+        config.params = undefined;
       } else {
         // 兼容restful风格
         config.url = config.url + params + `${joinTimestamp(joinTime, true)}`;

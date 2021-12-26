@@ -1,7 +1,7 @@
 import * as api from './api';
-import { requestForMock } from '/src/api/service';
 import { dict } from '@fast-crud/fast-crud';
-export default function ({ crudRef }) {
+import http from '@/utils/http/axios';
+export default function () {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -56,20 +56,21 @@ export default function ({ crudRef }) {
           title: '懒加载',
           type: 'dict-cascader',
           dict: dict({
-            url: '/mock/tree/GetTreeChildrenByParentId?lazyLoad',
+            url: '/crud/tree/GetTreeChildrenByParentId?lazyLoad',
             value: 'code',
             label: 'name',
             isTree: true,
             cache: true,
             prototype: true,
             async getNodesByValues(values) {
+              //用于单元格展示
               if (values == null) {
                 return [];
               }
-              //用于单元格展示
-              const ret = await requestForMock({
-                url: '/mock/tree/GetNodesByValues',
+              const ret = await http.request({
+                url: '/crud/tree/GetNodesByValues',
                 params: { values },
+                method: 'get',
               });
               console.log('getNodes', ret);
               return ret;
@@ -77,21 +78,35 @@ export default function ({ crudRef }) {
           }),
           form: {
             component: {
-              props: {
-                props: {
-                  lazy: true,
-                  value: 'code',
-                  label: 'name',
-                  async lazyLoad(node, resolve) {
-                    console.log('node', node);
-                    const { value } = node;
-                    const ret = await requestForMock({
-                      url: '/mock/tree/GetTreeChildrenByParentId',
-                      params: { parentId: value },
-                    });
-                    resolve(ret);
-                  },
+              name: 'n-cascader',
+              options: [
+                {
+                  value: '11',
+                  label: '北京',
+                  isLeaf: false,
                 },
+                {
+                  value: '12',
+                  label: '天津',
+                  isLeaf: false,
+                },
+              ],
+              remote: true,
+              async onLoad(option) {
+                console.log('node', option);
+                const { value } = option;
+                let ret = await http.request({
+                  url: '/crud/tree/GetTreeChildrenByParentId',
+                  params: { parentId: value },
+                  method: 'get',
+                });
+                ret = ret.map((item) => {
+                  item.value = item.code;
+                  item.label = item.name;
+                  return item;
+                });
+                option.children = ret;
+                return true;
               },
             },
           },
@@ -106,10 +121,27 @@ export default function ({ crudRef }) {
           form: {
             component: {
               filterable: true,
-              // props下配置属性跟配置在component下是一样的效果，而n-cascade下也有一个叫props的属性，所以需要配置两层
-              props: { props: { checkStrictly: true } },
+              multiple: true,
+              cascade: true,
+              checkStrategy: 'parent',
             },
-            helper: '只选父节点',
+            helper: {
+              render: () => {
+                return (
+                  <div>
+                    选中策略，选中父节点，
+                    <a
+                      target={'_blank'}
+                      href={
+                        'https://www.naiveui.com/zh-CN/os-theme/components/cascader#check-strategy'
+                      }
+                    >
+                      更多文档说明
+                    </a>
+                  </div>
+                );
+              },
+            },
           },
         },
         multiple: {
@@ -122,8 +154,8 @@ export default function ({ crudRef }) {
           form: {
             component: {
               filterable: true,
-              // props下配置属性跟配置在component下是一样的效果，而n-cascade下也有一个叫props的属性，所以需要配置两层
-              props: { props: { multiple: true, checkStrictly: true } },
+              multiple: true,
+              checkStrictly: true,
             },
             helper: '可搜索，多选，可只选父节点',
           },

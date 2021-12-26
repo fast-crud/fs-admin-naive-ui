@@ -1,32 +1,29 @@
-import _ from "lodash-es";
-export async function getPcasData() {
-  const pcasData = () => import("china-division/dist/pcas-code.json");
-  const ret = await pcasData();
-  return ret.default;
+import _ from 'lodash-es';
+import pcasData from 'china-division/dist/pcas-code.json';
+import pcaData from 'china-division/dist/pca-code.json';
+export function getPcasData() {
+  return pcasData;
 }
-export async function getPcaData() {
-  const pcaData = () => import("china-division/dist/pca-code.json");
-  const ret = await pcaData();
-  return ret.default;
+export function getPcaData() {
+  return pcaData;
 }
 export const TreeNodesLazyLoader = {
   getNodesByValues(values) {
-    console.log("getNodesByValues", values);
+    console.log('getNodesByValues', values);
     if (!(values instanceof Array)) {
       values = [values];
     }
-    return getPcasData().then((data) => {
-      const nodes = [];
-      for (const value of values) {
-        const found = this.getNode(data, value);
-        if (found) {
-          const target = _.cloneDeep(found);
-          delete target.children;
-          nodes.push(target);
-        }
+    const data = getPcasData();
+    const nodes = [];
+    for (const value of values) {
+      const found = this.getNode(data, value);
+      if (found) {
+        const target = _.cloneDeep(found);
+        delete target.children;
+        nodes.push(target);
       }
-      return nodes;
-    });
+    }
+    return nodes;
   },
   getNode(list, value) {
     for (const item of list) {
@@ -42,13 +39,12 @@ export const TreeNodesLazyLoader = {
     }
   },
   getChildren(parent) {
-    return getPcasData().then((data) => {
-      const list = this.getChildrenByParent(parent, data);
-      if (list == null) {
-        return [];
-      }
-      return this.cloneAndDeleteChildren(list);
-    });
+    const data = getPcasData();
+    const list = this.getChildrenByParent(parent, data);
+    if (list == null) {
+      return [];
+    }
+    return this.cloneAndDeleteChildren(list);
   },
   getChildrenByParent(parentId, tree) {
     if (!parentId) {
@@ -81,7 +77,7 @@ export const TreeNodesLazyLoader = {
       delete newNode.children;
       newList.push(newNode);
     }
-    console.log("found children:", newList);
+    console.log('found children:', newList);
     return newList;
-  }
+  },
 };

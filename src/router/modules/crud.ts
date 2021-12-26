@@ -78,9 +78,8 @@ const componentRoute = {
       component: () => import('@/views/crud/component/text/index.vue'),
     },
     {
-      title: '选择(select)',
       name: routeName + 'ComponentSelect',
-      path: '/crud/component/select',
+      path: 'select',
       meta: {
         title: '选择(select)',
       },
@@ -91,7 +90,7 @@ const componentRoute = {
         title: '级联(cascader)',
       },
       name: routeName + 'ComponentCascader',
-      path: '/crud/component/cascader',
+      path: 'cascader',
       component: () => import('@/views/crud/component/cascader/index.vue'),
     },
     {
@@ -99,7 +98,7 @@ const componentRoute = {
         title: '多选(checkbox)',
       },
       name: routeName + 'ComponentCheckbox',
-      path: '/crud/component/checkbox',
+      path: 'checkbox',
       component: () => import('@/views/crud/component/checkbox/index.vue'),
     },
     {
@@ -107,7 +106,7 @@ const componentRoute = {
         title: '单选(radio)',
       },
       name: routeName + 'ComponentRadio',
-      path: '/crud/component/radio',
+      path: 'radio',
       component: () => import('@/views/crud/component/radio/index.vue'),
     },
     {
@@ -115,7 +114,7 @@ const componentRoute = {
         title: '开关(switch)',
       },
       name: routeName + 'ComponentSwitch',
-      path: '/crud/component/switch',
+      path: 'switch',
       component: () => import('@/views/crud/component/switch/index.vue'),
     },
     {
@@ -123,7 +122,7 @@ const componentRoute = {
         title: '日期时间(date)',
       },
       name: routeName + 'ComponentDate',
-      path: '/crud/component/date',
+      path: 'date',
       component: () => import('@/views/crud/component/date/index.vue'),
     },
     {
@@ -131,7 +130,7 @@ const componentRoute = {
         title: '按钮链接',
       },
       name: routeName + 'ComponentButton',
-      path: '/crud/component/button',
+      path: 'button',
       component: () => import('@/views/crud/component/button/index.vue'),
     },
     {
@@ -139,7 +138,7 @@ const componentRoute = {
         title: '数字',
       },
       name: routeName + 'ComponentNumber',
-      path: '/crud/component/number',
+      path: 'number',
       component: () => import('@/views/crud/component/number/index.vue'),
     },
     {
@@ -147,7 +146,7 @@ const componentRoute = {
         title: '树形选择',
       },
       name: routeName + 'ComponentTree',
-      path: '/crud/component/tree',
+      path: 'tree',
       component: () => import('@/views/crud/component/tree/index.vue'),
     },
     {
@@ -155,7 +154,7 @@ const componentRoute = {
         title: '图片裁剪上传',
       },
       name: routeName + 'ComponentUploaderCropper',
-      path: '/crud/component/uploader/cropper',
+      path: 'uploader/cropper',
       component: () => import('@/views/crud/component/uploader/cropper/index.vue'),
     },
     {
@@ -163,7 +162,7 @@ const componentRoute = {
         title: '表单本地上传',
       },
       name: routeName + 'ComponentUploaderForm',
-      path: '/crud/component/uploader/form',
+      path: 'uploader/form',
       component: () => import('@/views/crud/component/uploader/form/index.vue'),
     },
     {
@@ -171,7 +170,7 @@ const componentRoute = {
         title: '阿里云oss上传',
       },
       name: routeName + 'ComponentUploaderAlioss',
-      path: '/crud/component/uploader/alioss',
+      path: 'uploader/alioss',
       component: () => import('@/views/crud/component/uploader/alioss/index.vue'),
     },
     {
@@ -179,7 +178,7 @@ const componentRoute = {
         title: '腾讯云cos上传',
       },
       name: routeName + 'ComponentUploaderCos',
-      path: '/crud/component/uploader/cos',
+      path: 'uploader/cos',
       component: () => import('@/views/crud/component/uploader/cos/index.vue'),
     },
     {
@@ -187,7 +186,7 @@ const componentRoute = {
         title: '七牛云上传',
       },
       name: routeName + 'ComponentUploaderQiniu',
-      path: '/crud/component/uploader/qiniu',
+      path: 'uploader/qiniu',
       component: () => import('@/views/crud/component/uploader/qiniu/index.vue'),
     },
     {
@@ -195,7 +194,7 @@ const componentRoute = {
         title: '富文本编辑器',
       },
       name: routeName + 'ComponentEditor',
-      path: '/crud/component/editor',
+      path: 'editor',
       component: () => import('@/views/crud/component/editor/index.vue'),
     },
     {
@@ -203,7 +202,7 @@ const componentRoute = {
         title: '图标',
       },
       name: routeName + 'ComponentIcon',
-      path: '/crud/component/icon',
+      path: 'icon',
       component: () => import('@/views/crud/component/icon/index.vue'),
     },
   ],
@@ -247,7 +246,7 @@ const dictRoutes = {
 };
 const formRoutes = {
   name: routeName + 'form',
-  path: '/crud/form',
+  path: 'form',
   redirect: '/crud/form/layout',
   meta: {
     title: 'Form表单',
@@ -260,7 +259,7 @@ const formRoutes = {
         title: '表单Grid布局',
       },
       name: routeName + 'FormLayoutGrid',
-      path: '/crud/form/layout-grid',
+      path: 'layout-grid',
       component: () => import('@/views/crud/form/layout-grid/index.vue'),
     },
     {
@@ -268,7 +267,7 @@ const formRoutes = {
         title: '表单Flex布局',
       },
       name: routeName + 'FormLayoutFlex',
-      path: '/crud/form/layout-flex',
+      path: 'layout-flex',
       component: () => import('@/views/crud/form/layout-flex/index.vue'),
     },
     {
@@ -276,7 +275,7 @@ const formRoutes = {
         title: '表单动态布局',
       },
       name: routeName + 'FormLayout',
-      path: '/crud/form/layout',
+      path: 'layout',
       component: () => import('@/views/crud/form/layout/index.vue'),
     },
     {
@@ -284,7 +283,7 @@ const formRoutes = {
         title: '表单校验',
       },
       name: routeName + 'FormValidation',
-      path: '/crud/form/validation',
+      path: 'validation',
       component: () => import('@/views/crud/form/validation/index.vue'),
     },
     {
@@ -292,7 +291,7 @@ const formRoutes = {
         title: '抽屉表单',
       },
       name: routeName + 'FormDrawer',
-      path: '/crud/form/drawer',
+      path: 'drawer',
       component: () => import('@/views/crud/form/drawer/index.vue'),
     },
     {
@@ -300,7 +299,7 @@ const formRoutes = {
         title: '表单分组',
       },
       name: routeName + 'FormGroup',
-      path: '/crud/form/group',
+      path: 'group',
       component: () => import('@/views/crud/form/group/index.vue'),
     },
     {
@@ -308,7 +307,7 @@ const formRoutes = {
         title: '表单分组(tabs)',
       },
       name: routeName + 'FormGroupTabs',
-      path: '/crud/form/group-tabs',
+      path: 'group-tabs',
       component: () => import('@/views/crud/form/group-tabs/index.vue'),
     },
     {
@@ -316,7 +315,7 @@ const formRoutes = {
         title: '自定义表单',
       },
       name: routeName + 'FormCustomForm',
-      path: '/crud/form/custom-form',
+      path: 'custom-form',
       component: () => import('@/views/crud/form/custom-form/index.vue'),
     },
     {
@@ -362,7 +361,8 @@ const formRoutes = {
   ],
 };
 const featureRoutes = {
-  path: '/crud/feature',
+  path: '/feature',
+  name: routeName + 'Feature',
   meta: {
     title: '表格特性',
     icon: renderIcon(BeerOutline),
@@ -475,8 +475,8 @@ const featureRoutes = {
 };
 const slotRoutes = {
   name: routeName + 'Slots',
-  path: '/crud/slots',
-  redirect: 'layout',
+  path: '/slots',
+  redirect: '/crud/slots/layout',
   meta: {
     title: '插槽',
     icon: renderIcon(ExtensionPuzzleOutline),
@@ -519,8 +519,8 @@ const slotRoutes = {
 };
 const advancedRoutes = {
   name: routeName + 'Advanced',
-  path: '/crud/advanced',
-  redirect: 'linkage',
+  path: 'advanced',
+  redirect: '/crud/advanced/linkage',
   meta: {
     title: '复杂需求',
     icon: renderIcon(FlameOutline),
