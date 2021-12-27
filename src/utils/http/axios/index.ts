@@ -137,13 +137,16 @@ const transform: AxiosTransform = {
   beforeRequestHook: (config, options) => {
     const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, joinTime = true } = options;
 
-    if (joinPrefix) {
-      config.url = `${urlPrefix}${config.url}`;
+    if (config.url && !config.url.startsWith('http')) {
+      if (joinPrefix) {
+        config.url = `${urlPrefix}${config.url}`;
+      }
+
+      if (apiUrl && isString(apiUrl)) {
+        config.url = `${apiUrl}${config.url}`;
+      }
     }
 
-    if (apiUrl && isString(apiUrl)) {
-      config.url = `${apiUrl}${config.url}`;
-    }
     const params = config.params || {};
     const data = config.data || false;
     if (config.method?.toUpperCase() === RequestEnum.GET) {

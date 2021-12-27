@@ -69,6 +69,8 @@ import {
   NCascader,
   NRadioButton,
   NTreeSelect,
+  NImageGroup,
+  NImage,
 } from 'naive-ui';
 
 const naive = create({
@@ -141,6 +143,8 @@ const naive = create({
     NCascader,
     NRadioButton,
     NTreeSelect,
+    NImageGroup,
+    NImage,
   ],
 });
 

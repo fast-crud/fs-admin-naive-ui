@@ -46,6 +46,9 @@ export default function ({ expose }) {
               limit: 5, //默认限制1个，即头像上传，0为不限制
             },
           },
+          column: {
+            component: {},
+          },
         },
         aspect: {
           title: '按比例裁剪',
