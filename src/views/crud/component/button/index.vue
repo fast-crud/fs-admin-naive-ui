@@ -48,13 +48,6 @@
       .ant-form-item-label {
         width: 90px;
       }
-
-      .fs-search-btns {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
     }
   }
 </style>

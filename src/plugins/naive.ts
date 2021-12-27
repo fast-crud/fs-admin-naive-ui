@@ -68,6 +68,7 @@ import {
   NSkeleton,
   NCascader,
   NRadioButton,
+  NTreeSelect,
 } from 'naive-ui';
 
 const naive = create({
@@ -139,6 +140,7 @@ const naive = create({
     NSkeleton,
     NCascader,
     NRadioButton,
+    NTreeSelect,
   ],
 });
 

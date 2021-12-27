@@ -1,6 +1,6 @@
 import * as api from './api';
 import { dict, compute } from '@fast-crud/fast-crud';
-import { ElMessage } from 'element-plus';
+import { useMessage } from 'naive-ui';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -16,6 +16,8 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  const message = useMessage();
   return {
     crudOptions: {
       request: {
@@ -46,13 +48,15 @@ export default function ({ expose }) {
           type: 'button',
           column: {
             component: {
+              type: 'success',
+              size: 'small',
               show: compute(({ value }) => {
                 //当value为null时，不显示
                 return value != null;
               }),
               on: {
                 onClick({ row }) {
-                  ElMessage.success('按钮点击:' + row.button);
+                  message.success('按钮点击:' + row.button);
                 },
               },
             },
@@ -72,6 +76,10 @@ export default function ({ expose }) {
           type: 'link',
           column: {
             component: {
+              show: compute(({ value }) => {
+                //当value为null时，不显示
+                return value != null;
+              }),
               on: {
                 onClick({ row }) {
                   if (row.url) {
@@ -88,20 +96,20 @@ export default function ({ expose }) {
         link2: {
           title: '手写link配置',
           search: { show: true },
-          type: 'text', //form组件用input
           column: {
             component: {
               name: 'fs-button', //列展示组件为button
-              vModel: 'text', // 将row.link2的值赋值给text属性
-              type: 'text', // 按钮展示为链接样式
-              on: {
-                //注册点击事件
-                onClick({ row }) {
-                  if (row.url) {
-                    window.open(row.url);
-                  }
-                },
-              },
+              tag: 'a',
+              type: 'text',
+              quaternary: true,
+              'text-color': '#2080f0',
+              vModel: 'href',
+              target: '_blank',
+              text: '跳转到百度',
+              show: compute(({ value }) => {
+                //当value为null时，不显示
+                return value != null;
+              }),
             },
           },
         },

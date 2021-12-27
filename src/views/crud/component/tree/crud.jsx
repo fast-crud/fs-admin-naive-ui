@@ -43,6 +43,11 @@ export default function ({ expose }) {
             isTree: true,
             url: '/crud/dicts/cascaderData?single',
           }),
+          form: {
+            component: {
+              keyField: 'value',
+            },
+          },
         },
         multiple: {
           title: '多选',
@@ -55,6 +60,7 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
+              keyField: 'value',
               'tree-checkable': true,
             },
           },
@@ -71,7 +77,8 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              replaceFields: { title: 'name', key: 'code', value: 'code' },
+              keyField: 'code',
+              labelField: 'name',
             },
           },
         },

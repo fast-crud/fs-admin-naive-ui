@@ -6,17 +6,16 @@ const options: any = {
 const list = [
   {
     button: '张三',
-    link: '百度',
+    link: '此按钮跳转url字段的链接',
     url: 'https://www.baidu.com',
-    link2: '手写配置',
+    link2: 'https://www.baidu.com',
   },
   {
     button: '李四',
-    link: '百度',
+    link: '此按钮跳转url字段的链接',
     url: 'https://www.baidu.com',
-    link2: '手写配置',
+    link2: 'https://www.baidu.com',
   },
-  {},
 ];
 options.list = list;
 const mock = mockUtil.buildMock(options);
