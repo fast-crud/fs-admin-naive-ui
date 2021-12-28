@@ -1,7 +1,6 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
-import moment from 'moment';
-export default function ({ expose }) {
+export default function ({}) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -52,18 +51,12 @@ export default function ({ expose }) {
             align: 'left',
             width: 300,
           },
-          valueBuilder({ key, row }) {
-            row[key] = moment(row[key]);
-          },
         },
         updateDate: {
           title: '修改时间',
           type: 'datetime',
           column: {
             show: false,
-          },
-          valueBuilder({ key, row }) {
-            row[key] = moment(row[key]);
           },
         },
       },

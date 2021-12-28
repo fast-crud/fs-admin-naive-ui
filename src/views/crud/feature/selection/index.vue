@@ -14,7 +14,7 @@
   import { defineComponent, ref, onMounted } from 'vue';
   import createCrudOptions from './crud';
   import { useExpose, useCrud } from '@fast-crud/fast-crud';
-  import { ElMessage, ElMessageBox } from 'element-plus';
+  import { useDialog } from 'naive-ui';
   import { BatchDelete } from './api';
   export default defineComponent({
     name: 'FeatureSelection',
@@ -38,15 +38,21 @@
         expose.doRefresh();
       });
 
+      const dialog = useDialog();
       const handleBatchDelete = async () => {
         if (selectedIds.value?.length > 0) {
-          await ElMessageBox.confirm(`确定要批量删除这${selectedIds.value.length}条记录吗`, '确认');
-          await BatchDelete(selectedIds.value);
-          ElMessage.info('删除成功');
-          selectedIds.value = [];
-          await expose.doRefresh();
+          await dialog.info({
+            title: '确认',
+            content: `确定要批量删除这${selectedIds.value.length}条记录吗`,
+            async onNegativeClick() {
+              await BatchDelete(selectedIds.value);
+              message.info('删除成功');
+              selectedIds.value = [];
+              await expose.doRefresh();
+            },
+          });
         } else {
-          ElMessage.error('请先勾选记录');
+          message.error('请先勾选记录');
         }
       };
 

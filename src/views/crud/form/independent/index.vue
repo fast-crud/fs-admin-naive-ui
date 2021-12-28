@@ -32,13 +32,14 @@
 
 <script>
   import { defineComponent, ref } from 'vue';
-  import { ElMessage } from 'element-plus';
+  import { useMessage } from 'naive-ui';
   import { useCrud, useExpose, useColumns } from '@fast-crud/fast-crud';
   import createCrudOptions from './crud';
 
   function createFormOptions() {
     // 自定义表单配置
     const { buildFormOptions } = useColumns();
+    const message = useMessage()
     //使用crudOptions结构来构建自定义表单配置
     return buildFormOptions({
       columns: {
@@ -69,8 +70,8 @@
         },
         doSubmit({ form }) {
           console.log('form submit:', form);
-          ElMessage.info('自定义表单提交:' + JSON.stringify(form));
-          ElMessage.success('保存成功');
+          message.info('自定义表单提交:' + JSON.stringify(form));
+          message.success('保存成功');
         },
       },
     });
@@ -133,8 +134,8 @@
       doSubmit({ form }) {
         //覆盖提交方法
         console.log('form submit:', form);
-        ElMessage.info('自定义表单提交:' + JSON.stringify(form));
-        ElMessage.warning('抛出异常可以阻止表单关闭');
+        message.info('自定义表单提交:' + JSON.stringify(form));
+        message.warning('抛出异常可以阻止表单关闭');
         throw new Error('抛出异常可以阻止表单关闭');
       },
     });

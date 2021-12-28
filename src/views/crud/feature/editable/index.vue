@@ -32,7 +32,7 @@
   import { defineComponent, ref, onMounted } from 'vue';
   import createCrudOptions from './crud';
   import { useExpose, useCrud } from '@fast-crud/fast-crud';
-  import { ElMessage } from 'element-plus';
+  import { useMessage } from 'naive-ui';
   export default defineComponent({
     name: 'FeatureEditable',
     setup() {
@@ -62,7 +62,7 @@
       function disable() {
         expose.editable.disable();
       }
-
+      const message = useMessage()
       return {
         crudBinding,
         crudRef,
@@ -86,7 +86,7 @@
             console.log('changed', changed);
             console.log('removed', removed);
             // setData({ 0: {id:1} }); //设置data
-            ElMessage.success(
+            message.success(
               '保存,修改行：' + JSON.stringify(changed) + '；删除行：' + JSON.stringify(removed)
             );
           });

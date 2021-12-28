@@ -1,6 +1,6 @@
 import * as api from './api';
 import { dict, compute } from '@fast-crud/fast-crud';
-import { ElMessage } from 'element-plus';
+import { useMessage } from 'naive-ui';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -16,6 +16,8 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  const message = useMessage();
   return {
     crudOptions: {
       request: {
@@ -52,7 +54,7 @@ export default function ({ expose }) {
               }),
               on: {
                 onClick({ row }) {
-                  ElMessage.success('按钮点击:' + row.button);
+                  message.success('按钮点击:' + row.button);
                 },
               },
             },

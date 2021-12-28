@@ -15,7 +15,7 @@
   import { useCrud } from '@fast-crud/fast-crud';
   import createCrudOptions from './crud';
   import { useExpose } from '@fast-crud/fast-crud';
-  import { ElMessage } from 'element-plus';
+  import { useMessage } from 'naive-ui';
   export default defineComponent({
     name: 'FeatureSearch',
     setup() {
@@ -43,7 +43,7 @@
         crudRef,
         getSearchFormData() {
           const form = expose.getSearchFormData();
-          ElMessage.info(`searchForm:${JSON.stringify(form)}`);
+          message.info(`searchForm:${JSON.stringify(form)}`);
         },
         setSearchFormData() {
           expose.setSearchFormData({ form: { radio: '1', test: 2 }, mergeForm: true });

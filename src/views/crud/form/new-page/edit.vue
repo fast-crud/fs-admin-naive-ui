@@ -19,7 +19,7 @@
   import createCrudOptions from './crud';
   import * as api from './api';
   import _ from 'lodash-es';
-  import { ElMessage } from 'element-plus';
+  import { useMessage } from 'naive-ui';
   import { usePageStore } from '/@/store/modules/page';
   export default defineComponent({
     name: 'FormNewPageEdit',
@@ -40,7 +40,7 @@
 
       const route = useRoute();
       const id = route.query.id;
-
+      const message = useMessage()
       if (id) {
         //编辑表单
         formOptions.value = crudBinding.value.editForm;
@@ -54,7 +54,7 @@
         console.log('submit', context);
         doSubmit(context);
         //提交成功后，关闭本页面
-        ElMessage.success('保存成功');
+        message.success('保存成功');
         pageStore.close({ tagName: route.fullPath });
       };
 

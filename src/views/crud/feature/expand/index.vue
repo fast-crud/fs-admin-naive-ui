@@ -10,7 +10,7 @@
   import { defineComponent, ref, onMounted } from 'vue';
   import createCrudOptions from './crud';
   import { useExpose, useCrud } from '@fast-crud/fast-crud';
-  import { ElMessage, ElMessageBox } from 'element-plus';
+  import { useMessage, useDialog } from 'naive-ui';
   import { BatchDelete } from './api';
   export default defineComponent({
     name: 'FeatureExpand',
@@ -34,20 +34,25 @@
         expose.doRefresh();
       });
 
+      const message = useMessage()
+      const dialog = useDialog()
+
       const handleBatchDelete = () => {
         if (selectedRowKeys.value?.length > 0) {
-          Modal.confirm({
+          dialog.info({
+          // negativeText:"取消"
+          // positiveText:"确定"
             title: '确认',
             content: `确定要批量删除这${selectedRowKeys.value.length}条记录吗`,
-            async onOk() {
+            async onNegativeClick() {
               await BatchDelete(selectedRowKeys.value);
-              ElMessage.info('删除成功');
+              message.info('删除成功');
               expose.doRefresh();
               selectedRowKeys.value = [];
             },
           });
         } else {
-          ElMessage.error('请先勾选记录');
+          message.error('请先勾选记录');
         }
       };
 
