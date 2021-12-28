@@ -20,7 +20,7 @@ export default function ({ expose }) {
 
   const onSelectionChange = (changed) => {
     console.log('selection', changed);
-    selectedIds.value = changed.map((item) => item.id);
+    selectedIds.value = changed;
   };
   return {
     selectedIds, //返回给index.vue去使用
@@ -33,7 +33,7 @@ export default function ({ expose }) {
       },
       table: {
         rowKey: (row) => row.id, //设置你的主键id获取方式， 默认(row)=>row.id
-        onSelectionChange,
+        'onUpdate:checkedRowKeys': onSelectionChange,
       },
       columns: {
         _checked: {

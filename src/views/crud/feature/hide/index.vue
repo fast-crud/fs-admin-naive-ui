@@ -8,7 +8,7 @@
               <n-col :span="2"> 搜索框： </n-col>
               <n-col :span="2">
                 <n-switch
-                  v-model="crudBinding.search.show"
+                  v-model:value="crudBinding.search.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -18,7 +18,7 @@
               <n-col :span="2"> 动作条： </n-col>
               <n-col :span="2">
                 <n-switch
-                  v-model="crudBinding.actionbar.show"
+                  v-model:value="crudBinding.actionbar.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -26,7 +26,7 @@
               <n-col :span="3">
                 添加：
                 <n-switch
-                  v-model="crudBinding.actionbar.buttons.add.show"
+                  v-model:value="crudBinding.actionbar.buttons.add.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -34,7 +34,7 @@
               <n-col :span="3">
                 自定义：
                 <n-switch
-                  v-model="crudBinding.actionbar.buttons.test.show"
+                  v-model:value="crudBinding.actionbar.buttons.test.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -44,7 +44,7 @@
               <n-col :span="2"> 工具条： </n-col>
               <n-col :span="2">
                 <n-switch
-                  v-model="crudBinding.toolbar.show"
+                  v-model:value="crudBinding.toolbar.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -52,7 +52,7 @@
               <n-col :span="3">
                 查询：
                 <n-switch
-                  v-model="crudBinding.toolbar.buttons.search.show"
+                  v-model:value="crudBinding.toolbar.buttons.search.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -60,7 +60,7 @@
               <n-col :span="3">
                 刷新：
                 <n-switch
-                  v-model="crudBinding.toolbar.buttons.refresh.show"
+                  v-model:value="crudBinding.toolbar.buttons.refresh.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -68,7 +68,7 @@
               <n-col :span="3">
                 紧凑：
                 <n-switch
-                  v-model="crudBinding.toolbar.buttons.compact.show"
+                  v-model:value="crudBinding.toolbar.buttons.compact.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -76,7 +76,7 @@
               <n-col :span="3">
                 导出：
                 <n-switch
-                  v-model="crudBinding.toolbar.buttons.export.show"
+                  v-model:value="crudBinding.toolbar.buttons.export.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -84,7 +84,7 @@
               <n-col :span="3">
                 列设置：
                 <n-switch
-                  v-model="crudBinding.toolbar.buttons.columns.show"
+                  v-model:value="crudBinding.toolbar.buttons.columns.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -94,7 +94,7 @@
               <n-col :span="2"> 表格： </n-col>
               <n-col :span="2">
                 <n-switch
-                  v-model="crudBinding.table.show"
+                  v-model:value="crudBinding.table.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -104,7 +104,7 @@
               <n-col :span="2"> 操作列： </n-col>
               <n-col :span="2">
                 <n-switch
-                  v-model="crudBinding.rowHandle.show"
+                  v-model:value="crudBinding.rowHandle.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -112,7 +112,7 @@
               <n-col :span="3">
                 查看：
                 <n-switch
-                  v-model="crudBinding.rowHandle.buttons.view.show"
+                  v-model:value="crudBinding.rowHandle.buttons.view.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -120,7 +120,7 @@
               <n-col :span="3">
                 修改：
                 <n-switch
-                  v-model="crudBinding.rowHandle.buttons.edit.show"
+                  v-model:value="crudBinding.rowHandle.buttons.edit.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -128,7 +128,7 @@
               <n-col :span="3">
                 删除：
                 <n-switch
-                  v-model="crudBinding.rowHandle.buttons.remove.show"
+                  v-model:value="crudBinding.rowHandle.buttons.remove.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -136,7 +136,7 @@
               <n-col :span="3">
                 自定义：
                 <n-switch
-                  v-model="crudBinding.rowHandle.buttons.custom.show"
+                  v-model:value="crudBinding.rowHandle.buttons.custom.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -146,7 +146,7 @@
               <n-col :span="2"> 翻页： </n-col>
               <n-col :span="2">
                 <n-switch
-                  v-model="crudBinding.pagination.show"
+                  v-model:value="crudBinding.pagination.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />

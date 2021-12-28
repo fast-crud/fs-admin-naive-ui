@@ -2,9 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #pagination-left>
-        <n-tooltip content="批量删除">
-          <fs-button icon="ion:trash-outline" @click="handleBatchDelete" />
-        </n-tooltip>
+        <fs-button icon="ion:trash-outline" @click="handleBatchDelete" />
       </template>
     </fs-crud>
   </fs-page>
@@ -14,7 +12,7 @@
   import { defineComponent, ref, onMounted } from 'vue';
   import createCrudOptions from './crud';
   import { useExpose, useCrud } from '@fast-crud/fast-crud';
-  import { useDialog } from 'naive-ui';
+  import { useDialog, useMessage } from 'naive-ui';
   import { BatchDelete } from './api';
   export default defineComponent({
     name: 'FeatureSelection',
@@ -38,13 +36,16 @@
         expose.doRefresh();
       });
 
+      const message = useMessage();
       const dialog = useDialog();
       const handleBatchDelete = async () => {
         if (selectedIds.value?.length > 0) {
           await dialog.info({
             title: '确认',
             content: `确定要批量删除这${selectedIds.value.length}条记录吗`,
-            async onNegativeClick() {
+            positiveText: '确定',
+            negativeText: '取消',
+            async onPositiveClick() {
               await BatchDelete(selectedIds.value);
               message.info('删除成功');
               selectedIds.value = [];

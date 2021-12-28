@@ -50,12 +50,12 @@ export default function ({ expose }) {
             url: '/crud/dicts/OpenStatusEnum?single',
           }),
           column: {
-            filters: [
-              { text: '开', value: '1' },
-              { text: '关', value: '0' },
-              { text: '停', value: '2' },
+            filterOptions: [
+              { label: '开', value: '1' },
+              { label: '关', value: '0' },
+              { label: '停', value: '2' },
             ],
-            filterMethod: (value, row) => {
+            filter: (value, row) => {
               return row.radio === value;
             },
             sortable: true,

@@ -418,6 +418,12 @@ const featureRoutes = {
       component: () => import('@/views/crud/feature/header-group/index.vue'),
     },
     {
+      meta: { title: '合并单元格' },
+      name: routeName + 'FeatureMerge',
+      path: 'merge',
+      component: () => import('@/views/crud/feature/merge/index.vue'),
+    },
+    {
       meta: { title: '序号' },
       name: routeName + 'FeatureIndex',
       path: 'index',

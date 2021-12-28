@@ -40,7 +40,8 @@ export default function ({ expose }) {
             url: '/crud/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortable: true,
+            sortOrder: false,
+            sorter: 'default',
           },
         },
         radio1: {

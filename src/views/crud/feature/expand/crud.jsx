@@ -26,16 +26,6 @@ export default function ({ expose }) {
       },
       table: {},
       columns: {
-        $expand: {
-          title: '展开',
-          form: { show: false },
-          column: {
-            type: 'expand',
-            align: 'center',
-            width: '55px',
-            columnSetDisabled: true, //禁止在列设置中选择
-          },
-        },
         id: {
           title: 'ID',
           key: 'id',
@@ -45,6 +35,19 @@ export default function ({ expose }) {
           },
           form: {
             show: false,
+          },
+        },
+        $expand: {
+          title: '',
+          form: { show: false },
+          column: {
+            type: 'expand',
+            align: 'center',
+            columnSetDisabled: true, //禁止在列设置中选择
+            expandable: (rowData) => rowData.radio !== '1',
+            renderExpand: (rowData) => {
+              return `单选状态：${rowData.radio} `;
+            },
           },
         },
         radio: {

@@ -38,6 +38,7 @@
         expose.doRefresh();
       });
 
+      const message = useMessage();
       return {
         crudBinding,
         crudRef,
