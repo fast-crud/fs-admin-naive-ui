@@ -32,10 +32,11 @@ export default function ({ expose }) {
         delRequest,
       },
       table: {
+        rowKey: (row) => row.id, //设置你的主键id获取方式， 默认(row)=>row.id
         onSelectionChange,
       },
       columns: {
-        $checked: {
+        _checked: {
           title: '选择',
           form: { show: false },
           column: {
