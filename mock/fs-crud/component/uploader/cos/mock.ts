@@ -5,17 +5,17 @@ const options: any = {
 };
 const list = [
   {
-    avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
+    avatar: 'http://greper.docmirror.cn/extends/avatar.jpg',
     file: [
-      'http://greper.veryreader.com/extends/avatar.jpg',
+      'http://greper.docmirror.cn/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
     image: [
-      'http://greper.veryreader.com/extends/avatar.jpg',
+      'http://greper.docmirror.cn/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
     image2: [
-      'http://greper.veryreader.com/extends/avatar.jpg',
+      'http://greper.docmirror.cn/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
   },
