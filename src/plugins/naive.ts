@@ -71,6 +71,8 @@ import {
   NTreeSelect,
   NImageGroup,
   NImage,
+  NCollapse,
+  NCollapseItem,
 } from 'naive-ui';
 
 const naive = create({
@@ -145,6 +147,8 @@ const naive = create({
     NTreeSelect,
     NImageGroup,
     NImage,
+    NCollapse,
+    NCollapseItem,
   ],
 });
 

@@ -65,19 +65,19 @@ const tree = [
 
 options.list = list;
 options.copyTimes = 1000;
-const mock = mockUtil.buildMock(options);
+const mock: any = mockUtil.buildMock(options);
 
 function omitChildren(orignalListt) {
-  const list = [];
+  const list: any = [];
   orignalListt.forEach((item) => {
     list.push(_.omit(item, 'children'));
   });
   return list;
 }
 mock.push({
-  path: '/mock/linkage/province',
+  url: '/api/crud/linkage/province',
   method: 'get',
-  handle() {
+  response() {
     const list = omitChildren(tree);
     return {
       code: 0,
@@ -88,31 +88,31 @@ mock.push({
 });
 
 mock.push({
-  path: '/mock/linkage/city',
+  url: '/api/crud/linkage/city',
   method: 'get',
-  handle(req) {
-    const province = parseInt(req.params.province);
+  response(req) {
+    const province = parseInt(req.query.province);
     const a = tree.filter((item) => {
       return item.id === province;
     });
     const list = omitChildren(a[0].children);
     return {
       code: 0,
-      msg: 'success',
+      message: 'success',
       data: list,
     };
   },
 });
 
 mock.push({
-  path: '/mock/linkage/county',
+  url: '/api/crud/linkage/county',
   method: 'get',
-  handle(req) {
-    const province = parseInt(req.params.province);
+  response(req) {
+    const province = parseInt(req.query.province);
     const a = tree.filter((item) => {
       return item.id === province;
     });
-    const city = parseInt(req.params.city);
+    const city = parseInt(req.query.city);
     const b = a[0].children.filter((item) => {
       return item.id === city;
     });
@@ -120,7 +120,7 @@ mock.push({
     const list = omitChildren(b[0].children);
     return {
       code: 0,
-      msg: 'success',
+      message: 'success',
       data: list,
     };
   },

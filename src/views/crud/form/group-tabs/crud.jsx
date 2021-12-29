@@ -68,7 +68,7 @@ export default function ({ expose }) {
           groups: {
             base: {
               slots: {
-                label: () => {
+                tab: () => {
                   return (
                     <span style={'color:green'}>
                       <fs-icon icon={'ion:checkmark-circle'} />
@@ -81,12 +81,12 @@ export default function ({ expose }) {
               columns: ['code', 'title', 'images'],
             },
             price: {
-              label: '库存价格',
+              tab: '库存价格',
               icon: 'n-icon-price-tag',
               columns: ['store', 'price'],
             },
             info: {
-              label: '详情',
+              tab: '详情',
               collapsed: true, //默认折叠
               icon: 'n-icon-warning-outline',
               columns: ['intro', 'content'],

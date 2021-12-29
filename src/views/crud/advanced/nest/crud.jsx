@@ -23,12 +23,15 @@ export default function ({ expose, asideTableRef }) {
   return {
     crudOptions: {
       table: {
-        'highlight-current-row': true,
-        // 监听 n-table的单行选中事件
-        onCurrentChange(currentRow) {
-          console.log('选中行', currentRow);
-          asideTableRef.value.setSearchFormData({ form: { gradeId: currentRow.id } });
-          asideTableRef.value.doRefresh();
+        rowProps: (row) => {
+          const clazz = row.id === currentRow.value ? 'fs-current-row' : '';
+          return {
+            style: 'cursor: pointer;',
+            onClick() {
+              onCurrentRowChange(row.id);
+            },
+            class: clazz,
+          };
         },
       },
       pagination: {},

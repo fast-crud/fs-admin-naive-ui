@@ -13,14 +13,14 @@
 </template>
 
 <script>
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import { defineComponent, ref, onMounted } from 'vue';
   import { useCrud, useExpose, useColumns } from '@fast-crud/fast-crud';
   import createCrudOptions from './crud';
   import * as api from './api';
   import _ from 'lodash-es';
   import { useMessage } from 'naive-ui';
-  import { usePageStore } from '/@/store/modules/page';
+  import { useTabsViewStore } from '@/store/modules/tabsView';
   export default defineComponent({
     name: 'FormNewPageEdit',
     setup(props, ctx) {
@@ -39,8 +39,9 @@
       const formOptions = ref();
 
       const route = useRoute();
+      const router = useRouter();
       const id = route.query.id;
-      const message = useMessage()
+      const message = useMessage();
       if (id) {
         //编辑表单
         formOptions.value = crudBinding.value.editForm;
@@ -48,14 +49,16 @@
         formOptions.value = crudBinding.value.addForm;
       }
       const doSubmit = formOptions.value.doSubmit;
-      const pageStore = usePageStore();
+      const pageStore = useTabsViewStore();
 
       formOptions.value.doSubmit = (context) => {
         console.log('submit', context);
         doSubmit(context);
         //提交成功后，关闭本页面
         message.success('保存成功');
-        pageStore.close({ tagName: route.fullPath });
+
+        pageStore.closeCurrentTab(route);
+        router.go(-1);
       };
 
       const getDetail = async (id) => {

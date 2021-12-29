@@ -14,9 +14,14 @@ export default function ({ expose, props, ctx }) {
   return {
     crudOptions: {
       table: {
-        highlightCurrentRow: true,
-        onCurrentChange: (currentRow) => {
-          ctx.emit('update:modelValue', currentRow.id);
+        rowProps: (row) => {
+          return {
+            style: 'cursor: pointer;',
+            onClick: () => {
+              ctx.emit('update:modelValue', row.id);
+            },
+            class: props.modelValue === row.id ? 'fs-current-row' : '',
+          };
         },
       },
       request: {

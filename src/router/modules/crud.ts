@@ -347,7 +347,7 @@ const formRoutes = {
       component: () => import('@/views/crud/form/new-page/edit.vue'),
       meta: {
         title: '新页面编辑表单',
-        isMenu: false,
+        hidden: true, //不是菜单
       },
     },
     {

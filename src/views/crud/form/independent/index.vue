@@ -39,7 +39,7 @@
   function createFormOptions() {
     // 自定义表单配置
     const { buildFormOptions } = useColumns();
-    const message = useMessage()
+    const message = useMessage();
     //使用crudOptions结构来构建自定义表单配置
     return buildFormOptions({
       columns: {
@@ -63,7 +63,7 @@
         group: {
           groups: {
             testGroupName: {
-              header: '分组测试',
+              title: '分组测试',
               columns: ['groupField'],
             },
           },
@@ -129,6 +129,7 @@
     // resetCrudOptions(options)
 
     // 以下代码实际上== crudBinding.addForm 或者 crudBinding.editForm
+    const message = useMessage();
     const formWrapperOptions2 = ref({
       ...crudBinding.value.addForm, // 你也可以用editForm
       doSubmit({ form }) {

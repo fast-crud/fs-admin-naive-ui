@@ -1,5 +1,4 @@
 import mockUtil from '../../_base';
-// @ts-ignore
 import { crudOptions } from './crud-backend';
 const options: any = {
   name: 'AdvancedFromBackend',
@@ -22,12 +21,12 @@ options.copyTimes = 1000;
 const mock: Array<any> = mockUtil.buildMock(options);
 
 mock.push({
-  url: '/AdvancedFromBackend/crud',
+  url: '/api/crud/AdvancedFromBackend/crud',
   method: 'get',
   response() {
     return {
       code: 0,
-      msg: 'success',
+      message: 'success',
       data: crudOptions,
     };
   },

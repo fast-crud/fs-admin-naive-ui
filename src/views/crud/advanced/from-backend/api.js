@@ -45,6 +45,6 @@ export function GetObj(id) {
 export function GetCrud() {
   return request({
     url: apiPrefix + '/crud',
-    method: 'post',
+    method: 'get',
   });
 }

@@ -92,11 +92,11 @@ export default function ({ expose }) {
               columns: ['code', 'title', 'images'],
             },
             price: {
-              header: '库存价格',
+              title: '库存价格',
               columns: ['store', 'price'],
             },
             info: {
-              header: '详情',
+              title: '详情',
               collapsed: true, //默认折叠
               columns: ['intro', 'content', 'slotField'],
             },

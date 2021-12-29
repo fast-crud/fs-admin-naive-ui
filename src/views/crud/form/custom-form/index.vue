@@ -2,7 +2,6 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <n-divider direction="vertical" />
         <n-button @click="openCustomForm">打开自定义表单对话框</n-button>
       </template>
     </fs-crud>
@@ -56,7 +55,7 @@
           group: {
             groups: {
               testGroupName: {
-                header: '分组测试',
+                title: '分组测试',
                 columns: ['groupField'],
               },
             },
