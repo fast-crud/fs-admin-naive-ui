@@ -44,7 +44,7 @@ export default function ({ expose }) {
           type: 'dict-radio',
           dict: dict({
             data: [
-              { value: 'flex', label: 'flex', color: null },
+              { value: 'flex', label: 'flex', color: 'success' },
               { value: 'grid', label: 'grid', color: 'info' },
             ],
           }),
@@ -71,6 +71,7 @@ export default function ({ expose }) {
           type: 'textarea',
           form: {
             col: {
+              span: 24,
               style: { gridColumn: 'span 2' }, // grid 模式
             },
           },
@@ -85,8 +86,6 @@ export default function ({ expose }) {
               return context.form.display !== 'grid';
             }),
             col: { span: 24 }, // flex模式跨列配置
-            labelCol: { span: 2 }, // antdv 跨列时，需要同时修改labelCol和wrapperCol
-            wrapperCol: { span: 21 },
           },
         },
       },

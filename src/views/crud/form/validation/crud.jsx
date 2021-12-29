@@ -9,7 +9,9 @@ export default function ({ expose }) {
     if (getFormData().password2 !== '') {
       let formRef = getFormRef().getFormRef();
       const validateFields = formRef.validateFields || formRef.validateField;
-      validateFields(['password2']);
+      if (validateFields) {
+        validateFields(['password2']);
+      }
     }
   };
   const validatePass2 = async (rule, value) => {
@@ -47,7 +49,7 @@ export default function ({ expose }) {
           type: 'text',
           form: {
             helper: '添加和编辑时必填，编辑时额外需要校验长度',
-            rules: [{ required: true, message: '请输入姓名' }],
+            rule: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
             component: {
               maxlength: 5, // 原生属性要写在这里
               props: {
@@ -57,14 +59,14 @@ export default function ({ expose }) {
             },
           },
           editForm: {
-            rules: [{ min: 2, max: 5, message: '姓名长度为2-5' }],
+            rule: [{ min: 2, max: 5, message: '姓名长度为2-5', trigger: 'blur' }],
           },
         },
         age: {
           title: '年龄',
           type: 'text',
           form: {
-            rules: [{ pattern: /^\d+$/, message: '必须为整数' }],
+            rule: [{ pattern: /^\d+$/, message: '必须为整数', trigger: 'blur' }],
             helper: '正则表达式',
           },
         },
@@ -79,7 +81,7 @@ export default function ({ expose }) {
             },
           },
           form: {
-            rules: [
+            rule: [
               { required: true, message: '请输入密码' },
               { validator: validatePass1, trigger: 'blur' },
             ],
@@ -90,7 +92,7 @@ export default function ({ expose }) {
           type: 'password',
           column: { show: false },
           form: {
-            rules: [
+            rule: [
               { required: true, message: '请输入确认密码' },
               { validator: validatePass2, trigger: 'blur' },
             ],
@@ -103,21 +105,21 @@ export default function ({ expose }) {
             url: '/crud/dicts/OpenStatusEnum',
           }),
           form: {
-            rules: [{ required: true, message: '请选择一个选项' }],
+            rule: [{ required: true, message: '请选择一个选项' }],
           },
         },
         email: {
           title: '邮箱',
           type: 'text',
           form: {
-            rules: [{ type: 'email', message: '请填写正确的邮箱' }],
+            rule: [{ type: 'email', message: '请填写正确的邮箱', trigger: 'blur' }],
           },
         },
         url: {
           title: 'URL',
           type: 'text',
           form: {
-            rules: [{ type: 'url', message: '请填写正确的url' }],
+            rule: [{ type: 'url', message: '请填写正确的url', trigger: 'blur' }],
           },
         },
       },
