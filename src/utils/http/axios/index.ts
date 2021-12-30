@@ -167,7 +167,9 @@ const transform: AxiosTransform = {
         config.params = undefined;
       }
     } else {
-      if (!isString(params)) {
+      if (config.data && config.data instanceof FormData) {
+        //不做修改
+      } else if (!isString(params)) {
         formatDate && formatRequestDate(params);
         if (Reflect.has(config, 'data') && config.data && Object.keys(config.data).length) {
           config.data = data;

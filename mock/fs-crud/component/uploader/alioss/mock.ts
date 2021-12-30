@@ -5,19 +5,19 @@ const options: any = {
 };
 const list = [
   {
-    avatar_error1: 'http://greper.docmirror.cn/extends/avatar1.jpg',
-    avatar_error2: 'http://greper.docmirror.cn/extends/avatar1.jpg',
-    avatar: 'http://greper.docmirror.cn/extends/avatar.jpg',
+    avatar_error1: 'http://greper.handsfree.work/extends/avatar1.jpg',
+    avatar_error2: 'http://greper.handsfree.work/extends/avatar1.jpg',
+    avatar: 'http://greper.handsfree.work/extends/avatar.jpg',
     file: [
-      'http://greper.docmirror.cn/extends/avatar.jpg',
+      'http://greper.handsfree.work/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
     image: [
-      'http://greper.docmirror.cn/extends/avatar.jpg',
+      'http://greper.handsfree.work/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
     image2: [
-      'http://greper.docmirror.cn/extends/avatar.jpg',
+      'http://greper.handsfree.work/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
   },

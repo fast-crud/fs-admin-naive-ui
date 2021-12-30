@@ -40,8 +40,6 @@ export default function ({ expose }) {
           form: {
             component: {
               multiple: true,
-              keyField: 'id',
-              valueField: 'name',
             },
             valueBuilder({ form }) {
               if (form.roles) {

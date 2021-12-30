@@ -100,21 +100,19 @@ function install(app, options: any = {}) {
       secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
       async getAuthorization() {
         // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-        return await http
-          .request({
-            url: 'http://www.docmirror.cn:7070/api/upload/cos/getAuthorization',
-            method: 'get',
-          })
-          .then((ret) => {
-            // 返回结构如下
-            // ret.data:{
+        /**
+         *  // 返回结构如下
+         // ret.data:{
             //   TmpSecretId,
             //   TmpSecretKey,
             //   XCosSecurityToken,
             //   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
             // }
-            return ret;
-          });
+         */
+        return await http.request({
+          url: 'http://www.docmirror.cn:7070/api/upload/cos/getAuthorization',
+          method: 'get',
+        });
       },
       successHandle(ret) {
         // 上传完成后可以在此处处理结果，修改url什么的
@@ -161,16 +159,17 @@ function install(app, options: any = {}) {
         console.log('success handle:', ret);
         return ret;
       },
-      domain: 'http://d2p.file.docmirror.cn',
+      domain: 'http://greper.handsfree.work',
     },
     form: {
       action: 'http://www.docmirror.cn:7070/api/upload/form/upload',
       name: 'file',
       withCredentials: false,
-      uploadRequest: async ({ action, file }) => {
+      uploadRequest: async ({ action, file, onProgress }) => {
         // @ts-ignore
         const data = new FormData();
         data.append('file', file);
+        console.log('自定义表单文件上传请求', file);
         return await http.request({
           url: action,
           method: 'post',
@@ -178,6 +177,9 @@ function install(app, options: any = {}) {
             'Content-Type': 'multipart/form-data',
           },
           data,
+          onUploadProgress(progress) {
+            onProgress({ percent: Math.round((progress.loaded / progress.total) * 100) });
+          },
         });
       },
       successHandle(ret) {
