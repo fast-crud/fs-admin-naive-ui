@@ -6,7 +6,7 @@ const apiPrefix = '/crud/FeatureHeight';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',
-    method: 'get',
+    method: 'post',
     data: query,
   });
 }
@@ -38,7 +38,7 @@ export function DelObj(id) {
 export function GetObj(id) {
   return request({
     url: apiPrefix + '/info',
-    method: 'get',
+    method: 'post',
     params: { id },
   });
 }

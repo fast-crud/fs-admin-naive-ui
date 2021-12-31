@@ -27,9 +27,7 @@ export default function ({ expose }) {
         fixedHeight: false,
       },
       table: {
-        scroll: {
-          y: null,
-        },
+        maxHeight: null,
       },
       columns: {
         id: {
@@ -48,7 +46,7 @@ export default function ({ expose }) {
           search: { show: true },
           type: 'dict-radio',
           dict: dict({
-            url: '/mock/dicts/OpenStatusEnum?single',
+            url: '/crud/dicts/OpenStatusEnum?single',
           }),
         },
       },

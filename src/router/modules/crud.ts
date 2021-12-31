@@ -361,7 +361,7 @@ const formRoutes = {
   ],
 };
 const featureRoutes = {
-  path: '/feature',
+  path: 'feature',
   name: routeName + 'Feature',
   meta: {
     title: '表格特性',
@@ -487,7 +487,7 @@ const featureRoutes = {
 };
 const slotRoutes = {
   name: routeName + 'Slots',
-  path: '/slots',
+  path: 'slots',
   redirect: '/crud/slots/layout',
   meta: {
     title: '插槽',
