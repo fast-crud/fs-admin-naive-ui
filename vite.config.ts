@@ -98,6 +98,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       target: 'es2015',
       outDir: OUTPUT_DIR,
       terserOptions: {
+        sourceMap: true,
         compress: {
           keep_infinity: true,
           drop_console: VITE_DROP_CONSOLE,
