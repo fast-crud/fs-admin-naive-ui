@@ -442,6 +442,12 @@ const featureRoutes = {
       component: () => import('@/views/crud/feature/fixed/index.vue'),
     },
     {
+      meta: { title: '不固定高度' },
+      name: routeName + 'FeatureHeight',
+      path: 'height',
+      component: () => import('@/views/crud/feature/height/index.vue'),
+    },
+    {
       meta: { title: '可编辑' },
       name: routeName + 'FeatureEditable',
       path: 'editable',
