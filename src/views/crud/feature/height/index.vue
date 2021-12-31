@@ -10,7 +10,7 @@
   import createCrudOptions from './crud';
   import { useExpose } from '@fast-crud/fast-crud';
   export default defineComponent({
-    name: 'ComponentHeight',
+    name: 'FeatureHeight',
     setup() {
       // crud组件的ref
       const crudRef = ref();

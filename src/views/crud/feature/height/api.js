@@ -2,7 +2,7 @@ import http from '@/utils/http/axios';
 const request = (req) => {
   return http.request(req);
 };
-const apiPrefix = '/crud/ComponentHeight';
+const apiPrefix = '/crud/FeatureHeight';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',
