@@ -25,7 +25,11 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, prodMock) 
       dts: true,
       resolvers: [NaiveUiResolver()],
     }),
-    PurgeIcons(),
+    PurgeIcons({
+      // iconSource: 'local',
+      // remoteDataAPI: 'https://gitee.com/fast-crud/collections-json/raw/master/json',
+      // includedCollections: ["ion"]
+    }),
   ];
 
   // vite-plugin-html
