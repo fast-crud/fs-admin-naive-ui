@@ -47,5 +47,5 @@ async function bootstrap() {
 }
 
 void bootstrap();
-import { setupProdMockServer } from '../mock/_createProductionServer';
-setupProdMockServer();
+// import { setupProdMockServer } from '../mock/_createProductionServer';
+// setupProdMockServer();
