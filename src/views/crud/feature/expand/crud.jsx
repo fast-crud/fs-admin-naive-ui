@@ -37,7 +37,7 @@ export default function ({ expose }) {
             show: false,
           },
         },
-        $expand: {
+        _expand: {
           title: '',
           form: { show: false },
           column: {
