@@ -47,14 +47,14 @@
           title: '新表单字段',
           type: 'text',
           form: {
-            rules: [{ required: true, message: '此项必填' }],
+            rule: [{ required: true, message: '此项必填' }],
           },
         },
         groupField: {
           title: '分组字段',
           type: 'text',
           form: {
-            rules: [{ required: true, message: '此项必填' }],
+            rule: [{ required: true, message: '此项必填' }],
           },
         },
       },

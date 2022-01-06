@@ -18,7 +18,7 @@ export default function ({ expose }) {
 
   const remoteDict = dict({
     cloneable: true,
-    url: '/crud/dicts/OpenStatusEnum',
+    url: '/mock/dicts/OpenStatusEnum',
   });
 
   return {
@@ -71,8 +71,8 @@ export default function ({ expose }) {
                 return;
               }
               targetDict.url = row.modifyDict
-                ? '/crud/dicts/moreOpenStatusEnum?remote'
-                : '/crud/dicts/OpenStatusEnum?remote';
+                ? '/mock/dicts/moreOpenStatusEnum?remote'
+                : '/mock/dicts/OpenStatusEnum?remote';
               targetDict.reloadDict();
             },
           },
@@ -88,8 +88,8 @@ export default function ({ expose }) {
                 return;
               }
               targetDict.url = form.modifyDict
-                ? '/crud/dicts/moreOpenStatusEnum?remote'
-                : '/crud/dicts/OpenStatusEnum?remote';
+                ? '/mock/dicts/moreOpenStatusEnum?remote'
+                : '/mock/dicts/OpenStatusEnum?remote';
               targetDict.reloadDict();
             },
           },

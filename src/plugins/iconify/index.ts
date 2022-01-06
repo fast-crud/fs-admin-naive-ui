@@ -1,2 +1,1 @@
-// import "@iconify/iconify";
-import "@purge-icons/generated";
+import '@purge-icons/generated';

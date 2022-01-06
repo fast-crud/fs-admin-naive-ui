@@ -41,7 +41,7 @@ export default function ({ expose }) {
           type: 'dict-tree',
           dict: dict({
             isTree: true,
-            url: '/crud/dicts/cascaderData?single',
+            url: '/mock/dicts/cascaderData?single',
           }),
           form: {
             component: {
@@ -56,7 +56,7 @@ export default function ({ expose }) {
           dict: dict({
             cloneable: false,
             isTree: true,
-            url: '/crud/dicts/cascaderData?single',
+            url: '/mock/dicts/cascaderData?single',
           }),
           form: {
             component: {
@@ -71,7 +71,7 @@ export default function ({ expose }) {
           type: 'dict-tree',
           dict: dict({
             isTree: true,
-            url: '/crud/dicts/littlePca',
+            url: '/mock/dicts/littlePca',
             value: 'code',
             label: 'name',
           }),

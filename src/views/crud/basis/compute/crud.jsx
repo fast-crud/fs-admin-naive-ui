@@ -1,9 +1,11 @@
 import * as api from './api';
-import http from '@/utils/http/axios';
 import { useCompute } from '@fast-crud/fast-crud';
 import { useMessage } from 'naive-ui';
 import { ref, computed } from 'vue';
+import { requestForMock } from '@/utils/http/service';
+
 const { asyncCompute, compute } = useCompute();
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
 export default function ({ crudExpose }) {
   const message = useMessage();
@@ -140,9 +142,9 @@ export default function ({ crudExpose }) {
               options: asyncCompute({
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
                 async asyncFn(watchValue, context) {
-                  const url = '/crud/dicts/OpenStatusEnum?remote';
+                  const url = '/mock/dicts/OpenStatusEnum?remote';
                   console.log('执行异步方法1', url, watchValue);
-                  const opts = await http.request({ url });
+                  const opts = await requestForMock({ url });
                   return opts;
                 },
               }),
@@ -168,10 +170,10 @@ export default function ({ crudExpose }) {
                 async asyncFn(watchValue) {
                   message.info('监听switch,触发远程获取options');
                   const url = watchValue
-                    ? '/crud/dicts/OpenStatusEnum?remote'
-                    : '/crud/dicts/moreOpenStatusEnum?remote';
+                    ? '/mock/dicts/OpenStatusEnum?remote'
+                    : '/mock/dicts/moreOpenStatusEnum?remote';
                   console.log('执行异步方法2', url, watchValue);
-                  return await http.request({ url });
+                  return await requestForMock({ url });
                 },
               }),
             },

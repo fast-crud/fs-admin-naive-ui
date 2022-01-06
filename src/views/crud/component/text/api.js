@@ -1,7 +1,10 @@
-import http from '@/utils/http/axios';
-const apiPrefix = '/crud/ComponentText';
+import { requestForMock } from '@/utils/http/service';
+const request = (req) => {
+  return requestForMock(req);
+};
+const apiPrefix = '/mock/ComponentText';
 export function GetList(query) {
-  return http.request({
+  return request({
     url: apiPrefix + '/page',
     method: 'post',
     data: query,
@@ -9,7 +12,7 @@ export function GetList(query) {
 }
 
 export function AddObj(obj) {
-  return http.request({
+  return request({
     url: apiPrefix + '/add',
     method: 'post',
     data: obj,
@@ -17,7 +20,7 @@ export function AddObj(obj) {
 }
 
 export function UpdateObj(obj) {
-  return http.request({
+  return request({
     url: apiPrefix + '/update',
     method: 'post',
     data: obj,
@@ -25,7 +28,7 @@ export function UpdateObj(obj) {
 }
 
 export function DelObj(id) {
-  return http.request({
+  return request({
     url: apiPrefix + '/delete',
     method: 'post',
     params: { id },
@@ -33,7 +36,7 @@ export function DelObj(id) {
 }
 
 export function GetObj(id) {
-  return http.request({
+  return request({
     url: apiPrefix + '/info',
     method: 'post',
     params: { id },

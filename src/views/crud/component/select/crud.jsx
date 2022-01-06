@@ -3,6 +3,7 @@ import { dict } from '@fast-crud/fast-crud';
 import http from '@/utils/http/axios';
 import { ref } from 'vue';
 import _ from 'lodash-es';
+import { requestForMock } from '@/utils/http/service';
 function useSearchRemote() {
   let lastFetchId = 0;
 
@@ -111,17 +112,17 @@ export default function () {
           },
           type: 'dict-select',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?simple',
+            url: '/mock/dicts/OpenStatusEnum?simple',
           }),
           form: {
-            rules: [{ required: true, message: '请选择一个选项' }],
+            rule: [{ required: true, message: '请选择一个选项' }],
           },
         },
         filter: {
           title: '本地过滤',
           type: 'dict-select',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?simple',
+            url: '/mock/dicts/OpenStatusEnum?simple',
           }),
           form: {
             component: {
@@ -167,8 +168,8 @@ export default function () {
             getData({ dict }) {
               // 覆盖全局获取字典请求配置
               console.log(`我是从自定义的getData方法中加载的数据字典`, dict);
-              return http.request({
-                url: '/crud/dicts/OpenStatusEnum?cache',
+              return requestForMock({
+                url: '/mock/dicts/OpenStatusEnum?cache',
               });
             },
           }),
@@ -189,7 +190,7 @@ export default function () {
           type: 'dict-select',
           dict: dict({
             cloneable: true,
-            url: '/crud/dicts/OpenStatusEnum?disabledOptions',
+            url: '/mock/dicts/OpenStatusEnum?disabledOptions',
           }),
           form: {
             component: {
@@ -213,7 +214,7 @@ export default function () {
           type: 'dict-select',
           dict: dict({
             cloneable: true,
-            url: '/crud/dicts/OpenStatusEnum?disabledOptions',
+            url: '/mock/dicts/OpenStatusEnum?disabledOptions',
           }),
           form: {
             component: {

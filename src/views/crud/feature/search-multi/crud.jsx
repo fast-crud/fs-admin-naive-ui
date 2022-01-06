@@ -32,7 +32,7 @@ export default function ({ expose }) {
         options: {
           labelCol: {
             style: {
-              width: '100px',
+              width: '140px',
             },
           },
         },
@@ -54,7 +54,7 @@ export default function ({ expose }) {
           search: { show: true },
           type: 'dict-radio',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
           column: {
             filters: [
@@ -93,12 +93,12 @@ export default function ({ expose }) {
         },
         text5: {
           type: 'text',
-          title: 'text5',
+          title: 'text555',
           search: { show: true },
         },
         text6: {
           type: 'text',
-          title: 'text6',
+          title: 'text6666',
           search: { show: true },
         },
         text7: {

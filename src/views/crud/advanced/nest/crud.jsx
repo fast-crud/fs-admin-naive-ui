@@ -79,7 +79,7 @@ export default function ({ expose, asideTableRef }) {
           type: ['number', 'colspan'],
           form: {
             // 嵌套表格字段
-            rules: [{ required: true, message: '请选择用户' }],
+            rule: [{ required: true, message: '请选择用户' }],
             component: {
               //局部引用子表格，要用shallowRef包裹
               name: shallowRef(SubTable),

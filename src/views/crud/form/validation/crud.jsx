@@ -102,7 +102,7 @@ export default function ({ expose }) {
           title: '必选',
           type: 'dict-select',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum',
+            url: '/mock/dicts/OpenStatusEnum',
           }),
           form: {
             rule: [{ required: true, message: '请选择一个选项' }],

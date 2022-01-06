@@ -5,16 +5,18 @@ import '@fast-crud/fast-crud/dist/style.css';
 import { FsExtendsUploader, FsExtendsEditor } from '@fast-crud/fast-extends';
 import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
-import http from '@/utils/http/axios';
+import { requestForMock, request } from '@/utils/http/service';
+
 function install(app, options: any = {}) {
   app.use(UiNaive);
   app.use(FastCrud, {
     i18n: options.i18n,
     async dictRequest({ url }) {
-      // if (url && url.startsWith('/mock')) {
-      //   //如果是crud开头的dict请求视为mock
-      // }
-      return await http.request({ url, method: 'get' });
+      if (url && url.startsWith('/mock')) {
+        //如果是crud开头的dict请求视为mock
+        return await requestForMock({ url, method: 'get' });
+      }
+      return await request({ url, method: 'get' });
     },
     /**
      * useCrud时会被执行
@@ -109,7 +111,7 @@ function install(app, options: any = {}) {
             //   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
             // }
          */
-        return await http.request({
+        return await request({
           url: 'http://www.docmirror.cn:7070/api/upload/cos/getAuthorization',
           method: 'get',
         });
@@ -128,7 +130,7 @@ function install(app, options: any = {}) {
       accessKeySecret: '',
       async getAuthorization() {
         // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-        const ret = await http.request({
+        const ret = await request({
           url: 'http://www.docmirror.cn:7070/api/upload/alioss/getAuthorization',
           method: 'get',
         });
@@ -148,7 +150,7 @@ function install(app, options: any = {}) {
     qiniu: {
       bucket: 'd2p-demo',
       async getToken() {
-        const ret = await http.request({
+        const ret = await request({
           url: 'http://www.docmirror.cn:7070/api/upload/qiniu/getToken',
           method: 'get',
         });
@@ -170,7 +172,7 @@ function install(app, options: any = {}) {
         const data = new FormData();
         data.append('file', file);
         console.log('自定义表单文件上传请求', file);
-        return await http.request({
+        return await request({
           url: action,
           method: 'post',
           headers: {

@@ -26,7 +26,7 @@ export default function () {
 
   const remoteDict = dict({
     cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
-    url: '/crud/dicts/OpenStatusEnum',
+    url: '/mock/dicts/OpenStatusEnum',
     immediate: false,
   });
   // remoteDict.loadDict();
@@ -75,8 +75,8 @@ export default function () {
             valueChange({ form }) {
               console.log('changed', form.modifyDict);
               remoteDict.url = form.modifyDict
-                ? '/crud/dicts/moreOpenStatusEnum?remote'
-                : '/crud/dicts/OpenStatusEnum?remote';
+                ? '/mock/dicts/moreOpenStatusEnum?remote'
+                : '/mock/dicts/OpenStatusEnum?remote';
               // 由于remoteDict.cloneable =false,所以全局公用一个实例，修改会影响全部地方
               remoteDict.reloadDict();
             },
@@ -87,8 +87,8 @@ export default function () {
               on: {
                 'onUpdate:value': ({ $event }) => {
                   remoteDict.url = $event
-                    ? '/crud/dicts/moreOpenStatusEnum?remote'
-                    : '/crud/dicts/OpenStatusEnum?remote';
+                    ? '/mock/dicts/moreOpenStatusEnum?remote'
+                    : '/mock/dicts/OpenStatusEnum?remote';
                   remoteDict.reloadDict();
                 },
               },

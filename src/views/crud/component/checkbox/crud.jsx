@@ -43,7 +43,7 @@ export default function ({}) {
             value: [], //element-plus要设置默认值
           },
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
         },
         // buttonType: {
@@ -57,7 +57,7 @@ export default function ({}) {
         //     value: [], //element-plus要设置默认值
         //   },
         //   dict: dict({
-        //     url: '/crud/dicts/OpenStatusEnum?single',
+        //     url: '/mock/dicts/OpenStatusEnum?single',
         //   }),
         // },
         // border: {
@@ -73,7 +73,7 @@ export default function ({}) {
         //     value: [], //element-plus要设置默认值
         //   },
         //   dict: dict({
-        //     url: '/crud/dicts/OpenStatusEnum?single',
+        //     url: '/mock/dicts/OpenStatusEnum?single',
         //   }),
         // },
       },

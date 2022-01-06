@@ -117,7 +117,7 @@ export default function ({ expose }) {
             // show: compute(({ form }) => {
             //   return form.change === "wang";
             // }),
-            rules: [{ required: true, message: '此项必填' }],
+            rule: [{ required: true, message: '此项必填' }],
             component: {
               disabled: compute(({ form }) => {
                 return form.disabled;

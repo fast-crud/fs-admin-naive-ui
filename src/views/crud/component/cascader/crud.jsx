@@ -1,6 +1,7 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
 import http from '@/utils/http/axios';
+import { requestForMock } from '@/utils/http/service';
 export default function () {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -49,7 +50,7 @@ export default function () {
           dict: dict({
             cloneable: false,
             isTree: true,
-            url: '/crud/dicts/cascaderData?single',
+            url: '/mock/dicts/cascaderData?single',
           }),
         },
         lazyLoad: {
@@ -67,8 +68,8 @@ export default function () {
               if (values == null) {
                 return [];
               }
-              const ret = await http.request({
-                url: '/crud/tree/GetNodesByValues',
+              const ret = await requestForMock({
+                url: '/mock/tree/GetNodesByValues',
                 params: { values },
                 method: 'get',
               });
@@ -95,8 +96,8 @@ export default function () {
               async onLoad(option) {
                 console.log('node', option);
                 const { value } = option;
-                let ret = await http.request({
-                  url: '/crud/tree/GetTreeChildrenByParentId',
+                let ret = await requestForMock({
+                  url: '/mock/tree/GetTreeChildrenByParentId',
                   params: { parentId: value },
                   method: 'get',
                 });
@@ -116,7 +117,7 @@ export default function () {
           type: 'dict-cascader',
           dict: dict({
             isTree: true,
-            url: '/crud/dicts/cascaderData',
+            url: '/mock/dicts/cascaderData',
           }),
           form: {
             component: {
@@ -149,7 +150,7 @@ export default function () {
           type: 'dict-cascader',
           dict: dict({
             isTree: true,
-            url: '/crud/dicts/cascaderData?multiple',
+            url: '/mock/dicts/cascaderData?multiple',
           }),
           form: {
             component: {

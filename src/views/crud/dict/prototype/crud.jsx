@@ -1,6 +1,7 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
 import http from '@/utils/http/axios';
+import { requestForMock } from '@/utils/http/service';
 export default function () {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -19,7 +20,7 @@ export default function () {
 
   const remoteDict = dict({
     prototype: true, //这个dict只是一个原型，引用它的dict组件初始化时都会把此dict对象clone一份
-    url: '/crud/dicts/OpenStatusEnum',
+    url: '/mock/dicts/OpenStatusEnum',
   });
 
   const dynamicUrlDict = dict({
@@ -27,7 +28,7 @@ export default function () {
     prototype: true, //这个dict只是一个原型，引用它的dict组件初始化时都会把此dict对象clone一份
     url({ row }) {
       //动态构建url
-      return row.switch ? '/crud/dicts/moreOpenStatusEnum' : '/crud/dicts/OpenStatusEnum';
+      return row.switch ? '/mock/dicts/moreOpenStatusEnum' : '/mock/dicts/OpenStatusEnum';
     },
   });
   const dynamicDict = dict({
@@ -35,11 +36,11 @@ export default function () {
     prototype: true, //这个dict只是一个原型，引用它的dict组件初始化时都会把此dict对象clone一份
     url({ row }) {
       //动态构建url
-      return row.switch ? '/crud/dicts/moreOpenStatusEnum' : '/crud/dicts/OpenStatusEnum';
+      return row.switch ? '/mock/dicts/moreOpenStatusEnum' : '/mock/dicts/OpenStatusEnum';
     },
     async getData({ url }) {
       //自定义dict 的请求方式
-      return await http.request({ url });
+      return await requestForMock({ url });
     },
   });
 
@@ -86,8 +87,8 @@ export default function () {
               }
               const targetDict = componentRef.getDict();
               targetDict.url = form.modifyDict
-                ? '/crud/dicts/moreOpenStatusEnum?remote'
-                : '/crud/dicts/OpenStatusEnum?remote';
+                ? '/mock/dicts/moreOpenStatusEnum?remote'
+                : '/mock/dicts/OpenStatusEnum?remote';
               targetDict.reloadDict();
             },
           },
@@ -100,8 +101,8 @@ export default function () {
               console.log('value', value);
               const targetDict = getComponentRef('remote').getDict();
               targetDict.url = value
-                ? '/crud/dicts/moreOpenStatusEnum?remote'
-                : '/crud/dicts/OpenStatusEnum?remote';
+                ? '/mock/dicts/moreOpenStatusEnum?remote'
+                : '/mock/dicts/OpenStatusEnum?remote';
               targetDict.reloadDict();
             },
           },

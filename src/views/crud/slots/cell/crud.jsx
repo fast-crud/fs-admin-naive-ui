@@ -16,7 +16,7 @@ export default function ({}) {
     return await api.AddObj(form);
   };
   const radioDict = dict({
-    url: '/crud/dicts/OpenStatusEnum?single',
+    url: '/mock/dicts/OpenStatusEnum?single',
   });
   return {
     radioDict,

@@ -55,7 +55,7 @@ export default function ({ expose }) {
           search: { show: true },
           type: 'dict-radio',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
         },
         cellMerge: {

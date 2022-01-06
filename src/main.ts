@@ -8,6 +8,10 @@ import 'makeit-captcha/dist/captcha.min.css';
 import { setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
 import { AppProvider } from '@/components/Application';
 import i18n from './i18n';
+
+// 本地mock
+import './mock';
+
 async function bootstrap() {
   const appProvider = createApp(AppProvider);
 

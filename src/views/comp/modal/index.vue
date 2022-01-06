@@ -75,7 +75,7 @@
           console.log(e);
         },
       },
-      rules: [{ required: true, message: '请输入姓名', trigger: ['blur'] }],
+      rule: [{ required: true, message: '请输入姓名', trigger: ['blur'] }],
     },
     {
       field: 'mobile',

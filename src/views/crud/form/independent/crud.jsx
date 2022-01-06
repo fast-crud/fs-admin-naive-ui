@@ -31,7 +31,7 @@ export default function ({ expose }) {
           title: '显示在label',
           type: 'text',
           form: {
-            rules: [{ required: true, message: '此项必填' }],
+            rule: [{ required: true, message: '此项必填' }],
             helper: {
               position: 'label',
               tooltip: {

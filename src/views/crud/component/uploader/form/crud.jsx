@@ -122,7 +122,7 @@ export default function ({ expose }) {
           title: '校验',
           type: 'file-uploader',
           form: {
-            rules: [
+            rule: [
               { required: true, message: '此项必传' },
               {
                 validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个

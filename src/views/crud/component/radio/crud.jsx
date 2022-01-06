@@ -40,7 +40,7 @@ export default function ({ expose }) {
           search: { show: true },
           type: 'dict-radio',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
         },
         button: {
@@ -48,7 +48,7 @@ export default function ({ expose }) {
           search: { show: true },
           type: 'dict-radio',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
           form: {
             component: {
@@ -68,7 +68,7 @@ export default function ({ expose }) {
             },
           },
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
         },
       },

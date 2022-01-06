@@ -92,7 +92,7 @@ export default function ({ expose, localDataRef }) {
           search: { show: true },
           type: 'dict-select',
           dict: dict({
-            url: '/crud/dicts/OpenStatusEnum?single',
+            url: '/mock/dicts/OpenStatusEnum?single',
           }),
         },
       },

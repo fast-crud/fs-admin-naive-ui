@@ -1,8 +1,8 @@
-import http from '@/utils/http/axios';
+import { requestForMock } from '@/utils/http/service';
 const request = (req) => {
-  return http.request(req);
+  return requestForMock(req);
 };
-const apiPrefix = '/crud/AdvancedSubTable';
+const apiPrefix = '/mock/AdvancedSubTable';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',

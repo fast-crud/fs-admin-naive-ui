@@ -1,8 +1,8 @@
-import http from '@/utils/http/axios';
+import { requestForMock } from '@/utils/http/service';
 const request = (req) => {
-  return http.request(req);
+  return requestForMock(req);
 };
-const apiPrefix = '/crud/formLayout';
+const apiPrefix = '/mock/formLayout';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',
