@@ -26,3 +26,4 @@ pnpm-debug.log*
 /components.d.ts
 yarn.lock
 pnpm.lock
+vite-profile.cpuprofile

@@ -51,6 +51,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     base: VITE_PUBLIC_PATH,
     esbuild: {},
     resolve: {
+      preserveSymlinks: true,
       alias: [
         {
           find: /\/#\//,
