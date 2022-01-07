@@ -64,6 +64,19 @@ export default function ({ expose }) {
             sortDirections: ['descend'],
           },
         },
+        valueBuilder: {
+          title: 'valueBuilder',
+          type: 'number',
+          search: {
+            show: true,
+            valueResolve({ key, value, form }) {
+              if (value) {
+                //可以转化查询条件
+                form[key] = value + '';
+              }
+            },
+          },
+        },
       },
     },
   };

@@ -6,12 +6,15 @@ const options = {
 const list = [
   {
     radio: '1',
+    valueBuilder: '321',
   },
   {
     radio: '2',
+    valueBuilder: '321',
   },
   {
     radio: '0',
+    valueBuilder: '321',
   },
 ];
 options.list = list;
