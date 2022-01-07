@@ -2,10 +2,18 @@ import { requestForMock } from '@/utils/http/service';
 const request = (req) => {
   return requestForMock(req);
 };
-const apiPrefix = '/mock/FormInner';
+const apiPrefix = '/mock/FormInnerArea';
 export function GetList(query) {
   return request({
     url: apiPrefix + "/page",
+    method: "get",
+    data: query
+  });
+}
+
+export function GetAll(query) {
+  return request({
+    url: apiPrefix + "/all",
     method: "get",
     data: query
   });

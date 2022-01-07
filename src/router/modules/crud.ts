@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router';
 import { Layout, ParentLayout } from '@/router/constant';
 import { TableOutlined } from '@vicons/antd';
 import { renderIcon } from '@/utils/index';
-const routeName = 'Crud';
+const routeName = '';
 
 import {
   DiscOutline,
@@ -326,12 +326,24 @@ const formRoutes = {
       path: 'helper',
       component: () => import('@/views/crud/form/helper/index.vue'),
     },
-    // {
-    //   title: "页面内部弹出表单",
-    //   name: "FormInner",
-    //   path: "/crud/form/inner",
-    //   component: "/crud/form/inner/index.vue"
-    // },
+    {
+      meta: {
+        title: '页面内弹出表单',
+        cache: true,
+      },
+      name: routeName + 'FormInner',
+      path: 'inner',
+      component: () => import('@/views/crud/form/inner/index.vue'),
+    },
+    {
+      meta: {
+        title: '地区字典管理',
+        cache: true,
+      },
+      name: routeName + 'FormInnerArea',
+      path: 'inner/area',
+      component: () => import('@/views/crud/form/inner/area/index.vue'),
+    },
     {
       name: routeName + 'FormNewPage',
       path: 'new-page',

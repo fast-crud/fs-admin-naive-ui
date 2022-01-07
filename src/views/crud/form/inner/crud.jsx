@@ -1,6 +1,9 @@
-import * as api from './api';
-import { dict, useExpose } from '@fast-crud/fast-crud';
+import * as api from "./api";
+import { dict, uiContext, useExpose } from "@fast-crud/fast-crud";
+import { useRouter } from "vue-router";
+import { useMessage } from "naive-ui";
 export default function ({ expose }) {
+  const ui = uiContext.get();
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -15,57 +18,60 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  const message = useMessage()
+  const router = useRouter();
+  const areaDict = dict({
+    value: "id",
+    label: "area",
+    url: "/mock/FormInnerArea/all"
+  });
   return {
     crudOptions: {
       request: {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest,
+        delRequest
       },
       form: {
         wrapper: {
-          //设置如下三个参数即可在fast-crud内部弹出表单
-          'append-to-body': false,
-          customClass: 'fs-dialog-inner',
-        },
+          inner: true
+        }
       },
       columns: {
         name: {
-          title: '姓名',
-          type: 'text',
+          title: "姓名",
+          type: "text"
         },
         age: {
-          title: '年龄',
-          type: 'text',
+          title: "年龄",
+          type: "text"
         },
         area: {
-          title: '地区',
-          type: 'dict-select',
-          dict: dict({
-            value: 'id',
-            label: 'text',
-            data: [
-              { id: 'sz', text: '深圳', color: 'success' },
-              { id: 'gz', text: '广州', color: null },
-              { id: 'bj', text: '北京' },
-              { id: 'wh', text: '武汉' },
-              { id: 'sh', text: '上海' },
-            ],
-          }),
+          title: "地区",
+          type: "dict-select",
+          dict: areaDict,
           form: {
-            component: {
-              props: {
-                slots: {
-                  suffixIcon: () => {
-                    return <SyncOutlined />;
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+            suffixRender() {
+              function refresh() {
+                message.info("刷新dict");
+                areaDict.reloadDict();
+              }
+              function gotoAddArea() {
+                message.info("调用 router.push 打开地区管理页面");
+                router.push({ path: "/crud/form/inner/area" });
+              }
+              return (
+                <n-button-group style={"padding-left:5px"}>
+                  <fs-button onClick={refresh} icon={ui.icons.refresh} />
+                  <fs-button onClick={gotoAddArea} text={"添加地区"} />
+                </n-button-group>
+              );
+            }
+          }
+        }
+      }
+    }
   };
 }
