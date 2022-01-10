@@ -28,9 +28,9 @@
     "test prod gzip": "http-server dist --cors --gzip -c-1"
   },
   "dependencies": {
-    "@fast-crud/fast-crud": "^1.0.0-alpha.3",
-    "@fast-crud/fast-extends": "^1.0.0-alpha.3",
-    "@fast-crud/ui-naive": "^1.0.0-alpha.3",
+    "@fast-crud/fast-crud": "^1.0.0-alpha.4",
+    "@fast-crud/fast-extends": "^1.0.0-alpha.4",
+    "@fast-crud/ui-naive": "^1.0.0-alpha.4",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.376",
     "@purge-icons/generated": "^0.7.0",
