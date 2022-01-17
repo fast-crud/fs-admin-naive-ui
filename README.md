@@ -1,5 +1,5 @@
 ## 留步
-少侠留步，早知如此绊人心，何如当初莫相识，右上角免费的 `Star` 点一点，帮我们突破一下 `1.5k`，谢谢！O(∩_∩)O
+少侠留步，早知如此绊人心，何如当初莫相识，右上角免费的 `Star` 点一点，帮我们突破一下 `2k`，谢谢！O(∩_∩)O
 
 ## 简介
 
@@ -30,13 +30,22 @@
 
 ## 新品
 
-千呼万唤 `Naive Admin Antd` 也迎来了第一个版本，同时具备 `Naive Ui Admin` 优点，如果您选的技术栈是 `antd` 的话，不妨看看以下版本，他或许能让您眼前一亮O(∩_∩)O哈哈~
+### Antd vue
+
+千呼万唤 `Naive Admin Antd` 也迎来了第一个版本，同时具备 `Naive Ui Admin` 优点，如果您选的技术栈是 `Antd` 的话，不妨看看。
 
 [NaiveAdmin Antd 预览](https://antd.naiveadmin.com)
 
+### Arco vue
+
+新产品，新生态，智能设计体系，连接轻盈体验，一如既往、开箱即用，欢迎前往查看。
+
+[NaiveAdmin Arco 预览](https://arco.naiveadmin.com)
+
+
 ## 文档
 
-[文档地址](https://naive-ui-admin-docs.vercel.app) 
+[v1文档地址](https://naive-ui-admin-docs.vercel.app) 
 
 ## 准备
 
@@ -128,9 +137,14 @@ yarn build
 
 ## 交流
 
-`Naive Ui Admin` 在帮助开发者更方便地进行中大型管理系统开发，同时也提供 QQ 交流群使用问题欢迎在群内提问。
+`Naive Ui Admin` 在帮助开发者更方便地进行中大型管理系统开发，同时也提供交流群，使用或者其他问题，都可以在群内讨论或提问。
 
 - QQ 群 `328347666`
+
+- 微信群（过期请issues留言）
+
+![image](https://user-images.githubusercontent.com/19426584/149060860-3ab2be00-303a-4cd1-b357-9fd8f2c30ad6.png)
+
 
 ## 赞助
 #### 如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 🍹。
