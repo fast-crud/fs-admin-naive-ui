@@ -1,6 +1,5 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
-import http from '@/utils/http/axios';
 import { requestForMock } from '@/utils/http/service';
 export default function () {
   const pageRequest = async (query) => {

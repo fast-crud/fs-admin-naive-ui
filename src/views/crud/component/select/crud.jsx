@@ -1,6 +1,5 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
-import http from '@/utils/http/axios';
 import { ref } from 'vue';
 import _ from 'lodash-es';
 import { requestForMock } from '@/utils/http/service';
