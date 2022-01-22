@@ -495,6 +495,12 @@ const featureRoutes = {
       path: 'value-builder',
       component: () => import('@/views/crud/feature/value-builder/index.vue'),
     },
+    {
+      meta: { title: '列设置（简化模式）' },
+      name: routeName + 'FeatureColumnsSet',
+      path: 'columns-set',
+      component: () => import('@/views/crud/feature/columns-set/index.vue'),
+    },
   ],
 };
 const slotRoutes = {
