@@ -501,6 +501,18 @@ const featureRoutes = {
       path: 'columns-set',
       component: () => import('@/views/crud/feature/columns-set/index.vue'),
     },
+    {
+      meta: { title: '本地编辑' },
+      name: routeName + 'FeatureLocal',
+      path: 'local',
+      component: () => import('@/views/crud/feature/local/index.vue'),
+    },
+    {
+      meta: { title: 'v-model' },
+      name: routeName + 'FeatureLocalVModel',
+      path: 'v-model',
+      component: () => import('@/views/crud/feature/local-v-model/index.vue'),
+    },
   ],
 };
 const slotRoutes = {
