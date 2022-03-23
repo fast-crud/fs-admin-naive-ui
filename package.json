@@ -137,5 +137,12 @@
   "homepage": "https://github.com/jekip/naive-ui-admin",
   "engines": {
     "node": "^12 || >=14"
+  },
+  "vite": {
+    "optimizeDeps": {
+      "include": [
+        "@iconify/iconify"
+      ]
+    }
   }
 }
