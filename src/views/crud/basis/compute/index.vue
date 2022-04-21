@@ -13,10 +13,13 @@
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <n-tooltip content="我能控制表格显隐">
-          <div class="ml-5" style="display: flex; width: 200px">
-            表格显隐:<n-switch v-model="showTableRef" />
-          </div>
+        <n-tooltip>
+          我能控制表格显隐
+          <template #trigger>
+            <div class="ml-5" style="display: flex; width: 200px">
+              表格显隐:<n-switch v-model="showTableRef" />
+            </div>
+          </template>
         </n-tooltip>
         <n-alert class="ml-1" type="info">点击下方右边的编辑按钮查看示例效果——————→ ↓↓↓↓↓</n-alert>
       </template>

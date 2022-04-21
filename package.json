@@ -53,13 +53,12 @@
     "qs": "^6.10.3",
     "vfonts": "^0.1.0",
     "vue": "^3.2.31",
+    "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.14",
     "vue-types": "^4.1.1",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "axios-mock-adapter": "^1.20.0",
-    "vite-plugin-purge-icons": "^0.7.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/lodash": "^4.14.181",
@@ -71,6 +70,7 @@
     "@vue/compiler-sfc": "^3.2.31",
     "@vue/eslint-config-typescript": "^7.0.0",
     "autoprefixer": "^10.4.4",
+    "axios-mock-adapter": "^1.20.0",
     "commitizen": "^4.2.4",
     "core-js": "^3.21.1",
     "dotenv": "^10.0.0",
@@ -103,6 +103,7 @@
     "vite-plugin-compression": "^0.3.6",
     "vite-plugin-html": "^2.1.2",
     "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-purge-icons": "^0.7.0",
     "vite-plugin-style-import": "^1.4.1",
     "vue-eslint-parser": "^7.11.0"
   },

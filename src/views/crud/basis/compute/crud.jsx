@@ -137,7 +137,7 @@ export default function ({ crudExpose }) {
             component: {
               name: 'fs-dict-select',
               vModel: 'value',
-              placeholder: '异步计算远程获取options',
+              placeholder: '异步获取options',
               // 这里n-select组件的options是通过计算获得的
               options: asyncCompute({
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars

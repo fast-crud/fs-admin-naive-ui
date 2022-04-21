@@ -13,9 +13,7 @@
       </template>
       <template #search-middle="scope">
         <n-form-item label="自定义">
-          <n-tooltip content="注意：search-middle插槽自定义的内容，无法被重置">
-            <n-input v-model:value="scope.form.custom" placeholder="search-middle插槽" />
-          </n-tooltip>
+          <n-input v-model:value="scope.form.custom" title="注意：search-middle插槽自定义的内容，无法被重置" placeholder="search-middle插槽" />
         </n-form-item>
       </template>
     </fs-crud>

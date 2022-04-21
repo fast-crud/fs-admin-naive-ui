@@ -2,9 +2,12 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #form_slotField="scope">
-        <n-tooltip content="这是一个字段插槽示例">
-          <n-input v-model:value="scope.form.slotField" placeholder="我是插槽字段"
-        /></n-tooltip>
+        <n-tooltip>
+          这是一个字段插槽示例
+          <template #trigger>
+            <n-input v-model:value="scope.form.slotField" placeholder="我是插槽字段" />
+          </template>
+        </n-tooltip>
       </template>
     </fs-crud>
   </fs-page>

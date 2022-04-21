@@ -14,7 +14,7 @@ import {
   CubeOutline,
 } from '@vicons/ionicons5';
 
-const basicRoute = {
+const basicRoute: RouteRecordRaw = {
   path: 'basis',
   name: routeName + 'Basis',
   redirect: '/crud/basis/compute',
