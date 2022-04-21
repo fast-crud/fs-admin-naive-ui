@@ -3,9 +3,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router, { setupRouter } from './router';
 import { setupStore } from '@/store';
-import MakeitCaptcha from 'makeit-captcha';
-import 'makeit-captcha/dist/captcha.min.css';
-import { setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
+import { setupNaive, setupDirectives } from '@/plugins';
 import { AppProvider } from '@/components/Application';
 import i18n from './i18n';
 
@@ -16,8 +14,6 @@ async function bootstrap() {
   const appProvider = createApp(AppProvider);
 
   const app = createApp(App);
-
-  app.use(MakeitCaptcha);
 
   // 注册全局常用的 naive-ui 组件
   setupNaive(app);
