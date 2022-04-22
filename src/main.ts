@@ -3,7 +3,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router, { setupRouter } from './router';
 import { setupStore } from '@/store';
-import { setupNaive, setupDirectives } from '@/plugins';
+import { setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
 import { AppProvider } from '@/components/Application';
 import i18n from './i18n';
 
@@ -19,8 +19,8 @@ async function bootstrap() {
   setupNaive(app);
 
   app.use(i18n);
-  // // 注册fast-crud
-  // setupFastCrud(app, { i18n });
+  // 注册fast-crud
+  setupFastCrud(app, { i18n });
 
   // 注册全局自定义组件
   //setupCustomComponents();
