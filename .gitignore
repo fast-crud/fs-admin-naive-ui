@@ -27,3 +27,4 @@ pnpm-debug.log*
 yarn.lock
 pnpm.lock
 vite-profile.cpuprofile
+pnpm-lock.yaml
