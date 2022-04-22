@@ -100,7 +100,6 @@
     "typescript": "^4.6.3",
     "unplugin-vue-components": "^0.17.21",
     "vite": "^2.9.1",
-    "vite-plugin-compression": "^0.3.6",
     "vite-plugin-html": "^2.1.2",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-purge-icons": "^0.7.0",
