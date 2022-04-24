@@ -4,7 +4,7 @@ node_modules
 /dist
 dist.zip
 dist_electron
-*.lock
+
 # local env files
 .env.local
 .env.*.local

@@ -132,6 +132,9 @@ const transform: AxiosTransform = {
       config.url = `${urlPrefix}${config.url}`;
     }
 
+    if (!isUrlStr && apiUrl && isString(apiUrl)) {
+      config.url = `${apiUrl}${config.url}`;
+    }
     const params = config.params || {};
     const data = config.data || false;
     if (config.method?.toUpperCase() === RequestEnum.GET) {

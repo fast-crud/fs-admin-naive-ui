@@ -34,7 +34,7 @@
           console.log(e);
         },
       },
-      rule: [{ required: true, message: '请输入姓名', trigger: ['blur'] }],
+      rules: [{ required: true, message: '请输入姓名', trigger: ['blur'] }],
     },
     {
       field: 'mobile',

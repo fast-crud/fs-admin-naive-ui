@@ -7,7 +7,6 @@ import { OUTPUT_DIR } from './build/constant';
 import { createProxy } from './build/vite/proxy';
 import pkg from './package.json';
 import { format } from 'date-fns';
-import path from 'path';
 const { dependencies, devDependencies, name, version } = pkg;
 
 const __APP_INFO__ = {
@@ -20,26 +19,6 @@ function pathResolve(dir: string) {
 }
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  let devServerFs: any = {};
-  let devAlias: any[] = [];
-  if (mode.startsWith('debug')) {
-    devAlias = [
-      { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve('../../fast-crud/src/') },
-      { find: /@fast-crud\/fast-crud$/, replacement: path.resolve('../../fast-crud/src/') },
-      {
-        find: /@fast-crud\/fast-extends\/dist/,
-        replacement: path.resolve('../../fast-extends/src/'),
-      },
-      { find: /@fast-crud\/fast-extends$/, replacement: path.resolve('../../fast-extends/src/') },
-      { find: /@fast-crud\/ui-naive$/, replacement: path.resolve('../../ui/ui-naive/src/') },
-    ];
-    devServerFs = {
-      // 这里配置dev启动时读取的项目根目录
-      //allow: ['../../'],
-    };
-    console.log('devAlias', devAlias);
-  }
-
   const root = process.cwd();
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
@@ -51,7 +30,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     base: VITE_PUBLIC_PATH,
     esbuild: {},
     resolve: {
-      preserveSymlinks: true,
       alias: [
         {
           find: /\/#\//,
@@ -61,7 +39,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           find: '@',
           replacement: pathResolve('src') + '/',
         },
-        ...devAlias,
       ],
       dedupe: ['vue'],
     },
@@ -82,7 +59,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       host: true,
       port: VITE_PORT,
       proxy: createProxy(VITE_PROXY),
-      ...devServerFs,
       // proxy: {
       //     '/api': {
       //         target: '',
@@ -99,7 +75,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       target: 'es2015',
       outDir: OUTPUT_DIR,
       terserOptions: {
-        sourceMap: true,
         compress: {
           keep_infinity: true,
           drop_console: VITE_DROP_CONSOLE,
