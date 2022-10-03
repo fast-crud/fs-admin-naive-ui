@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import { RouteLocationNormalized } from 'vue-router';
-import { TABS_ROUTES } from '../mutation-types';
 
 // 不需要出现在标签页中的路由
 const whiteList = ['Redirect', 'login'];
@@ -47,16 +46,16 @@ export const useTabsViewStore = defineStore({
     closeLeftTabs(route) {
       // 关闭左侧
       const index = this.tabsList.findIndex((item) => item.fullPath == route.fullPath);
-      this.tabsList.splice(0, index);
+      this.tabsList = this.tabsList.filter((item, i) => i >= index || (item?.meta?.affix ?? false));
     },
     closeRightTabs(route) {
       // 关闭右侧
       const index = this.tabsList.findIndex((item) => item.fullPath == route.fullPath);
-      this.tabsList.splice(index + 1);
+      this.tabsList = this.tabsList.filter((item, i) => i <= index || (item?.meta?.affix ?? false));
     },
     closeOtherTabs(route) {
       // 关闭其他
-      this.tabsList = this.tabsList.filter((item) => item.fullPath == route.fullPath);
+      this.tabsList = this.tabsList.filter((item) => item.fullPath == route.fullPath || (item?.meta?.affix ?? false));
     },
     closeCurrentTab(route) {
       // 关闭当前页

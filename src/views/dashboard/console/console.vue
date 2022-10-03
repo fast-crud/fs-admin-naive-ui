@@ -5,7 +5,7 @@
       <n-grid-item>
         <NCard
           title="访问量"
-          :segmented="{ content: 'hard', footer: 'hard' }"
+          :segmented="{ content: true, footer: true }"
           size="small"
           :bordered="false"
         >
@@ -54,7 +54,7 @@
       <n-grid-item>
         <NCard
           title="销售额"
-          :segmented="{ content: 'hard', footer: 'hard' }"
+          :segmented="{ content: true, footer: true }"
           size="small"
           :bordered="false"
         >
@@ -97,7 +97,7 @@
       <n-grid-item>
         <NCard
           title="订单量"
-          :segmented="{ content: 'hard', footer: 'hard' }"
+          :segmented="{ content: true, footer: true }"
           size="small"
           :bordered="false"
         >
@@ -146,7 +146,7 @@
       <n-grid-item>
         <NCard
           title="成交额"
-          :segmented="{ content: 'hard', footer: 'hard' }"
+          :segmented="{ content: true, footer: true }"
           size="small"
           :bordered="false"
         >
@@ -324,11 +324,11 @@
   ];
 
   onMounted(async () => {
-    const { visits, saleroom, orderLarge, volume } = await getConsoleInfo();
-    visits.value = visits;
-    saleroom.value = saleroom;
-    orderLarge.value = orderLarge;
-    volume.value = volume;
+    const data = await getConsoleInfo();
+    visits.value = data.visits;
+    saleroom.value = data.saleroom;
+    orderLarge.value = data.orderLarge;
+    volume.value = data.volume;
     loading.value = false;
   });
 </script>

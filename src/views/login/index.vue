@@ -4,9 +4,9 @@
     <div class="view-account-container">
       <div class="view-account-top">
         <div class="view-account-top-logo">
-          <img src="~@/assets/images/account-logo.png" alt="" />
+          <img :src="websiteConfig.loginImage" alt="" />
         </div>
-        <div class="view-account-top-desc">Naive Ui Admin中台前端/设计解决方案</div>
+        <div class="view-account-top-desc">{{ websiteConfig.loginDesc }}</div>
       </div>
       <div class="view-account-form">
         <n-form
@@ -92,7 +92,7 @@
   import { ResultEnum } from '@/enums/httpEnum';
   import { PersonOutline, LockClosedOutline, LogoGithub, LogoFacebook } from '@vicons/ionicons5';
   import { PageEnum } from '@/enums/pageEnum';
-
+  import { websiteConfig } from '@/config/website.config';
   interface FormState {
     username: string;
     password: string;
@@ -164,8 +164,9 @@
 
     &-container {
       flex: 1;
-      padding: 32px 0;
-      width: 384px;
+      padding: 32px 12px;
+      max-width: 384px;
+      min-width: 320px;
       margin: 0 auto;
     }
 
