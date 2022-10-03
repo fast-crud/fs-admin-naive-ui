@@ -603,6 +603,14 @@ const advancedRoutes = {
     },
     {
       meta: {
+        title: '对话框中显示crud',
+      },
+      name: routeName + 'AdvancedInDialog',
+      path: 'in-dialog',
+      component: () => import('@/views/crud/advanced/in-dialog/index.vue'),
+    },
+    {
+      meta: {
         title: '修改布局',
       },
       name: routeName + 'AdvancedLayout',
