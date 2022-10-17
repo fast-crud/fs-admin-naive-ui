@@ -25,6 +25,14 @@ const basicRoute: RouteRecordRaw = {
   component: ParentLayout,
   children: [
     {
+      name: routeName + 'HelloWorld',
+      path: 'helloWorld',
+      meta: {
+        title: 'HelloWorld',
+      },
+      component: () => import('@/views/crud/basis/first/index.vue'),
+    },
+    {
       name: routeName + 'BasisCompute',
       path: 'compute',
       meta: {
@@ -639,7 +647,7 @@ const advancedRoutes = {
  * @param meta.sort 排序越小越排前
  *
  * */
-const routes: Array<RouteRecordRaw> = [
+const routes = [
   {
     path: '/crud',
     name: routeName,
