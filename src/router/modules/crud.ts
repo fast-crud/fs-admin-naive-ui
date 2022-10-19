@@ -521,6 +521,12 @@ const featureRoutes = {
       path: 'v-model',
       component: () => import('@/views/crud/feature/local-v-model/index.vue'),
     },
+    {
+      meta: { title: '自定义删除' },
+      name: routeName + 'FeatureRemove',
+      path: 'remove',
+      component: () => import('@/views/crud/feature/remove/index.vue'),
+    },
   ],
 };
 const slotRoutes = {

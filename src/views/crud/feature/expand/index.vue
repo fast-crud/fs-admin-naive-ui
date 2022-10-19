@@ -34,14 +34,14 @@
         expose.doRefresh();
       });
 
-      const message = useMessage()
-      const dialog = useDialog()
+      const message = useMessage();
+      const dialog = useDialog();
 
       const handleBatchDelete = () => {
         if (selectedRowKeys.value?.length > 0) {
           dialog.info({
-          // negativeText:"取消"
-          // positiveText:"确定"
+            // negativeText:"取消"
+            // positiveText:"确定"
             title: '确认',
             content: `确定要批量删除这${selectedRowKeys.value.length}条记录吗`,
             async onNegativeClick() {
