@@ -2,7 +2,12 @@ import { App } from 'vue';
 
 import { FastCrud } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
-import { FsExtendsUploader, FsExtendsEditor } from '@fast-crud/fast-extends';
+import {
+  FsExtendsUploader,
+  FsExtendsEditor,
+  FsExtendsJson,
+  FsExtendsCopyable,
+} from '@fast-crud/fast-extends';
 import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
 import { requestForMock, request } from '@/utils/http/service';
@@ -91,6 +96,8 @@ function install(app, options: any = {}) {
     //编辑器的公共配置
     wangEditor: {},
   });
+  app.use(FsExtendsJson);
+  app.use(FsExtendsCopyable);
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
     defaultType: 'cos',

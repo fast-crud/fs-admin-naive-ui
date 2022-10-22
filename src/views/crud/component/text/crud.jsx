@@ -58,6 +58,10 @@ export default function ({ crudExpose }) {
             show: false,
           },
         },
+        copy: {
+          title: '剪贴板',
+          type: ['text', 'copyable'],
+        },
         intro: {
           title: '简介',
           type: 'textarea',
