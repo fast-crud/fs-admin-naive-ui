@@ -378,6 +378,14 @@ const formRoutes = {
       path: 'independent',
       component: () => import('@/views/crud/form/independent/index.vue'),
     },
+    {
+      meta: {
+        title: '表单嵌套数据',
+      },
+      name: routeName + 'FormNest',
+      path: 'nest',
+      component: () => import('@/views/crud/form/nest/index.vue'),
+    },
   ],
 };
 const featureRoutes = {
