@@ -7,6 +7,7 @@ import {
   FsExtendsEditor,
   FsExtendsJson,
   FsExtendsCopyable,
+  FsExtendsTime,
 } from '@fast-crud/fast-extends';
 import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
@@ -197,6 +198,15 @@ function install(app, options: any = {}) {
       },
     },
   });
+
+  //安装editor
+  app.use(FsExtendsEditor, {
+    //编辑器的公共配置
+    wangEditor: {},
+  });
+  app.use(FsExtendsJson);
+  app.use(FsExtendsTime);
+  app.use(FsExtendsCopyable);
 }
 
 export default {
