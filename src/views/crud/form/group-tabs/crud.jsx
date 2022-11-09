@@ -1,7 +1,6 @@
 import * as api from './api';
-import { dict } from '@fast-crud/fast-crud';
+
 export default function ({ expose }) {
-  const { getFormRef, getFormData } = expose;
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -33,6 +32,9 @@ export default function ({ expose }) {
           title: '商品代码',
           search: { show: true },
           type: 'text',
+          form: {
+            rules: [{ required: true, message: '此项必填' }],
+          },
         },
         images: {
           title: '图片',
@@ -68,9 +70,9 @@ export default function ({ expose }) {
           groups: {
             base: {
               slots: {
-                tab: () => {
+                tab: (scope) => {
                   return (
-                    <span style={'color:green'}>
+                    <span style={{ color: scope.hasError ? 'red' : 'green' }}>
                       <fs-icon icon={'ion:checkmark-circle'} />
                       商品基础
                     </span>
