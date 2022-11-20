@@ -17,7 +17,7 @@
           我能控制表格显隐
           <template #trigger>
             <div class="ml-5" style="display: flex; width: 200px">
-              表格显隐:<n-switch v-model="showTableRef" />
+              表格显隐:<n-switch v-model:value="showTableRef" />
             </div>
           </template>
         </n-tooltip>

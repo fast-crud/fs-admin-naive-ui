@@ -19,12 +19,14 @@ const list = [
     remote: '0',
     remote2: '2',
     editable: false,
+    shower: '---> 点右边编辑查看示例效果',
   },
   {
     compute: true,
     status: '0',
     remote2: '2',
     editable: true,
+    shower: '---> 点右边编辑查看示例效果',
   },
 ];
 options.list = list;

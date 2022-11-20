@@ -99,10 +99,12 @@ export default function ({ crudExpose }) {
           search: { show: false },
           type: 'text',
           column: {
-            show: false,
             component: {
               name: 'n-switch',
               vModel: 'value',
+            },
+            valueChange({ value, row }) {
+              console.log('valueChange', value, row);
             },
           },
           form: {
@@ -116,7 +118,7 @@ export default function ({ crudExpose }) {
         shower: {
           title: '根据compute显示',
           search: { show: false },
-          type: 'text',
+          type: 'button',
           form: {
             component: {
               // 这里组件是否显示是通过计算获得的
@@ -127,6 +129,11 @@ export default function ({ crudExpose }) {
           },
           column: {
             width: 250,
+            component: {
+              show: compute(({ row }) => {
+                return row.compute;
+              }),
+            },
           },
         },
         remote: {

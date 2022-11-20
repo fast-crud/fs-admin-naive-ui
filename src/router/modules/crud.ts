@@ -64,6 +64,22 @@ const basicRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/basis/value-change/index.vue'),
     },
+    {
+      name: routeName + 'BasisLayoutCard',
+      path: 'layout-card',
+      meta: {
+        title: 'Card布局',
+      },
+      component: () => import('@/views/crud/basis/layout-card/index.vue'),
+    },
+    {
+      name: routeName + 'BasisLayoutCustom',
+      path: 'layout-custom',
+      meta: {
+        title: '自定义布局',
+      },
+      component: () => import('@/views/crud/basis/layout-custom/index.vue'),
+    },
   ],
 };
 
