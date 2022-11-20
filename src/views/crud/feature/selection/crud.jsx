@@ -33,6 +33,7 @@ export default function ({ expose }) {
       },
       table: {
         rowKey: (row) => row.id, //设置你的主键id获取方式， 默认(row)=>row.id
+        checkedRowKeys: selectedIds,
         'onUpdate:checkedRowKeys': onSelectionChange,
       },
       columns: {
