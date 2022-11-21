@@ -31,6 +31,7 @@
     "test prod gzip": "http-server dist --cors --gzip -c-1"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
     "@fast-crud/fast-crud": "^1.6.1",
     "@fast-crud/fast-extends": "^1.6.1",
     "@fast-crud/ui-naive": "^1.6.1",
