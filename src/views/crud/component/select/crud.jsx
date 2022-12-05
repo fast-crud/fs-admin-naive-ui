@@ -278,6 +278,33 @@ export default function () {
             },
           },
         },
+        customTemplate: {
+          title: '自定义模板',
+          type: 'dict-select',
+          dict: dict({
+            value: 'id',
+            label: 'text',
+            data: [
+              { id: 'sz', text: '深圳', color: 'success' },
+              { id: 'gz', text: '广州' },
+              { id: 'bj', text: '北京' },
+              { id: 'wh', text: '武汉' },
+              { id: 'sh', text: '上海' },
+            ],
+          }),
+          form: {
+            component: {
+              renderLabel(item) {
+                return (
+                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                    <span style={{ marginRight: '10px' }}>{item['text']}</span>
+                    <span style="">{item['id']}</span>
+                  </div>
+                );
+              },
+            },
+          },
+        },
       },
     },
   };
