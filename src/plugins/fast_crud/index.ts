@@ -186,6 +186,7 @@ function install(app, options: any = {}) {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
+          timeout: 60000,
           data,
           onUploadProgress(progress) {
             onProgress({ percent: Math.round((progress.loaded / progress.total) * 100) });

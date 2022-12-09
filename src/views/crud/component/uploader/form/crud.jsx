@@ -1,7 +1,5 @@
 import * as api from './api';
 import { AllUploadSuccessValidator } from '@fast-crud/fast-extends';
-import { dict } from '@fast-crud/fast-crud';
-import { nextTick } from 'vue';
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -119,14 +117,14 @@ export default function ({ expose }) {
           },
         },
         accept: {
-          title: "限制类型",
-          type: "file-uploader",
+          title: '限制类型',
+          type: 'file-uploader',
           form: {
             component: {
-              accept: "*.jpg,*.png"
+              accept: '*.jpg,*.png',
             },
-            helper: "只能上传jpg或者png"
-          }
+            helper: '只能上传jpg或者png',
+          },
         },
         validation: {
           title: '校验',
@@ -139,9 +137,11 @@ export default function ({ expose }) {
                 message: '还有文件正在上传，请稍候',
               },
             ],
+            helper: '大小不能超过50M，文件未上传完成之前，阻止提交',
             component: {
               uploader: {
                 type: 'form',
+                sizeLimit: 1024 * 1024 * 50,
               },
             },
           },
