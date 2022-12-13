@@ -1,18 +1,16 @@
 import './styles/tailwind.css';
 import { createApp } from 'vue';
+import { setupNaive, setupDirectives ,setupFastCrud} from '@/plugins';
 import App from './App.vue';
 import router, { setupRouter } from './router';
 import { setupStore } from '@/store';
-import { setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
-import { AppProvider } from '@/components/Application';
+
 import i18n from './i18n';
 
 // 本地mock
 import './mock';
 
 async function bootstrap() {
-  const appProvider = createApp(AppProvider);
-
   const app = createApp(App);
 
   // 注册全局常用的 naive-ui 组件
@@ -33,9 +31,6 @@ async function bootstrap() {
 
   // 挂载状态管理
   setupStore(app);
-
-  //优先挂载一下 Provider 解决路由守卫，Axios中可使用，Dialog，Message 等之类组件
-  appProvider.mount('#appProvider', true);
 
   // 挂载路由
   await setupRouter(app);
