@@ -80,6 +80,14 @@ const basicRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/basis/layout-custom/index.vue'),
     },
+    {
+      name: routeName + 'BasisColumnsSet',
+      path: 'columns-set',
+      meta: {
+        title: '列设置',
+      },
+      component: () => import('@/views/crud/basis/columns-set/index.vue'),
+    },
   ],
 };
 

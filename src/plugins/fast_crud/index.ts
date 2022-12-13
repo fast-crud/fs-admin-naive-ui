@@ -13,6 +13,12 @@ import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
 import { requestForMock, request } from '@/utils/http/service';
 
+/**
+ *  fast-crud的安装方法
+ *  注意：在App.vue中，需要用fs-ui-context组件包裹RouterView，让fs-crud拥有message、notification、dialog的能力
+ * @param app
+ * @param options
+ */
 function install(app, options: any = {}) {
   app.use(UiNaive);
   app.use(FastCrud, {

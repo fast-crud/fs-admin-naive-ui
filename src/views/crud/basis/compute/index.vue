@@ -47,7 +47,7 @@
       const { crudOptions, output } = createCrudOptions({ crudExpose });
       // 初始化crud配置
       // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-      const { resetCrudOptions } = useCrud({ crudExpose, crudOptions });
+      const { resetCrudOptions, appendCrudBinding } = useCrud({ crudExpose, crudOptions });
       // 你可以调用此方法，重新初始化crud配置
       // resetCrudOptions(options)
 

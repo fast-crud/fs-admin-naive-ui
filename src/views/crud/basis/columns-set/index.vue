@@ -1,0 +1,40 @@
+<template>
+  <fs-page>
+    <fs-crud ref="crudRef" v-bind="crudBinding">
+      <template #actionbar-right>
+        <n-alert class="ml-1" type="warning" title="列设置可以禁用或者隐藏某字段勾选" />
+        <n-button @click="columnsSetToggleMode()"> 切换简单模式 </n-button>
+      </template>
+    </fs-crud>
+  </fs-page>
+</template>
+
+<script lang="ts">
+  import { defineComponent, ref, onMounted, Ref } from 'vue';
+  import createCrudOptions from './crud.jsx';
+  import { CrudBinding, useFs } from '@fast-crud/fast-crud';
+  import { useMessage } from 'naive-ui';
+  export default defineComponent({
+    name: 'BasisColumnsSet',
+    setup() {
+      const { crudRef, crudBinding, crudExpose } = useFs({ createCrudOptions });
+
+      // 页面打开后获取列表数据
+      onMounted(() => {
+        crudExpose.doRefresh();
+      });
+      const message = useMessage();
+      function columnsSetToggleMode() {
+        crudBinding.value.toolbar.columnsFilter.mode =
+          crudBinding.value.toolbar.columnsFilter.mode === 'simple' ? 'default' : 'simple';
+        message.info('当前列设置组件的模式为：' + crudBinding.value.toolbar.columnsFilter.mode);
+      }
+
+      return {
+        crudBinding,
+        crudRef,
+        columnsSetToggleMode,
+      };
+    },
+  });
+</script>
