@@ -5,13 +5,12 @@
 </template>
 
 <script>
-  import { defineComponent, ref, onMounted } from 'vue';
-  import { useCrud } from '@fast-crud/fast-crud';
-  import { useExpose } from '@fast-crud/fast-crud';
+  import { defineComponent, onMounted } from 'vue';
+  import { useFs } from '@fast-crud/fast-crud';
   import _ from 'lodash-es';
 
   //此处为crudOptions配置
-  const createCrudOptions = function ({ expose }) {
+  const createCrudOptions = function ({ crudExpose }) {
     //本地模拟后台crud接口方法 ----开始
     const records = [{ id: 1, name: 'Hello World' }];
     const pageRequest = async () => {
@@ -74,23 +73,11 @@
   export default defineComponent({
     name: 'FsCrudFirst',
     setup() {
-      // crud组件的ref
-      const crudRef = ref();
-      // crud 配置的ref
-      const crudBinding = ref();
-      // 暴露的方法
-      const { expose } = useExpose({ crudRef, crudBinding });
-      // 你的crud配置
-      const { crudOptions } = createCrudOptions({ expose });
-      // 初始化crud配置
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
-      const { resetCrudOptions } = useCrud({ expose, crudOptions });
-      // 你可以调用此方法，重新初始化crud配置
-      // resetCrudOptions(options)
+      const { crudRef, crudBinding, crudExpose } = useFs({ createCrudOptions });
 
       // 页面打开后获取列表数据
       onMounted(() => {
-        expose.doRefresh();
+        crudExpose.doRefresh();
       });
 
       return {
