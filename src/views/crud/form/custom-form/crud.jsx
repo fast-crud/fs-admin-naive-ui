@@ -27,6 +27,16 @@ export default function ({ expose }) {
       form: {
         labelWidth: '150px',
       },
+      addForm: {
+        wrapper: {
+          title: '新增',
+        },
+      },
+      editForm: {
+        wrapper: {
+          title: '修改',
+        },
+      },
       columns: {
         title: {
           title: '商品标题',
