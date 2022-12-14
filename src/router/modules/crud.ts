@@ -88,9 +88,45 @@ const basicRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/basis/columns-set/index.vue'),
     },
+    {
+      name: routeName + 'BasisRowHandle',
+      path: 'row-handle',
+      meta: {
+        title: '操作列',
+      },
+      component: () => import('@/views/crud/basis/row-handle/index.vue'),
+    },
   ],
 };
 
+const rowHandleRoute: RouteRecordRaw = {
+  path: 'row-handle',
+  name: routeName + 'RowHandle',
+  redirect: '/crud/row-handle/tooltip',
+  meta: {
+    title: '操作列',
+    icon: renderIcon(DiscOutline),
+  },
+  component: ParentLayout,
+  children: [
+    {
+      name: routeName + 'RowHandleTooltip',
+      path: 'tooltip',
+      meta: {
+        title: 'Tooltip',
+      },
+      component: () => import('@/views/crud/row-handle/tooltip/index.vue'),
+    },
+    {
+      name: routeName + 'RowHandleDropdown',
+      path: 'dropdown',
+      meta: {
+        title: '按钮折叠',
+      },
+      component: () => import('@/views/crud/row-handle/dropdown/index.vue'),
+    },
+  ],
+};
 const componentRoute = {
   path: 'component',
   name: routeName + 'Component',
@@ -699,6 +735,7 @@ const routes = [
     children: [
       basicRoute,
       dictRoutes,
+      rowHandleRoute,
       componentRoute,
       featureRoutes,
       formRoutes,

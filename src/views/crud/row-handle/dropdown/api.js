@@ -2,7 +2,7 @@ import { requestForMock } from '@/utils/http/service';
 const request = (req) => {
   return requestForMock(req);
 };
-const apiPrefix = '/mock/FeatureDropdown';
+const apiPrefix = '/mock/RowHandleDropdown';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',
