@@ -88,14 +88,6 @@ const basicRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/basis/columns-set/index.vue'),
     },
-    {
-      name: routeName + 'BasisRowHandle',
-      path: 'row-handle',
-      meta: {
-        title: '操作列',
-      },
-      component: () => import('@/views/crud/basis/row-handle/index.vue'),
-    },
   ],
 };
 
@@ -458,15 +450,6 @@ const featureRoutes = {
   component: ParentLayout,
   redirect: '/crud/feature/dropdown',
   children: [
-    {
-      meta: {
-        title: '操作列按钮折叠',
-      },
-
-      name: routeName + 'FeatureDropdown',
-      path: 'dropdown',
-      component: () => import('@/views/crud/feature/dropdown/index.vue'),
-    },
     {
       meta: {
         title: '部件显隐',
