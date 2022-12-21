@@ -201,7 +201,10 @@ function install(app, options: any = {}) {
       },
       successHandle(ret) {
         // 上传完成后的结果处理， 此处应返回格式为{url:xxx}
-        return { url: 'http://www.docmirror.cn:7070' + ret };
+        return {
+          url: 'http://www.docmirror.cn:7070' + ret,
+          key: ret.replace('/api/upload/form/download?key=', ''),
+        };
       },
     },
   });
