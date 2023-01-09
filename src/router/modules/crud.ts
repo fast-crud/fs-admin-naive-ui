@@ -340,6 +340,14 @@ const formRoutes = {
     },
     {
       meta: {
+        title: '表单单列模式',
+      },
+      name: routeName + 'FormSingleColumn',
+      path: 'single-column',
+      component: () => import('@/views/crud/form/single-column/index.vue'),
+    },
+    {
+      meta: {
         title: '表单校验',
       },
       name: routeName + 'FormValidation',
