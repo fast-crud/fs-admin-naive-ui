@@ -1,6 +1,11 @@
 import { App } from 'vue';
 
-import { FastCrud } from '@fast-crud/fast-crud';
+import {
+  ColumnCompositionProps,
+  FastCrud,
+  useColumns,
+  MergeColumnPlugin,
+} from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import {
   FsExtendsUploader,
@@ -12,7 +17,7 @@ import {
 import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
 import { requestForMock, request } from '@/utils/http/service';
-
+import _ from 'lodash-es';
 /**
  *  fast-crud的安装方法
  *  注意：在App.vue中，需要用fs-ui-context组件包裹RouterView，让fs-crud拥有message、notification、dialog的能力
@@ -217,6 +222,24 @@ function install(app, options: any = {}) {
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
   app.use(FsExtendsCopyable);
+
+  const { registerMergeColumnPlugin } = useColumns();
+  registerMergeColumnPlugin({
+    name: 'readonly-plugin',
+    order: 1,
+    handle: (columnProps: ColumnCompositionProps) => {
+      // 你可以在此处做你自己的处理
+      // 比如你可以定义一个readonly的公共属性，处理该字段只读，不能编辑
+      if (columnProps.readonly) {
+        // 合并column配置
+        _.merge(columnProps, {
+          form: { show: false },
+          viewForm: { show: true },
+        });
+      }
+      return columnProps;
+    },
+  });
 }
 
 export default {
