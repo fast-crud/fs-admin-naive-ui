@@ -1,6 +1,6 @@
 import './styles/tailwind.css';
 import { createApp } from 'vue';
-import { setupNaive, setupDirectives ,setupFastCrud} from '@/plugins';
+import { setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
 import App from './App.vue';
 import router, { setupRouter } from './router';
 import { setupStore } from '@/store';

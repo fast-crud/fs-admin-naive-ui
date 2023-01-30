@@ -1,5 +1,5 @@
-import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import * as api from './api';
+import { dict } from '@fast-crud/fast-crud';
 export default function ({ crudExpose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -18,56 +18,56 @@ export default function ({ crudExpose }) {
   return {
     crudOptions: {
       container: {
-        is: "fs-layout-card"
+        is: 'fs-layout-card',
       },
       request: {
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       columns: {
         id: {
-          title: "ID",
-          key: "id",
-          type: "number",
+          title: 'ID',
+          key: 'id',
+          type: 'number',
           column: {
-            width: 50
+            width: 50,
           },
           form: {
-            show: false
-          }
+            show: false,
+          },
         },
         name: {
-          title: "姓名",
-          type: "text",
-          search: { show: true }
+          title: '姓名',
+          type: 'text',
+          search: { show: true },
         },
         city: {
-          title: "城市",
-          type: "dict-select",
+          title: '城市',
+          type: 'dict-select',
           search: { show: true },
           dict: dict({
-            value: "id",
-            label: "text",
+            value: 'id',
+            label: 'text',
             data: [
-              { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州" },
-              { id: "bj", text: "北京" },
-              { id: "wh", text: "武汉" },
-              { id: "sh", text: "上海" }
-            ]
-          })
+              { id: 'sz', text: '深圳', color: 'success' },
+              { id: 'gz', text: '广州' },
+              { id: 'bj', text: '北京' },
+              { id: 'wh', text: '武汉' },
+              { id: 'sh', text: '上海' },
+            ],
+          }),
         },
         radio: {
-          title: "单选",
+          title: '单选',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: dict({
-            url: "/mock/dicts/OpenStatusEnum?single"
-          })
-        }
-      }
-    }
+            url: '/mock/dicts/OpenStatusEnum?single',
+          }),
+        },
+      },
+    },
   };
 }
