@@ -34,7 +34,7 @@
     "@ant-design/icons-vue": "^6.1.0",
     "@fast-crud/fast-crud": "^1.8.5",
     "@fast-crud/fast-extends": "^1.8.5",
-    "@fast-crud/ui-naive": "^1.8.5",
+    "@fast-crud/ui-naive": "^1.8.4",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.376",
     "@purge-icons/generated": "^0.7.0",
