@@ -59,7 +59,8 @@
     "vue": "^3.2.45",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.1.6",
-    "vue-types": "^4.2.1"
+    "vue-types": "^4.2.1",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
@@ -111,8 +112,7 @@
     "vite-plugin-style-import": "^2.0.0",
     "vue-demi": "^0.13.11",
     "vue-draggable-next": "^2.1.1",
-    "vue-eslint-parser": "^9.1.0",
-    "vuedraggable": "^4.1.0"
+    "vue-eslint-parser": "^9.1.0"
   },
   "lint-staged": {
     "*.{vue,js,ts,tsx}": "eslint --fix"
