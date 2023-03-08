@@ -1,8 +1,7 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
-import CustomLayout from './custom-layout.vue';
-import { shallowRef } from 'vue';
-export default function ({ crudExpose }) {
+import { ref } from 'vue';
+export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -19,9 +18,6 @@ export default function ({ crudExpose }) {
   };
   return {
     crudOptions: {
-      container: {
-        is: shallowRef(CustomLayout), //可以将自定义布局组件全局注册，这里只需要配置name即可
-      },
       request: {
         pageRequest,
         addRequest,
@@ -29,8 +25,17 @@ export default function ({ crudExpose }) {
         delRequest,
       },
       tabs: {
+        name: 'radio', //查询的字段名称
         show: true,
-        name: 'city',
+        //type: 'card', //tabs类型
+        // defaultOptions: { //第一个tab页签显示
+        //   show: true,
+        //   value: null, //点击第一个页签，查询参数值
+        //   label: '全部', // 第一个页签的名称
+        // },
+        // options: computed(() => { //选项，默认从name字段的dict里面获取
+        //   return statusRef.data;
+        // })
       },
       columns: {
         id: {
@@ -44,34 +49,26 @@ export default function ({ crudExpose }) {
             show: false,
           },
         },
-        name: {
-          title: '姓名',
-          type: 'text',
-          search: { show: true },
-        },
-        city: {
-          title: '城市',
-          type: 'dict-select',
-          search: { show: false },
-          dict: dict({
-            value: 'id',
-            label: 'text',
-            data: [
-              { id: 'sz', text: '深圳', color: 'success' },
-              { id: 'gz', text: '广州' },
-              { id: 'bj', text: '北京' },
-              { id: 'wh', text: '武汉' },
-              { id: 'sh', text: '上海' },
-            ],
-          }),
-        },
         radio: {
-          title: '单选',
-          search: { show: false },
+          title: '状态',
+          search: { show: true },
           type: 'dict-radio',
           dict: dict({
             url: '/mock/dicts/OpenStatusEnum?single',
           }),
+        },
+        valueBuilder: {
+          title: 'valueBuilder',
+          type: 'number',
+          search: {
+            show: true,
+            valueResolve({ key, value, form }) {
+              if (value) {
+                //可以转化查询条件
+                form[key] = value + '';
+              }
+            },
+          },
         },
       },
     },

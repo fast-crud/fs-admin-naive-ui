@@ -635,6 +635,12 @@ const featureRoutes = {
       component: () => import('@/views/crud/feature/search-multi/index.vue'),
     },
     {
+      meta: { title: 'Tabs快捷查询', keepAlive: true },
+      name: 'FeatureTabs',
+      path: 'tabs',
+      component: () => import('@/views/crud/feature/tabs/index.vue'),
+    },
+    {
       meta: { title: '字段排序', keepAlive: true },
       name: 'FeatureColumnSort',
       path: 'column-sort',

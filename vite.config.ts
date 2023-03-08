@@ -8,6 +8,7 @@ import { createProxy } from './build/vite/proxy';
 import pkg from './package.json';
 import { format } from 'date-fns';
 import path from 'path';
+
 const { dependencies, devDependencies, name, version } = pkg;
 
 const __APP_INFO__ = {

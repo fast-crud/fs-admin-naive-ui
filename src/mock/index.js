@@ -1,8 +1,8 @@
 import { mock } from '../utils/http/service';
 import * as tools from '../utils/http/tools';
 import _ from 'lodash-es';
-const commonMocks = import.meta.globEager('./common/mock.*.js');
-const viewMocks = import.meta.globEager('../views/**/mock.js');
+const commonMocks = import.meta.glob('./common/mock.*.[j|t]s', { eager: true });
+const viewMocks = import.meta.glob('../views/**/mock.[j|t]s', { eager: true });
 
 const list = [];
 _.forEach(commonMocks, (value) => {

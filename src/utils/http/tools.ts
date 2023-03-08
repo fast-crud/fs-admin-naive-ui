@@ -52,7 +52,7 @@ export function errorLog(error) {
   // 打印到控制台
   console.error(error);
   // 显示提示
-  uiContext.get().notification.error({ message: error.message });
+  uiContext.get().notification.error({ title: error.message });
 }
 
 /**

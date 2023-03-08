@@ -112,7 +112,8 @@
     "vite-plugin-style-import": "^2.0.0",
     "vue-demi": "^0.13.11",
     "vue-draggable-next": "^2.1.1",
-    "vue-eslint-parser": "^9.1.0"
+    "vue-eslint-parser": "^9.1.0",
+    "unplugin-vue-define-options": "^1.2.3"
   },
   "lint-staged": {
     "*.{vue,js,ts,tsx}": "eslint --fix"
