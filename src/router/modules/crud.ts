@@ -104,6 +104,15 @@ const basicRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/basis/column-merge-plugin/index.vue'),
     },
+    {
+      name: 'BasisReset',
+      path: 'reset',
+      meta: {
+        title: 'ResetCrudOptions',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/basis/reset/index.vue'),
+    },
   ],
 };
 
