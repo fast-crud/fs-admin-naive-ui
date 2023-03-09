@@ -64,36 +64,36 @@ export default function ({}) {
         datetime: {
           title: '字符串时间',
           type: 'datetime',
-          valueBuilder({ value, row, key }) {
-            if (value != null) {
-              // naive 默认仅支持时间戳作为日期输入与输出
-              row[key] = dayjs(value).valueOf();
-            }
-          },
-          valueResolver({ value, form, key }) {
-            if (value != null) {
-              // naive 默认仅支持时间戳作为日期输入与输出
-              form[key] = dayjs(value).format('YYYY-MM-DD HH:mm:ss');
-            }
-          },
         },
-        format: {
-          title: '显示格式化',
-          type: 'datetime',
-          form: {
-            component: {
-              // naive的日期格式化应该用小写的yyyy
-              format: 'yyyy年MM月dd日 HH:mm',
-            },
-          },
-          column: {
-            width: 180,
-            component: {
-              // 行展示组件使用的dayjs，
-              format: 'YYYY年MM月DD日 HH:mm',
-            },
-          },
-        },
+        // format: {
+        //   title: '显示格式化',
+        //   type: 'datetime',
+        //   form: {
+        //     component: {
+        //       // naive的日期格式化应该用小写的yyyy
+        //       format: 'yyyy年MM月dd日 HH:mm',
+        //     },
+        //   },
+        //   column: {
+        //     width: 180,
+        //     component: {
+        //       // 行展示组件使用的dayjs，
+        //       format: 'YYYY年MM月DD日 HH:mm',
+        //     },
+        //   },
+        //   valueBuilder({ value, row, key }) {
+        //     if (value != null) {
+        //       // naive 默认仅支持时间戳作为日期输入与输出
+        //       row[key] = dayjs(value).valueOf();
+        //     }
+        //   },
+        //   valueResolver({ value, form, key }) {
+        //     if (value != null) {
+        //       // naive 默认仅支持时间戳作为日期输入与输出
+        //       form[key] = dayjs(value).format('YYYY-MM-DD HH:mm:ss');
+        //     }
+        //   },
+        // },
         date: {
           title: '仅日期',
           type: 'date',
@@ -103,8 +103,8 @@ export default function ({}) {
           type: 'date',
           form: {
             component: {
-              disabledDate(time) {
-                return time.getTime() < Date.now();
+              isDateDisabled(time) {
+                return time < Date.now();
               },
             },
           },
@@ -114,6 +114,43 @@ export default function ({}) {
           type: 'time',
           column: {
             width: 100,
+          },
+        },
+        month: {
+          title: '月份',
+          type: 'month',
+          form: {
+            component: {
+              valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+            },
+          },
+        },
+        // naive 没有周选择器
+        // week: {
+        //   title: '星期',
+        //   type: 'week',
+        //   form: {
+        //     component: {
+        //       valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+        //     },
+        //   },
+        // },
+        quarter: {
+          title: '季度',
+          type: 'quarter',
+          form: {
+            component: {
+              valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+            },
+          },
+        },
+        year: {
+          title: '年份',
+          type: 'year',
+          form: {
+            component: {
+              valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+            },
           },
         },
         daterange: {
