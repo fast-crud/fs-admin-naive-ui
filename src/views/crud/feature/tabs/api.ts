@@ -3,7 +3,7 @@ const request = (req) => {
   return requestForMock(req);
 };
 const apiPrefix = '/mock/FeatureTabs';
-export function GetList(query) {
+export function GetList(query: any) {
   return request({
     url: apiPrefix + '/page',
     method: 'post',
@@ -11,7 +11,7 @@ export function GetList(query) {
   });
 }
 
-export function AddObj(obj) {
+export function AddObj(obj: any) {
   return request({
     url: apiPrefix + '/add',
     method: 'post',
@@ -19,7 +19,7 @@ export function AddObj(obj) {
   });
 }
 
-export function UpdateObj(obj) {
+export function UpdateObj(obj: any) {
   return request({
     url: apiPrefix + '/update',
     method: 'post',
@@ -27,7 +27,7 @@ export function UpdateObj(obj) {
   });
 }
 
-export function DelObj(id) {
+export function DelObj(id: any) {
   return request({
     url: apiPrefix + '/delete',
     method: 'post',
@@ -35,7 +35,7 @@ export function DelObj(id) {
   });
 }
 
-export function GetObj(id) {
+export function GetObj(id: any) {
   return request({
     url: apiPrefix + '/info',
     method: 'post',

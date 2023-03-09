@@ -1,12 +1,12 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <n-button class="ml-1" @click="getSearchFormData">getSearchFormData</n-button>
-        <n-button class="ml-1" @click="setSearchFormData">setSearchFormData</n-button>
-        <n-button class="ml-1" @click="clearSearchForm">clearSearchForm</n-button>
-      </template>
-    </fs-crud>
+    <template #header>
+      <div class="title">
+        Tabs快捷查询
+        <span class="sub">点击tabs快捷查询</span>
+      </div>
+    </template>
+    <fs-crud ref="crudRef" v-bind="crudBinding" />
   </fs-page>
 </template>
 
@@ -38,20 +38,9 @@
         expose.doRefresh();
       });
 
-      const message = useMessage();
       return {
         crudBinding,
         crudRef,
-        getSearchFormData() {
-          const form = expose.getSearchFormData();
-          message.info(`searchForm:${JSON.stringify(form)}`);
-        },
-        setSearchFormData() {
-          expose.setSearchFormData({ form: { radio: '1', test: 2 }, mergeForm: true });
-        },
-        clearSearchForm() {
-          expose.setSearchFormData({ form: {}, mergeForm: false });
-        },
       };
     },
   });
