@@ -1,8 +1,25 @@
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from '@fast-crud/fast-crud';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function ({ message }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   return {
     crudOptions: {
       form: {
-        labelWidth: '120px',
+        wrapper: {
+          onClosed(e) {
+            console.log('onClosed', e);
+          },
+          onOpened(e) {
+            console.log('onOpened', e);
+          },
+        },
+        doSubmit({ form }) {
+          //覆盖提交方法
+          console.log('form submit:', form);
+          message.info('自定义表单提交:' + JSON.stringify(form));
+          message.warning('抛出异常可以阻止表单关闭');
+          throw new Error('抛出异常可以阻止表单关闭');
+        },
         helper: {
           // position: "label" // helper的展示位置全局配置
           // tooltip:{}
@@ -31,11 +48,11 @@ export default function ({ expose }) {
           title: '显示在label',
           type: 'text',
           form: {
-            rule: [{ required: true, message: '此项必填' }],
+            rules: [{ required: true, message: '此项必填' }],
             helper: {
               position: 'label',
               tooltip: {
-                placement: 'top-start',
+                placement: 'topLeft',
               },
               text: '在label通过tooltip方式显示的helper',
               // render() {
