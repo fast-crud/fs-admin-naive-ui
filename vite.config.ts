@@ -96,8 +96,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       exclude: ['vue-demi'],
     },
     build: {
-      target: 'es2015',
-      cssTarget: 'chrome80',
+      target: 'es2018',
+      cssTarget: 'chrome90',
       outDir: OUTPUT_DIR,
       // terserOptions: {
       //   compress: {
