@@ -47,9 +47,8 @@
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { useMessage } from 'naive-ui';
-  import { useCrud, useExpose, useColumns, useFs } from '@fast-crud/fast-crud';
+  import { useColumns, useFormWrapper, useFs } from '@fast-crud/fast-crud';
   import createCrudOptions from './crud';
-  import { useFormWrapper } from '@fast-crud/fast-crud/src';
 
   function createFormOptionsFromCrudOptions(message: any) {
     const { buildFormOptions } = useColumns();
