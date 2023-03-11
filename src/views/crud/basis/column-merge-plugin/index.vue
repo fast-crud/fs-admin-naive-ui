@@ -22,10 +22,11 @@
   </fs-page>
 </template>
 
-<script>
-  import { defineComponent, ref, onMounted } from 'vue';
+<script lang="ts">
+  import { defineComponent, onMounted } from 'vue';
   import createCrudOptions from './crud';
   import { useFs } from '@fast-crud/fast-crud';
+
   export default defineComponent({
     name: 'BasisColumnMergePlugin',
     setup() {

@@ -32,6 +32,8 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@aws-sdk/client-s3": "^3.288.0",
+    "@aws-sdk/s3-request-presigner": "^3.288.0",
     "@fast-crud/fast-crud": "^1.9.2",
     "@fast-crud/fast-extends": "^1.9.2",
     "@fast-crud/ui-naive": "^1.9.1",

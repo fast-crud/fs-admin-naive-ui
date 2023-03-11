@@ -9,9 +9,7 @@
     <AppProvider>
       <!--add by fs 用于给fast-crud安装naive-ui，让fs-crud拥有message notification dialog的能力-->
       <fs-ui-context>
-        <fs-form-provider>
-          <RouterView />
-        </fs-form-provider>
+        <RouterView />
       </fs-ui-context>
     </AppProvider>
   </NConfigProvider>

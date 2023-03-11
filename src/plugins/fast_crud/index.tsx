@@ -1,11 +1,6 @@
 import { App } from 'vue';
 
-import {
-  ColumnCompositionProps,
-  FastCrud,
-  useColumns,
-  MergeColumnPlugin,
-} from '@fast-crud/fast-crud';
+import { ColumnCompositionProps, FastCrud, useColumns } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import {
   FsExtendsUploader,
@@ -18,6 +13,7 @@ import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
 import { requestForMock, request } from '@/utils/http/service';
 import _ from 'lodash-es';
+import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
 /**
  *  fast-crud的安装方法
  *  注意：在App.vue中，需要用fs-ui-context组件包裹RouterView，让fs-crud拥有message、notification、dialog的能力
@@ -182,6 +178,32 @@ function install(app, options: any = {}) {
       },
       domain: 'http://greper.handsfree.work',
     },
+    s3: {
+      //同时也支持minio
+      bucket: 'fast-crud',
+      sdkOpts: {
+        s3ForcePathStyle: true,
+        signatureVersion: 'v4',
+        region: 'us-east-1',
+        forcePathStyle: true,
+        //minio与s3完全适配
+        endpoint: 'https://play.min.io',
+        credentials: {
+          //不建议在客户端使用secretAccessKey来上传
+          accessKeyId: 'Q3AM3UQ867SPQQA43P2F', //访问登录名
+          secretAccessKey: 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG', //访问密码
+        },
+      },
+      //预签名配置，向后端获取上传的预签名连接
+      async getSignedUrl(bucket: string, key: string, options: any) {
+        return await GetSignedUrl(bucket, key, 'put');
+      },
+      successHandle(ret: any) {
+        // 上传完成后可以在此处处理结果，修改url什么的
+        console.log('success handle:', ret);
+        return ret;
+      },
+    },
     form: {
       action: 'http://www.docmirror.cn:7070/api/upload/form/upload',
       name: 'file',
@@ -242,10 +264,12 @@ function install(app, options: any = {}) {
   });
 }
 
+// @ts-ignore
 export default {
   install,
 };
 
+// @ts-ignore
 export function setupFastCrud(app: App<Element>, options: any = {}) {
   install(app, options);
 }

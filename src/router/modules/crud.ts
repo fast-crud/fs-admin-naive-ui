@@ -294,6 +294,15 @@ const componentRoute = {
     },
     {
       meta: {
+        title: 'S3上传',
+        keepAlive: true,
+      },
+      name: 'ComponentUploaderS3',
+      path: 'uploader/s3',
+      component: () => import('@/views/crud/component/uploader/s3/index.vue'),
+    },
+    {
+      meta: {
         title: '富文本编辑器',
         keepAlive: true,
       },
