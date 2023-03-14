@@ -102,7 +102,12 @@ function install(app, options: any = {}) {
   //安装editor
   app.use(FsExtendsEditor, {
     //编辑器的公共配置
-    wangEditor: {},
+    wangEditor: {
+      editorConfig: {
+        MENU_CONF: {},
+      },
+      toolbarConfig: {},
+    },
   });
   app.use(FsExtendsJson);
   app.use(FsExtendsCopyable);
