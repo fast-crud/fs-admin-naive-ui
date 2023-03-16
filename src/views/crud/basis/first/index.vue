@@ -4,7 +4,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
   import { defineComponent, onMounted } from 'vue';
   import { useFs } from '@fast-crud/fast-crud';
   import _ from 'lodash-es';

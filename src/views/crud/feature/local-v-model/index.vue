@@ -23,7 +23,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
   import { defineComponent, reactive } from 'vue';
   import { useMessage } from 'naive-ui';
   import FeatureLocalModelValueInput from './local.vue';

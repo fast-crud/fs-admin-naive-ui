@@ -85,7 +85,7 @@
     <template #footer> </template>
   </fs-container>
 </template>
-<script>
+<script lang="ts">
   import {
     defineComponent,
     computed,
