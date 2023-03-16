@@ -21,7 +21,7 @@ export const columns = [
     title: '头像',
     key: 'avatar',
     width: 100,
-    render(row) {
+    render(row: any) {
       return h(NAvatar, {
         size: 48,
         src: row.avatar,
@@ -47,7 +47,7 @@ export const columns = [
     title: '状态',
     key: 'status',
     width: 100,
-    render(row) {
+    render(row: any) {
       return h(
         NTag,
         {

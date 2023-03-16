@@ -1,5 +1,5 @@
 import { requestForMock } from '@/utils/http/service';
-const request = (req) => {
+const request = (req: any) => {
   return requestForMock(req);
 };
 const apiPrefix = '/mock/FeatureTabs';

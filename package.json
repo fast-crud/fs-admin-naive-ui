@@ -28,7 +28,8 @@
     "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
-    "test prod gzip": "http-server dist --cors --gzip -c-1"
+    "test prod gzip": "http-server dist --cors --gzip -c-1",
+    "tsc": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
@@ -116,7 +117,8 @@
     "vite-plugin-style-import": "^2.0.0",
     "vue-demi": "^0.13.11",
     "vue-draggable-next": "^2.1.1",
-    "vue-eslint-parser": "^9.1.0"
+    "vue-eslint-parser": "^9.1.0",
+    "vue-tsc": "^1.2.0"
   },
   "lint-staged": {
     "*.{vue,js,ts,tsx}": "eslint --fix"
