@@ -1,9 +1,9 @@
 import { generateSignedUrl } from './s3-server';
-import { SignedUrlType } from '@fast-crud/fast-extends';
+import { FsUploaderS3SignedUrlType } from '@fast-crud/fast-extends';
 
 import { requestForMock } from '@/utils/http/service';
 
-const request = (req) => {
+const request = (req: any) => {
   return requestForMock(req);
 };
 
@@ -55,7 +55,7 @@ export function GetObj(id: any) {
  * @param type
  * @constructor
  */
-export async function GetSignedUrl(bucket: string, key: string, type: SignedUrlType) {
+export async function GetSignedUrl(bucket: string, key: string, type: FsUploaderS3SignedUrlType) {
   //此处模拟获取预签名url
   return await generateSignedUrl(bucket, key, type);
 }
