@@ -33,6 +33,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       },
       { find: /@fast-crud\/fast-extends$/, replacement: path.resolve('../../fast-extends/src/') },
       { find: /@fast-crud\/ui-naive$/, replacement: path.resolve('../../ui/ui-naive/src/') },
+      {
+        find: /@fast-crud\/ui-interface$/,
+        replacement: path.resolve('../../ui/ui-interface/src/'),
+      },
     ];
     devServerFs = {
       // 这里配置dev启动时读取的项目根目录
