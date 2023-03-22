@@ -37,7 +37,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         name: 'radio', //查询的字段名称
         show: true,
         //type: 'card', //tabs类型
-        // defaultOptions: { //第一个tab页签显示
+        // defaultOption: { //第一个tab页签显示
         //   show: true,
         //   value: null, //点击第一个页签，查询参数值
         //   label: '全部', // 第一个页签的名称
