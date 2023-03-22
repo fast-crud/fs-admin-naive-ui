@@ -38,6 +38,7 @@
     "@fast-crud/fast-crud": "^1.11.4",
     "@fast-crud/fast-extends": "^1.11.4",
     "@fast-crud/ui-naive": "^1.11.4",
+    "@fast-crud/ui-interface": "workspace:^1.11.3",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.376",
     "@purge-icons/generated": "^0.7.0",
