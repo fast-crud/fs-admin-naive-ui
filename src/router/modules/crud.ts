@@ -546,6 +546,15 @@ const formRoutes = {
       path: 'nest',
       component: () => import('@/views/crud/form/nest/index.vue'),
     },
+    {
+      meta: {
+        title: '表单字段周围render',
+        keepAlive: true,
+      },
+      name: 'FormRender',
+      path: 'render',
+      component: () => import('@/views/crud/form/render/index.vue'),
+    },
   ],
 };
 const featureRoutes = {
