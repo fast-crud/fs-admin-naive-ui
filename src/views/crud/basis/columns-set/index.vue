@@ -1,11 +1,21 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <n-alert class="ml-1" type="warning" title="列设置可以禁用或者隐藏某字段勾选" />
-        <n-button @click="columnsSetToggleMode()"> 切换简单模式 </n-button>
-      </template>
-    </fs-crud>
+    <template #header>
+      <div class="title">
+        列设置
+        <span class="sub"
+          >列设置可以禁用或者隐藏某字段勾选 ，-------> 点击右侧工具条最后一个按钮查看效果</span
+        >
+      </div>
+      <div class="more">
+        <a
+          target="_blank"
+          href="http://fast-crud.docmirror.cn/api/crud-options/toolbar.html#columnsfilter-mode"
+          >文档</a
+        >
+      </div>
+    </template>
+    <fs-crud ref="crudRef" v-bind="crudBinding" />
   </fs-page>
 </template>
 
@@ -23,17 +33,9 @@
       onMounted(() => {
         crudExpose.doRefresh();
       });
-      const message = useMessage();
-      function columnsSetToggleMode() {
-        crudBinding.value.toolbar.columnsFilter.mode =
-          crudBinding.value.toolbar.columnsFilter.mode === 'simple' ? 'default' : 'simple';
-        message.info('当前列设置组件的模式为：' + crudBinding.value.toolbar.columnsFilter.mode);
-      }
-
       return {
         crudBinding,
         crudRef,
-        columnsSetToggleMode,
       };
     },
   });
