@@ -27,6 +27,9 @@ export default function ({ expose }) {
       search: {
         container: {
           layout: 'multi-line',
+          action: {
+            label: '操作',
+          },
         },
         col: {
           span: 4,
