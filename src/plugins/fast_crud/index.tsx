@@ -41,6 +41,14 @@ function install(app, options: any = {}) {
         table: {
           size: 'small',
           pagination: false,
+          conditionalRender: {
+            match(scope) {
+              return !scope.value;
+            },
+            render(scope) {
+              return '-';
+            },
+          },
         },
         search: {
           options: {
