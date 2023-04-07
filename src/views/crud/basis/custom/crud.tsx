@@ -80,7 +80,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               on: {
                 //监听事件
                 onChange({ $event, form }) {
-                  debugger;
                   message.info('counter changed:' + $event);
                 },
               },
