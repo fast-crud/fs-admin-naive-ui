@@ -160,7 +160,7 @@ export default function ({ expose }) {
           type: 'file-uploader',
           form: {
             component: {
-              accept: '*.jpg,*.png',
+              accept: '.jpg,.png',
             },
             helper: '只能上传jpg或者png',
           },
