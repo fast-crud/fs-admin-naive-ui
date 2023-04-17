@@ -107,9 +107,9 @@ function createService() {
  * @description 创建请求方法
  * @param {Object} service axios 实例
  */
-function createRequestFunction(service) {
+function createRequestFunction(service: any) {
   const { VITE_GLOB_API_URL_PREFIX } = getAppEnvConfig();
-  return function (config) {
+  return function (config: any) {
     const configDefault = {
       headers: {
         'Content-Type': get(config, 'headers.Content-Type', 'application/json'),
