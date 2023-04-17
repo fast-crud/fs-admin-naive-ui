@@ -80,7 +80,7 @@
     "@vue/compiler-sfc": "^3.2.45",
     "@vue/eslint-config-typescript": "^11.0.2",
     "autoprefixer": "^10.4.13",
-    "axios-mock-adapter": "^1.20.0",
+    "axios-mock-adapter": "^1.21.4",
     "commitizen": "^4.2.5",
     "core-js": "^3.26.0",
     "dotenv": "^16.0.3",
