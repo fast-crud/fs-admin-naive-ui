@@ -1,26 +1,33 @@
 import { App } from 'vue';
 
-import { ColumnCompositionProps, FastCrud, useColumns } from '@fast-crud/fast-crud';
+import {
+  ColumnCompositionProps,
+  CrudOptions,
+  FastCrud,
+  FsSetupOptions,
+  useColumns,
+} from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import {
-  FsExtendsUploader,
+  FsExtendsCopyable,
   FsExtendsEditor,
   FsExtendsJson,
-  FsExtendsCopyable,
   FsExtendsTime,
+  FsExtendsUploader,
 } from '@fast-crud/fast-extends';
 import '@fast-crud/fast-extends/dist/style.css';
 import UiNaive from '@fast-crud/ui-naive';
-import { requestForMock, request } from '@/utils/http/service';
+import { request, requestForMock } from '@/utils/http/service';
 import _ from 'lodash-es';
 import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
+
 /**
  *  fast-crud的安装方法
  *  注意：在App.vue中，需要用fs-ui-context组件包裹RouterView，让fs-crud拥有message、notification、dialog的能力
  * @param app
  * @param options
  */
-function install(app, options: any = {}) {
+function install(app: any, options: any = {}) {
   app.use(UiNaive);
   app.use(FastCrud, {
     i18n: options.i18n,
@@ -33,22 +40,20 @@ function install(app, options: any = {}) {
     },
     /**
      * useCrud时会被执行
-     * @param context，useCrud的参数
      */
-    commonOptions(context: any = {}) {
-      console.log('commonOptions execute ,context:', context);
-      const opts = {
+    commonOptions(props) {
+      const opts: CrudOptions = {
         table: {
           size: 'small',
           pagination: false,
           conditionalRender: {
-            match(scope) {
+            match(scope: any) {
               //不能用 !scope.value ， 否则switch组件设置为关之后就消失了
               return (
                 scope.value == null || (scope.value instanceof Array && scope.value.length === 0)
               );
             },
-            render(scope) {
+            render(scope: any) {
               return '-';
             },
           },
@@ -107,7 +112,7 @@ function install(app, options: any = {}) {
       // const crudPermission = useCrudPermission(context);
       // return crudPermission.merge(opts);
     },
-  });
+  } as FsSetupOptions);
 
   // fast-extends里面的扩展组件均为异步组件，只有在使用时才会被加载，并不会影响首页加载速度
   //安装editor
@@ -147,7 +152,7 @@ function install(app, options: any = {}) {
           method: 'get',
         });
       },
-      successHandle(ret) {
+      successHandle(ret: any) {
         // 上传完成后可以在此处处理结果，修改url什么的
         console.log('success handle:', ret);
         return ret;
@@ -172,7 +177,7 @@ function install(app, options: any = {}) {
         // sdk配置
         secure: true, // 默认为非https上传,为了安全，设置为true
       },
-      successHandle(ret) {
+      successHandle(ret: any) {
         // 上传完成后可以在此处处理结果，修改url什么的
         console.log('success handle:', ret);
         return ret;
@@ -187,7 +192,7 @@ function install(app, options: any = {}) {
         });
         return ret; // {token:xxx,expires:xxx}
       },
-      successHandle(ret) {
+      successHandle(ret: any) {
         // 上传完成后可以在此处处理结果，修改url什么的
         console.log('success handle:', ret);
         return ret;
@@ -224,7 +229,7 @@ function install(app, options: any = {}) {
       action: 'http://www.docmirror.cn:7070/api/upload/form/upload',
       name: 'file',
       withCredentials: false,
-      uploadRequest: async ({ action, file, onProgress }) => {
+      uploadRequest: async ({ action, file, onProgress }: any) => {
         // @ts-ignore
         const data = new FormData();
         data.append('file', file);
@@ -237,12 +242,12 @@ function install(app, options: any = {}) {
           },
           timeout: 60000,
           data,
-          onUploadProgress(progress) {
+          onUploadProgress(progress: any) {
             onProgress({ percent: Math.round((progress.loaded / progress.total) * 100) });
           },
         });
       },
-      successHandle(ret) {
+      successHandle(ret: any) {
         // 上传完成后的结果处理， 此处应返回格式为{url:xxx}
         return {
           url: 'http://www.docmirror.cn:7070' + ret,
