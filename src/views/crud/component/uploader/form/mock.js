@@ -14,6 +14,7 @@ const list = [
       'http://greper.handsfree.work/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
     ],
+    error: ['http://localhost:11111/error_image'],
     limit: [
       'http://greper.handsfree.work/extends/avatar.jpg',
       'https://www.baidu.com/img/bd_logo1.png',
