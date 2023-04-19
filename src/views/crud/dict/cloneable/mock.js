@@ -7,13 +7,16 @@ const list = [
   {
     status: '1',
     remote: '2',
+    modifyDict: true,
   },
   {
     status: '2',
     remote: '0',
+    modifyDict: true,
   },
   {
     status: '0',
+    modifyDict: true,
   },
 ];
 options.list = list;
