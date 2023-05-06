@@ -1,7 +1,7 @@
 import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
-import { ref } from 'vue';
-export default function ({ expose }) {
+
+export default function ({ crudExpose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -26,8 +26,16 @@ export default function ({ expose }) {
       },
       table: {
         // 表头过滤改变事件
-        onFilterChange(e) {
-          console.log('onFilterChange', e);
+        onFilterChange(filters) {
+          console.log('onFilterChange', filters);
+          if (filters.remote != null) {
+            crudExpose.setSearchFormData({
+              form: {
+                remote: filters.remote,
+              },
+            });
+            crudExpose.doRefresh();
+          }
         },
       },
       columns: {
@@ -59,6 +67,29 @@ export default function ({ expose }) {
               return row.radio === value;
             },
             sortable: true,
+          },
+        },
+        remote: {
+          title: '服务端过滤',
+          search: {
+            show: true,
+            component: {
+              multiple: true,
+            },
+          },
+          type: 'dict-radio',
+          dict: dict({
+            url: '/mock/dicts/OpenStatusEnum?single',
+          }),
+          column: {
+            filterOptions: [
+              { label: '开', value: '1' },
+              { label: '关', value: '0' },
+              { label: '停', value: '2' },
+            ],
+            filter: (value, row) => {
+              return true;
+            },
           },
         },
       },
