@@ -40,7 +40,7 @@ export default function ({ expose }) {
             url: '/mock/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortOrder: false,
+            defaultSortOrder: 'ascend',
             sorter: 'default',
           },
         },
@@ -52,7 +52,7 @@ export default function ({ expose }) {
             url: '/mock/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortable: 'custom',
+            sorter: 'custom',
           },
         },
         radio2: {
@@ -63,7 +63,7 @@ export default function ({ expose }) {
             url: '/mock/dicts/OpenStatusEnum?single',
           }),
           column: {
-            sortable: 'custom',
+            sorter: 'custom',
           },
         },
       },
