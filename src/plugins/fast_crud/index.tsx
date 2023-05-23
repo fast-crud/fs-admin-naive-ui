@@ -6,6 +6,7 @@ import {
   FastCrud,
   FsSetupOptions,
   useColumns,
+  useUi,
 } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import {
@@ -42,6 +43,7 @@ function install(app: any, options: any = {}) {
      * useCrud时会被执行
      */
     commonOptions(props) {
+      const { ui } = useUi();
       const opts: CrudOptions = {
         table: {
           size: 'small',
@@ -96,10 +98,17 @@ function install(app: any, options: any = {}) {
             if (res.offset % pageSize === 0) {
               currentPage++;
             }
-            return { currentPage, pageSize, ...res };
+            return { currentPage, pageSize, records: res.records, total: res.total };
           },
         },
         form: {
+          async afterSubmit({ mode }) {
+            if (mode === 'add') {
+              ui.notification.success({ message: '添加成功' });
+            } else if (mode === 'edit') {
+              ui.notification.success({ message: '保存成功' });
+            }
+          },
           display: 'flex', //表单布局
           labelWidth: '100px', //表单label宽度
         },

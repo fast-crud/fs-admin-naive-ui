@@ -5,37 +5,40 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted } from 'vue';
-  import { useFs } from '@fast-crud/fast-crud';
+  import { defineComponent, onMounted, reactive } from 'vue';
+  import { AddReq, DelReq, EditReq, useFs, UserPageQuery, UserPageRes } from '@fast-crud/fast-crud';
   import _ from 'lodash-es';
 
   //此处为crudOptions配置
   const createCrudOptions = function ({ crudExpose }) {
     //本地模拟后台crud接口方法 ----开始
-    const records = [{ id: 1, name: 'Hello World' }];
-    const pageRequest = async () => {
+    const records = reactive([{ id: 1, name: 'Hello World' }]);
+    const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
       console.log('table list:', records);
       return {
-        records: [...records],
+        records,
         currentPage: 1,
         pageSize: 20,
         total: records.length,
       };
     };
-    const editRequest = async ({ form, row }) => {
+    const editRequest = async (req: EditReq) => {
+      const { form, row } = req;
       const target = _.find(records, (item) => {
         return row.id === item.id;
       });
       _.merge(target, form);
       return target;
     };
-    const delRequest = async ({ row }) => {
+    const delRequest = async (req: DelReq) => {
+      const row = req.row;
       _.remove(records, (item) => {
         return item.id === row.id;
       });
     };
 
-    const addRequest = async ({ form }) => {
+    const addRequest = async (req: AddReq) => {
+      const form = req.form;
       const maxRecord = _.maxBy(records, (item) => {
         return item.id;
       });
