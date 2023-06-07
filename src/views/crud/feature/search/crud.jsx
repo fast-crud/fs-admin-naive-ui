@@ -31,6 +31,11 @@ export default function ({ expose }) {
         },
       },
       search: {
+        options: {
+          //显示校验错误信息
+          showFeedback: true,
+        },
+        //开启校验
         validate: true,
       },
       columns: {
@@ -61,6 +66,7 @@ export default function ({ expose }) {
             url: '/mock/dicts/OpenStatusEnum?single',
           }),
           form: {
+            //注意此处为rule 不是rules
             rule: [
               {
                 required: true,
@@ -90,9 +96,9 @@ export default function ({ expose }) {
           type: 'text',
           form: {
             component: {
-              vModel: 'checked',
+              vModel: 'value',
               render({ attrs }) {
-                return <a-switch {...attrs} />;
+                return <n-switch {...attrs} />;
               },
               title: '自定义render，可以继承component的属性,可以触发search的自动查询',
             },
@@ -109,8 +115,8 @@ export default function ({ expose }) {
               render({ form }) {
                 //注意此处的v-model写法
                 return (
-                  <a-switch
-                    v-model={[form.customRender2, 'checked']}
+                  <n-switch
+                    v-model={[form.customRender2, 'value']}
                     title={'render配置在component之下，注意vModel的写法,不能触发search的自动查询'}
                   />
                 );
@@ -128,8 +134,8 @@ export default function ({ expose }) {
             render({ form }) {
               //注意此处的v-model写法
               return (
-                <a-switch
-                  v-model={[form.customRender3, 'checked']}
+                <n-switch
+                  v-model={[form.customRender3, 'value']}
                   title={'render配置在form之下，注意vModel的写法,不能触发search的自动查询'}
                 />
               );
