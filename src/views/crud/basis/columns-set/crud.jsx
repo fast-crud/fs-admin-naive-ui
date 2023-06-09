@@ -46,16 +46,16 @@ export default function ({ crudExpose }) {
           toggleColumnSetShow: {
             text: '切换列设置项显隐',
             click() {
-              crudBinding.value.toolbar.columnsFilter.originalColumns[3].columnSetShow =
-                !crudBinding.value.toolbar.columnsFilter.originalColumns[3].columnSetShow;
+              crudBinding.value.toolbar.columnsFilter.originalColumns.hidden.columnSetShow =
+                !crudBinding.value.toolbar.columnsFilter.originalColumns.hidden.columnSetShow;
               message.info('切换第4列的列设置显隐');
             },
           },
           toggleColumnSetDisabled: {
             text: '切换列设置项禁用',
             click() {
-              crudBinding.value.toolbar.columnsFilter.originalColumns[2].columnSetDisabled =
-                !crudBinding.value.toolbar.columnsFilter.originalColumns[2].columnSetDisabled;
+              crudBinding.value.toolbar.columnsFilter.originalColumns.disabled.columnSetDisabled =
+                !crudBinding.value.toolbar.columnsFilter.originalColumns.disabled.columnSetDisabled;
               message.info('切换第3列的列设置禁用启用');
             },
           },
