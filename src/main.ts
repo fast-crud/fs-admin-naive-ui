@@ -7,7 +7,7 @@ import { setupStore } from '@/store';
 
 import i18n from './i18n';
 
-// 本地mock
+// 本地mock， 正式项目请删除mock，避免影响性能
 import './mock';
 
 async function bootstrap() {
