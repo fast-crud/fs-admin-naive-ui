@@ -6,10 +6,13 @@ import {
   FastCrud,
   FsSetupOptions,
   useColumns,
+  UseCrudProps,
   useUi,
 } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import {
+  CsvColumn,
+  ExportUtil,
   FsExtendsCopyable,
   FsExtendsEditor,
   FsExtendsJson,
@@ -21,6 +24,8 @@ import UiNaive from '@fast-crud/ui-naive';
 import { request, requestForMock } from '@/utils/http/service';
 import _ from 'lodash-es';
 import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
+import { useAsync } from '@fast-crud/fast-crud/src/use/use-async';
+import { useI18n } from 'vue-i18n';
 
 /**
  *  fast-crud的安装方法
@@ -30,6 +35,7 @@ import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
  */
 function install(app: any, options: any = {}) {
   app.use(UiNaive);
+  const { t } = useI18n();
   app.use(FastCrud, {
     i18n: options.i18n,
     async dictRequest({ url }) {
@@ -42,7 +48,8 @@ function install(app: any, options: any = {}) {
     /**
      * useCrud时会被执行
      */
-    commonOptions(props) {
+    commonOptions(props: UseCrudProps): CrudOptions {
+      const crudBinding = props.crudExpose?.crudBinding;
       const { ui } = useUi();
       const opts: CrudOptions = {
         table: {
@@ -61,6 +68,49 @@ function install(app: any, options: any = {}) {
         search: {
           options: {
             size: 'medium',
+          },
+        },
+        toolbar: {
+          buttons: {
+            export: {
+              show: true,
+              type: 'primary',
+              icon: ui.icons.export,
+              order: 4,
+              title: t('fs.toolbar.export.title'), // '导出',
+              circle: true,
+              click: async () => {
+                const columns: CsvColumn[] = [];
+                _.each(crudBinding.value.table.columnsMap, (col: ColumnCompositionProps) => {
+                  if (col.exportable !== false && col.key !== '_index') {
+                    columns.push({
+                      prop: col.key,
+                      label: col.title,
+                    });
+                  }
+                });
+
+                const { loadAsyncLib } = useAsync();
+                //加载异步组件包，不影响首页加载速度
+                const exportUtil: ExportUtil = await loadAsyncLib({
+                  name: 'FsExportUtil',
+                });
+                //导出csv
+                await exportUtil.csv({
+                  columns,
+                  data: crudBinding.value.data,
+                  title: 'table',
+                  noHeader: false,
+                });
+                //导出excel
+                // await exportUtil.excel({
+                //   columns,
+                //   data: crudBinding.value.data,
+                //   title: 'table',
+                //   noHeader: false,
+                // });
+              },
+            },
           },
         },
         rowHandle: {

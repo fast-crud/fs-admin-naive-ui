@@ -28,6 +28,7 @@
   import { useRoute } from 'vue-router';
   import { useDesignSettingStore } from '@/store/modules/designSetting';
   import { lighten } from '@/utils/index';
+  import { useAsync } from '@fast-crud/fast-crud/src/use/use-async';
 
   const route = useRoute();
   const useLockscreen = useLockscreenStore();
@@ -56,7 +57,7 @@
 
   const getDarkTheme = computed(() => (designStore.darkTheme ? darkTheme : undefined));
 
-  let timer;
+  let timer: any;
 
   const timekeeping = () => {
     clearInterval(timer);
@@ -83,6 +84,9 @@
   onUnmounted(() => {
     document.removeEventListener('mousedown', timekeeping);
   });
+
+  const { registerAsyncLib } = useAsync();
+  registerAsyncLib('FsExportUtil');
 </script>
 
 <style lang="less">
