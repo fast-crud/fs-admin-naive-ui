@@ -15,6 +15,7 @@ import {
   ExportUtil,
   FsExtendsCopyable,
   FsExtendsEditor,
+  FsExtendsExport,
   FsExtendsJson,
   FsExtendsTime,
   FsExtendsUploader,
@@ -35,7 +36,7 @@ import { useI18n } from 'vue-i18n';
  */
 function install(app: any, options: any = {}) {
   app.use(UiNaive);
-  const { t } = useI18n();
+  const { ui } = useUi();
   app.use(FastCrud, {
     i18n: options.i18n,
     async dictRequest({ url }) {
@@ -49,8 +50,9 @@ function install(app: any, options: any = {}) {
      * useCrud时会被执行
      */
     commonOptions(props: UseCrudProps): CrudOptions {
-      const crudBinding = props.crudExpose?.crudBinding;
-      const { ui } = useUi();
+      const { t } = useI18n();
+      const expose = props.crudExpose || props.expose;
+      const crudBinding = expose?.crudBinding;
       const opts: CrudOptions = {
         table: {
           size: 'small',
@@ -184,6 +186,7 @@ function install(app: any, options: any = {}) {
   });
   app.use(FsExtendsJson);
   app.use(FsExtendsCopyable);
+  app.use(FsExtendsExport);
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
     defaultType: 'cos',
