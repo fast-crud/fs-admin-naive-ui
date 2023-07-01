@@ -85,8 +85,6 @@
     document.removeEventListener('mousedown', timekeeping);
   });
 
-  const { registerAsyncLib } = useAsync();
-  registerAsyncLib('FsExportUtil');
 </script>
 
 <style lang="less">

@@ -11,11 +11,8 @@ import {
 } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
 import {
-  CsvColumn,
-  ExportUtil,
   FsExtendsCopyable,
   FsExtendsEditor,
-  FsExtendsExport,
   FsExtendsJson,
   FsExtendsTime,
   FsExtendsUploader,
@@ -25,7 +22,6 @@ import UiNaive from '@fast-crud/ui-naive';
 import { request, requestForMock } from '@/utils/http/service';
 import _ from 'lodash-es';
 import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
-import { useAsync } from '@fast-crud/fast-crud/src/use/use-async';
 import { useI18n } from 'vue-i18n';
 
 /**
@@ -50,9 +46,6 @@ function install(app: any, options: any = {}) {
      * useCrud时会被执行
      */
     commonOptions(props: UseCrudProps): CrudOptions {
-      const { t } = useI18n();
-      const expose = props.crudExpose || props.expose;
-      const crudBinding = expose?.crudBinding;
       const opts: CrudOptions = {
         table: {
           size: 'small',
@@ -70,49 +63,6 @@ function install(app: any, options: any = {}) {
         search: {
           options: {
             size: 'medium',
-          },
-        },
-        toolbar: {
-          buttons: {
-            export: {
-              show: true,
-              type: 'primary',
-              icon: ui.icons.export,
-              order: 4,
-              title: t('fs.toolbar.export.title'), // '导出',
-              circle: true,
-              click: async () => {
-                const columns: CsvColumn[] = [];
-                _.each(crudBinding.value.table.columnsMap, (col: ColumnCompositionProps) => {
-                  if (col.exportable !== false && col.key !== '_index') {
-                    columns.push({
-                      prop: col.key,
-                      label: col.title,
-                    });
-                  }
-                });
-
-                const { loadAsyncLib } = useAsync();
-                //加载异步组件包，不影响首页加载速度
-                const exportUtil: ExportUtil = await loadAsyncLib({
-                  name: 'FsExportUtil',
-                });
-                //导出csv
-                await exportUtil.csv({
-                  columns,
-                  data: crudBinding.value.data,
-                  title: 'table',
-                  noHeader: false,
-                });
-                //导出excel
-                // await exportUtil.excel({
-                //   columns,
-                //   data: crudBinding.value.data,
-                //   title: 'table',
-                //   noHeader: false,
-                // });
-              },
-            },
           },
         },
         rowHandle: {
@@ -186,7 +136,6 @@ function install(app: any, options: any = {}) {
   });
   app.use(FsExtendsJson);
   app.use(FsExtendsCopyable);
-  app.use(FsExtendsExport);
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
     defaultType: 'cos',
