@@ -29,7 +29,8 @@
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
     "lint:pretty": "pretty-quick --staged",
     "test prod gzip": "http-server dist --cors --gzip -c-1",
-    "tsc": "vue-tsc --noEmit --skipLibCheck"
+    "tsc": "vue-tsc --noEmit --skipLibCheck",
+    "afterPubPush": "git add . && git commit -m \"build: publish success\" && git push"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
