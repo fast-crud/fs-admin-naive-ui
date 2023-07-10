@@ -17,8 +17,8 @@
       console.log('table list:', records);
       return {
         records,
-        currentPage: 1,
-        pageSize: 20,
+        offset: 0,
+        limit: 20,
         total: records.length,
       };
     };
