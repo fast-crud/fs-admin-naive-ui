@@ -25,7 +25,7 @@ export default function ({ expose }) {
       form: {
         wrapper: {
           is: 'n-drawer',
-          size: '50%', //抽屉宽度50%
+          width: '50%', //抽屉宽度50%
         },
       },
       columns: {
