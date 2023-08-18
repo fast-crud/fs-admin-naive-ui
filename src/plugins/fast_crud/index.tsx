@@ -22,7 +22,6 @@ import UiNaive from '@fast-crud/ui-naive';
 import { request, requestForMock } from '@/utils/http/service';
 import _ from 'lodash-es';
 import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
-import { useI18n } from 'vue-i18n';
 
 /**
  *  fast-crud的安装方法

@@ -564,6 +564,15 @@ const formRoutes = {
       path: 'render',
       component: () => import('@/views/crud/form/render/index.vue'),
     },
+    {
+      meta: {
+        title: '查看表单使用cell组价',
+        keepAlive: true,
+      },
+      name: 'FormView',
+      path: 'view',
+      component: () => import('@/views/crud/form/view/index.vue'),
+    },
   ],
 };
 const featureRoutes = {
