@@ -76,6 +76,9 @@ export default function ({ expose }) {
           type: 'link',
           column: {
             component: {
+              buttonProps: {
+                text: true,
+              },
               show: compute(({ value }) => {
                 //当value为null时，不显示
                 return value != null;
