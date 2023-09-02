@@ -413,6 +413,15 @@ const formRoutes = {
   children: [
     {
       meta: {
+        title: '基本表单',
+        keepAlive: true,
+      },
+      name: 'FormBase',
+      path: 'base',
+      component: () => import('@/views/crud/form/base/index.vue'),
+    },
+    {
+      meta: {
         title: '表单Grid布局',
         keepAlive: true,
       },
