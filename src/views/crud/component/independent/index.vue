@@ -5,7 +5,7 @@
       <div class="more"></div>
     </template>
     <div style="padding: 20px; width: 50%">
-      <n-form ref="formRef" :model="form" label-width="150px">
+      <n-form ref="formRef" :model="form" label-width="150px" label-placement="left">
         <n-form-item label="上传">
           <fs-file-uploader v-model="form.upload" :uploader="uploader" />
         </n-form-item>
@@ -13,7 +13,7 @@
           <fs-cropper-uploader v-model="form.avatar" v-bind="cropperUploader" />
         </n-form-item>
         <n-form-item label="可复制">
-          <fs-copyable v-model="form.copyable" />
+          <fs-copyable style="width: 300px" v-model="form.copyable" />
         </n-form-item>
         <n-form-item label="人性化时间">
           <fs-time-humanize v-model="form.humanizeTime" />
@@ -79,7 +79,7 @@
       { label: '选项3', value: 3 },
     ],
   });
-
+  const { ui } = useUi();
   const signedUrl = ref();
   async function fileUploaderChange(event: any) {
     const file = event.target.files[0];
@@ -92,7 +92,6 @@
         console.log('progress:' + progress.percent + '%');
       },
     });
-    const { ui } = useUi();
     ui.message.info('upload success；' + JSON.stringify(res));
     //构建下载地址
     const { getConfig } = useUploader();
@@ -102,7 +101,7 @@
   }
 
   function submit() {
-    message.info('submit:' + JSON.stringify(form));
+    ui.message.info('submit:' + JSON.stringify(form));
     console.log('submit:', form);
   }
 </script>
