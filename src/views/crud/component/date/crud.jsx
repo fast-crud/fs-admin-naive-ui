@@ -156,7 +156,7 @@ export default function ({}) {
         daterange: {
           title: '日期范围',
           type: 'daterange',
-          search: { show: true, width: 300 },
+          search: { show: true, col: { span: 8 } },
           valueBuilder({ row }) {
             if (row.daterangeStart && row.daterangeEnd) {
               row.daterange = [row.daterangeStart, row.daterangeEnd];

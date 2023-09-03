@@ -105,9 +105,6 @@ export default function () {
           search: {
             show: true,
             rules: null,
-            component: {
-              style: { width: '100px' },
-            },
           },
           type: 'dict-select',
           dict: dict({
@@ -139,7 +136,7 @@ export default function () {
         search: {
           title: '远程搜索',
           type: 'dict-select',
-          search: { show: true, component: { style: { width: '240px' } } },
+          search: { show: true },
           form: {
             component: {
               name: 'fs-dict-select',

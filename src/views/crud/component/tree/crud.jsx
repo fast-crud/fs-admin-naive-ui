@@ -37,7 +37,7 @@ export default function ({ expose }) {
         },
         tree: {
           title: '树形选择',
-          search: { show: false },
+          search: { show: true },
           type: 'dict-tree',
           dict: dict({
             isTree: true,
@@ -51,7 +51,7 @@ export default function ({ expose }) {
         },
         multiple: {
           title: '多选',
-          search: { show: false },
+          search: { show: true },
           type: 'dict-tree',
           dict: dict({
             cloneable: false,
