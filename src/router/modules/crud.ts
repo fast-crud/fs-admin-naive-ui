@@ -725,6 +725,18 @@ const featureRoutes = {
       component: () => import('@/views/crud/feature/local-v-model/index.vue'),
     },
     {
+      meta: { title: '导入', keepAlive: true },
+      name: 'FeatureLocalImport',
+      path: 'local-import',
+      component: () => import('@/views/crud/feature/local-import/index.vue'),
+    },
+    {
+      meta: { title: '导出', keepAlive: true },
+      name: 'FeatureExport',
+      path: 'export',
+      component: () => import('@/views/crud/feature/export/index.vue'),
+    },
+    {
       meta: { title: '自定义删除', keepAlive: true },
       name: 'FeatureRemove',
       path: 'remove',
