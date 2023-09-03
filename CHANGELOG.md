@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.9](https://github.com/jekip/naive-ui-admin/compare/v1.16.8...v1.16.9) (2023-09-03)
+
+### Performance Improvements
+
+* 表单下所有组件优化为宽度100% ([3317eae](https://github.com/jekip/naive-ui-admin/commit/3317eae1c89746a31b5eed8e270e82c27f16e8d7))
+
 ## [1.16.8](https://github.com/jekip/naive-ui-admin/compare/v1.16.7...v1.16.8) (2023-09-03)
 
 ### Performance Improvements
