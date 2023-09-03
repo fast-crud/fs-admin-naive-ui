@@ -328,6 +328,24 @@ const componentRoute = {
       path: 'icon',
       component: () => import('@/views/crud/component/icon/index.vue'),
     },
+    {
+      meta: {
+        title: 'JsonEditor',
+        keepAlive: true,
+      },
+      name: 'ComponentJson',
+      path: 'json',
+      component: () => import('@/views/crud/component/json/index.vue'),
+    },
+    {
+      meta: {
+        title: '组件独立使用',
+        keepAlive: true,
+      },
+      name: 'ComponentIndependent',
+      path: 'independent',
+      component: () => import('@/views/crud/component/independent/index.vue'),
+    },
   ],
 };
 
