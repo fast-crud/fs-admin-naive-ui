@@ -11,6 +11,7 @@ import {
   UserPageRes,
 } from '@fast-crud/fast-crud';
 import createCrudOptionsText from '../text/crud';
+import { GetByIds } from '../text/api';
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -55,21 +56,12 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             value: 'id',
             label: 'name',
             getNodesByValues: async (values: any[]) => {
-              const ret = [];
-              if (Array.isArray(values) === false) {
-                values = [values];
-              }
-              for (const value of values) {
-                const obj = await textTableApi.GetObj(value);
-                ret.push(obj);
-              }
-              return ret;
+              return await textTableApi.GetByIds(values);
             },
           }),
           form: {
             component: {
               multiple: false,
-              rowKey: 'id', //element-plus 必传
               createCrudOptions: createCrudOptionsText,
               crudOptionsOverride: {
                 table: {
@@ -92,15 +84,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             value: 'id',
             label: 'name',
             getNodesByValues: async (values: any[]) => {
-              const ret = [];
-              if (Array.isArray(values) === false) {
-                values = [values];
-              }
-              for (const value of values) {
-                const obj = await textTableApi.GetObj(value);
-                ret.push(obj);
-              }
-              return ret;
+              return await textTableApi.GetByIds(values);
             },
           }),
           form: {
