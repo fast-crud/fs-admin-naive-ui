@@ -185,6 +185,15 @@ const componentRoute = {
       component: () => import('@/views/crud/component/select/index.vue'),
     },
     {
+      name: 'ComponentTableSelect',
+      path: 'table-select',
+      meta: {
+        title: '表格选择(table-select)',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/component/table-select/index.vue'),
+    },
+    {
       meta: {
         title: '级联(cascader)',
         keepAlive: true,
