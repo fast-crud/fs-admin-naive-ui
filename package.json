@@ -11,7 +11,7 @@
     "bootstrap": "yarn install",
     "serve": "npm run dev",
     "dev": "vite",
-    "debug": "vite --mode debug --profile",
+    "debug": "vite --mode debug --open ",
     "debug:pm": "vite --force --mode debugpm",
     "debug:force": "vite --force --mode debug",
     "build": "vite build && esno ./build/script/postBuild.ts",
