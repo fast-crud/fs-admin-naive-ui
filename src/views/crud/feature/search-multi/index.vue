@@ -46,7 +46,7 @@
       .fs-search-multi-line-buttons {
         position: absolute;
         bottom: -40px;
-        right: 170px;
+        right: 210px;
       }
     }
   }
