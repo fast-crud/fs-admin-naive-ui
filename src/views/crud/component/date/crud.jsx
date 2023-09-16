@@ -64,6 +64,9 @@ export default function ({}) {
         datetime: {
           title: '字符串时间',
           type: 'datetime',
+          form: {
+            rule: [{ required: true, message: '请输入时间' }],
+          },
         },
         // format: {
         //   title: '显示格式化',
@@ -121,7 +124,7 @@ export default function ({}) {
           type: 'month',
           form: {
             component: {
-              valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+              valueFormat: 'yyyy-MM-dd HH:mm:ss', //输入值的格式
             },
           },
         },
@@ -140,7 +143,7 @@ export default function ({}) {
           type: 'quarter',
           form: {
             component: {
-              valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+              valueFormat: 'yyyy-MM-dd HH:mm:ss', //输入值的格式
             },
           },
         },
@@ -149,7 +152,7 @@ export default function ({}) {
           type: 'year',
           form: {
             component: {
-              valueFormat: 'YYYY-MM-DD HH:mm:ss', //输入值的格式
+              valueFormat: 'yyyy-MM-dd HH:mm:ss', //输入值的格式
             },
           },
         },
