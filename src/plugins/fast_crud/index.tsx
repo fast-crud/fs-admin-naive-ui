@@ -7,6 +7,7 @@ import {
   FsSetupOptions,
   useColumns,
   UseCrudProps,
+  useTypes,
   useUi,
 } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
@@ -284,6 +285,11 @@ function install(app: any, options: any = {}) {
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
   app.use(FsExtendsCopyable);
+
+  const { addTypes, getType } = useTypes();
+  //此处演示修改官方字段类型
+  const textType = getType('text');
+  textType.search.autoSearchTrigger = 'change'; //修改官方的字段类型，设置为文本变化就触发查询
 
   const { registerMergeColumnPlugin } = useColumns();
   registerMergeColumnPlugin({
