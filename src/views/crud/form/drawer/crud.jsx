@@ -26,6 +26,12 @@ export default function ({ expose }) {
         wrapper: {
           is: 'n-drawer',
           width: '50%', //抽屉宽度50%
+          onClosed(e) {
+            console.log('onClosed', e);
+          },
+          onOpened(e) {
+            console.log('onOpened', e);
+          },
         },
       },
       columns: {

@@ -50,6 +50,12 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
           }
         },
         wrapper: {
+          onClosed(e) {
+            console.log('onClosed', e);
+          },
+          onOpened(e) {
+            console.log('onOpened', e);
+          },
           buttons: {
             ok: {
               text: '保存',
