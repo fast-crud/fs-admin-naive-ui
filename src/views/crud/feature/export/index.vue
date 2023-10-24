@@ -1,5 +1,13 @@
 <template>
   <fs-page>
+    <template #header>
+      <div class="title">导出</div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/toolbar.html#export"
+          >文档</a
+        >
+      </div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #toolbar-left>
         <n-form :inline="true" label-placement="left" :show-feedback="false">
