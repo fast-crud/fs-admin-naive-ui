@@ -63,9 +63,7 @@ export default function ({ crudExpose }) {
           type: 'text',
           search: { show: true, value: null },
           form: {
-            // form.value不支持asyncCompute
-            // 假如你的默认值异步获取的，那么你自己必须保证先异步计算完成之后，才能打开对话框。
-            // 因为在打开对话框时，默认值就必须得设置好。
+            // form.value不支持asyncCompute/Compute, 因为compute需要现有上下文
             value: defValueRef,
           },
         },
