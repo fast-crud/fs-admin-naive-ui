@@ -348,6 +348,15 @@ const componentRoute = {
     },
     {
       meta: {
+        title: '国际手机号',
+        keepAlive: true,
+      },
+      name: 'ComponentPhone',
+      path: 'phone',
+      component: () => import('@/views/crud/component/phone/index.vue'),
+    },
+    {
+      meta: {
         title: '组件独立使用',
         keepAlive: true,
       },
