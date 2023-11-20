@@ -1,18 +1,17 @@
-import * as api from "./api";
+import * as api from './api';
 import {
-  dict,
-  compute,
+  AddReq,
   CreateCrudOptionsProps,
   CreateCrudOptionsRet,
+  DelReq,
+  dict,
+  EditableEachCellsOpts,
+  EditReq,
   UserPageQuery,
   UserPageRes,
-  EditReq,
-  DelReq,
-  AddReq
-} from "@fast-crud/fast-crud";
-import { computed, reactive, ref } from "vue";
-import _ from "lodash-es";
-import { EditableEachCellsOpts } from "@fast-crud/fast-crud/src/components/crud/editable/editable";
+} from '@fast-crud/fast-crud';
+import { reactive, ref } from 'vue';
+
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const { crudBinding } = crudExpose;
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
@@ -31,10 +30,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   };
 
   const radioDictRef = dict({
-    url: "/mock/dicts/OpenStatusEnum?single"
+    url: '/mock/dicts/OpenStatusEnum?single',
   });
 
-  const radioColumnValue = ref("");
+  const radioColumnValue = ref('');
   function columnUpdate(event: Event) {
     //批量设置值
     // _.forEach(crudBinding.value?.data, (item) => {
@@ -42,7 +41,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     // });
     crudExpose.editable.eachCells((opts: EditableEachCellsOpts) => {
       const { key, cell, rowData } = opts;
-      if (key === "radio") {
+      if (key === 'radio') {
         if (cell.isEditing) {
           //@ts-ignore
           rowData.radio = event.target.value;
@@ -54,7 +53,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     editing: false,
     loading: false,
     onSubmit: async () => {
-      console.log("onSubmit");
+      console.log('onSubmit');
       radioColumnEditor.loading = true;
       try {
         const data: any[] = [];
@@ -69,14 +68,14 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       }
     },
     onCancel: () => {
-      console.log("cancel");
+      console.log('cancel');
       crudExpose.editable.cancel();
       radioColumnEditor.editing = false;
     },
-    "onUpdate:editing": (value: boolean) => {
+    'onUpdate:editing': (value: boolean) => {
       radioColumnEditor.editing = value;
       if (value === true) {
-        crudExpose.editable.activeCols({ cols: ["radio"], showAction: false });
+        crudExpose.editable.activeCols({ cols: ['radio'], showAction: false });
       }
     },
     vSlots: {
@@ -88,8 +87,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             onChange={columnUpdate}
           ></fs-dict-radio>
         );
-      }
-    }
+      },
+    },
   });
 
   return {
@@ -98,7 +97,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         pageRequest,
         addRequest,
         editRequest,
-        delRequest
+        delRequest,
       },
       actionbar: {
         buttons: {
@@ -118,108 +117,108 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           //     return false;
           //   })
           // }
-        }
+        },
       },
       table: {
         editable: {
-          mode: "cell",
+          mode: 'cell',
           exclusive: true,
-          exclusiveEffect: "cancel",
+          exclusiveEffect: 'cancel',
           async updateCell(opts) {
             const { row, key, value } = opts;
             return await api.UpdateCell(row.id, key, value);
-          }
+          },
         },
         slots: {
           //编辑列
           headerCell({ column }: any) {
-            if (column.key === "radio") {
+            if (column.key === 'radio') {
               return (
-                <div style={{ width: "100%" }} class={"flex "}>
+                <div style={{ width: '100%' }} class={'flex '}>
                   <fs-editable {...radioColumnEditor} v-slots={radioColumnEditor.vSlots}>
-                    {column.title} <span style={{ color: "red" }}>(点我批量编辑)</span>
+                    {column.title} <span style={{ color: 'red' }}>(点我批量编辑)</span>
                   </fs-editable>
                 </div>
               );
             }
-          }
-        }
+          },
+        },
       },
       columns: {
         id: {
-          title: "ID",
-          type: "number",
+          title: 'ID',
+          type: 'number',
           form: {
-            show: false
+            show: false,
           },
-          column: { width: 80, align: "center" }
+          column: { width: 80, align: 'center' },
         },
         disable: {
-          title: "禁止编辑",
-          type: "text",
+          title: '禁止编辑',
+          type: 'text',
           column: {
             editable: {
-              disabled: true //也可以配置为方法，根据条件禁用或启用编辑
+              disabled: true, //也可以配置为方法，根据条件禁用或启用编辑
               // disabled: ({ column, index, row }) => {
               //   return index % 2 === 0;
               // }
-            }
-          }
+            },
+          },
         },
         radio: {
-          title: "状态",
+          title: '状态',
           search: { show: true },
-          type: "dict-radio",
+          type: 'dict-radio',
           dict: radioDictRef,
           column: {
-            width: 300
+            width: 300,
           },
           form: {
-            rule: [{ required: true, message: "请选择状态" }]
-          }
+            rule: [{ required: true, message: '请选择状态' }],
+          },
         },
         name: {
-          title: "姓名",
-          type: "text",
+          title: '姓名',
+          type: 'text',
           form: {
             rule: [
-              { required: true, message: "请输入姓名" },
+              { required: true, message: '请输入姓名' },
               {
-                type: "string",
+                type: 'string',
                 min: 2,
                 max: 10,
-                message: "长度在 2 到 10 个字符"
-              }
-            ]
-          }
+                message: '长度在 2 到 10 个字符',
+              },
+            ],
+          },
         },
         address: {
-          title: "地址",
+          title: '地址',
           children: {
             province: {
-              title: "省份",
+              title: '省份',
               search: { show: true },
-              type: "text"
+              type: 'text',
             },
             city: {
-              title: "城市",
+              title: '城市',
               search: { show: true },
-              type: "dict-select",
+              type: 'dict-select',
               dict: dict({
-                value: "id",
-                label: "text",
+                value: 'id',
+                label: 'text',
                 data: [
-                  { id: "sz", text: "深圳", color: "success" },
-                  { id: "gz", text: "广州", color: "primary" },
-                  { id: "bj", text: "北京" },
-                  { id: "wh", text: "武汉" },
-                  { id: "sh", text: "上海" }
-                ]
-              })
-            }
-          }
-        }
-      }
-    }
+                  { id: 'sz', text: '深圳', color: 'success' },
+                  { id: 'gz', text: '广州', color: 'primary' },
+                  { id: 'bj', text: '北京' },
+                  { id: 'wh', text: '武汉' },
+                  { id: 'sh', text: '上海' },
+                ],
+              }),
+            },
+          },
+        },
+      },
+    },
   };
 }
