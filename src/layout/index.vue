@@ -62,6 +62,7 @@
         <!--        <NLayoutFooter v-if="getShowFooter">-->
         <!--          <PageFooter />-->
         <!--        </NLayoutFooter>-->
+        <fs-source-link />
       </n-layout-content>
       <n-back-top :right="100" />
     </n-layout>
@@ -79,6 +80,7 @@
   import { useDesignSetting } from '@/hooks/setting/useDesignSetting';
   import { useRoute } from 'vue-router';
   import { useProjectSettingStore } from '@/store/modules/projectSetting';
+  import FsSourceLink from '@/layout/components/source-link/index.vue';
 
   const { getDarkTheme } = useDesignSetting();
   const {
