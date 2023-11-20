@@ -12,6 +12,7 @@ import {
   ExtensionPuzzleOutline,
   FlameOutline,
   CubeOutline,
+  PencilOutline,
 } from '@vicons/ionicons5';
 
 const basicRoute: RouteRecordRaw = {
@@ -701,18 +702,6 @@ const featureRoutes = {
       component: () => import('@/views/crud/feature/height/index.vue'),
     },
     {
-      meta: { title: '可编辑', keepAlive: true },
-      name: 'FeatureEditable',
-      path: 'editable',
-      component: () => import('@/views/crud/feature/editable/index.vue'),
-    },
-    {
-      meta: { title: '行编辑', keepAlive: true },
-      name: 'FeatureEditableRow',
-      path: 'editable-row',
-      component: () => import('@/views/crud/feature/editable-row/index.vue'),
-    },
-    {
       meta: { title: '查询框', keepAlive: true },
       name: 'FeatureSearch',
       path: 'search',
@@ -777,6 +766,57 @@ const featureRoutes = {
       name: 'FeatureRemove',
       path: 'remove',
       component: () => import('@/views/crud/feature/remove/index.vue'),
+    },
+  ],
+};
+
+const editableRoute: RouteRecordRaw = {
+  path: 'editable',
+  name: 'Editable',
+  redirect: '/crud/editable/free',
+  meta: {
+    title: '可编辑',
+    icon: renderIcon(PencilOutline),
+  },
+  component: ParentLayout,
+  children: [
+    {
+      name: 'EditableFree',
+      path: 'free',
+      meta: {
+        title: '自由编辑',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/editable/free/index.vue'),
+    },
+    {
+      name: 'EditableRow',
+      path: 'row',
+      meta: {
+        title: '行编辑',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/editable/row/index.vue'),
+    },
+
+    {
+      name: 'EditableCell',
+      path: 'cell',
+      meta: {
+        title: '单元格编辑',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/editable/cell/index.vue'),
+    },
+
+    {
+      name: 'EditableVModel',
+      path: 'vmodel',
+      meta: {
+        title: '子表格编辑',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/editable/vmodel/index.vue'),
     },
   ],
 };
@@ -931,6 +971,7 @@ const routes = [
       rowHandleRoute,
       componentRoute,
       featureRoutes,
+      editableRoute,
       formRoutes,
       slotRoutes,
       advancedRoutes,
