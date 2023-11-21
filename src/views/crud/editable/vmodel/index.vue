@@ -3,7 +3,11 @@
     <template #header>
       <div class="title">vModel编辑</div>
       <div class="more"
-        ><a target="_blank" href="http://fast-crud.docmirror.cn/api/expose.html">文档</a></div
+        ><a
+          target="_blank"
+          href="http://fast-crud.docmirror.cn/api/crud-options/table.html#editable"
+          >文档</a
+        ></div
       >
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
