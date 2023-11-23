@@ -9,9 +9,9 @@ export default function ({ expose }) {
   };
   const editRequest = async ({ form, row }) => {
     if (row.id) {
-      if(form.id==null){
+      if (form.id == null) {
       form.id = row.id;
-    };
+    }
     }
 
     return await api.UpdateObj(form);

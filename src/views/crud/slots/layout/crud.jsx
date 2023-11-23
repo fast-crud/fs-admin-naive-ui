@@ -5,9 +5,9 @@ export default function ({ expose }) {
     return await api.GetList(query);
   };
   const editRequest = async ({ form, row }) => {
-    if(form.id==null){
+    if (form.id == null) {
       form.id = row.id;
-    };
+    }
     return await api.UpdateObj(form);
   };
   const delRequest = async (id) => {

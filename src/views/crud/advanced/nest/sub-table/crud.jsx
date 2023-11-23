@@ -1,9 +1,9 @@
 import * as api from './api';
 export default function ({ expose, props, ctx }) {
   const editRequest = async ({ form, row }) => {
-    if(form.id==null){
+    if (form.id == null) {
       form.id = row.id;
-    };
+    }
     return await api.UpdateObj(form);
   };
   const delRequest = async ({ row }) => {
