@@ -10,7 +10,7 @@ import {
   DelReq,
   AddReq,
 } from '@fast-crud/fast-crud';
-import EditableRowSub from '/@/views/crud/editable/sub-crud/row/index.vue';
+import EditableRowSub from './row/index.vue';
 export default function (props: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const { crudBinding, crudRef } = props.crudExpose;
   const { crudExpose } = props;
