@@ -818,6 +818,15 @@ const editableRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/editable/vmodel/index.vue'),
     },
+    {
+      name: 'EditableSubCrud',
+      path: 'sub-crud',
+      meta: {
+        title: '子Crud',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/editable/sub-crud/index.vue'),
+    },
   ],
 };
 const slotRoutes = {
