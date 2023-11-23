@@ -4,7 +4,9 @@ import { compute } from '@fast-crud/fast-crud';
 import SubTable from './sub-table/index.vue';
 export default function ({ expose, asideTableRef }) {
   const editRequest = async ({ form, row }) => {
-    form.id = row.id;
+    if(form.id==null){
+      form.id = row.id;
+    };
     return await api.UpdateObj(form);
   };
   const delRequest = async ({ row }) => {

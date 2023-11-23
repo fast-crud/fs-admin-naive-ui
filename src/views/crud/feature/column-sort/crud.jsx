@@ -2,7 +2,9 @@ import * as api from './api';
 import { dict } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const editRequest = async ({ form, row }) => {
-    form.id = row.id;
+    if(form.id==null){
+      form.id = row.id;
+    };
     return await api.UpdateObj(form);
   };
   const delRequest = async ({ row }) => {
