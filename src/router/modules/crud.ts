@@ -612,12 +612,21 @@ const formRoutes = {
     },
     {
       meta: {
-        title: '查看表单使用cell组价',
+        title: '查看表单使用cell组件',
         keepAlive: true,
       },
       name: 'FormView',
       path: 'view',
       component: () => import('@/views/crud/form/view/index.vue'),
+    },
+    {
+      meta: {
+        title: '表单Watch',
+        keepAlive: true,
+      },
+      name: 'FormWatch',
+      path: 'view',
+      component: () => import('@/views/crud/form/watch/index.vue'),
     },
   ],
 };
