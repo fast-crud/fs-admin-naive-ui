@@ -47,7 +47,7 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              keyField: 'value',
+              // keyField: 'value',
             },
           },
         },
@@ -62,7 +62,7 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              keyField: 'value',
+              // keyField: 'value',
               'tree-checkable': true,
             },
           },
@@ -78,10 +78,10 @@ export default function ({ expose }) {
             label: 'name',
           }),
           form: {
-            component: {
-              keyField: 'code',
-              labelField: 'name',
-            },
+            // component: {
+            //   keyField: 'code',
+            //   labelField: 'name',
+            // },
           },
         },
       },
