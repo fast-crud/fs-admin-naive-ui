@@ -42,6 +42,7 @@
     "@fast-crud/ui-naive": "^1.20.0",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.376",
+    "@iconify/vue": "^4.1.1",
     "@purge-icons/generated": "^0.7.0",
     "@vicons/antd": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",
