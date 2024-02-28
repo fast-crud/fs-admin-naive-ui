@@ -108,7 +108,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       //     drop_console: VITE_DROP_CONSOLE,
       //   },
       // },
-      reportCompressedSize: false
+      reportCompressedSize: false,
       // chunkSizeWarningLimit: 5000,
     },
   };
