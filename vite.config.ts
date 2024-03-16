@@ -109,7 +109,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       //   },
       // },
       reportCompressedSize: false,
-      // chunkSizeWarningLimit: 5000,
+      chunkSizeWarningLimit: 50000,
     },
   };
 };
