@@ -7,10 +7,12 @@ const list = [
   {
     single: 1,
     multi: [1, 2],
+    viewMode: 1,
   },
   {
     single: 3,
     multi: [1, 2, 3],
+    viewMode: 2,
   },
   {
     single: 2,

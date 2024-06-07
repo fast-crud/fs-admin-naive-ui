@@ -1,6 +1,6 @@
 import { requestForMock } from '@/utils/http/service';
 const request = requestForMock;
-const apiPrefix = '/mock/ComponentText';
+const apiPrefix = '/mock/ComponentInDialog';
 export function GetList(query) {
   return request({
     url: apiPrefix + '/page',

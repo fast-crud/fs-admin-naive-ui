@@ -106,6 +106,39 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             },
           },
         },
+        viewMode: {
+          title: '查看模式',
+          dict: dict({
+            value: 'id',
+            label: 'name',
+          }),
+          column: {
+            component: {
+              name: 'fs-table-select',
+              //设置为查看模式
+              viewMode: true,
+              createCrudOptions: createCrudOptionsText,
+              slots: {
+                default({ scope, value }) {
+                  async function open() {
+                    //打开时传入默认查询参数
+                    const crudOptions = {
+                      search: {
+                        initialForm: {
+                          classId: value,
+                        },
+                      },
+                    };
+                    const { crudExpose } = await scope.open({ crudOptions });
+                    // 这里还能通过crudExpose等返回值操作表格
+                  }
+
+                  return <n-button onClick={open}>点我查看学生列表:{value}</n-button>;
+                },
+              },
+            },
+          },
+        },
       },
     },
   };

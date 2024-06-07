@@ -36,6 +36,11 @@ export default function ({ crudExpose }) {
             },
           },
         },
+        classId: {
+          title: '班级Id',
+          type: 'number',
+          search: { show: true },
+        },
         search: {
           title: '前置后置',
           type: 'text',
