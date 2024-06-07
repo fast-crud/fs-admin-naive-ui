@@ -50,8 +50,8 @@ export default function ({ expose }) {
           viewForm: {
             component: {
               name: null,
-              render(h, scope) {
-                return <div>{scope.value}</div>;
+              render(scope) {
+                return <div>{scope?.value}</div>;
               },
             },
           },
