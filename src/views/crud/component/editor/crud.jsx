@@ -39,14 +39,14 @@ export default function ({ expose }) {
         },
         title: {
           title: '标题',
-          type: ['text', 'colspan'],
+          type: ['text'],
           column: {
             width: 400,
           },
         },
         text: {
           title: '摘要',
-          type: ['textarea', 'colspan'],
+          type: ['textarea'],
           viewForm: {
             component: {
               name: null,
@@ -59,11 +59,11 @@ export default function ({ expose }) {
         disabled: {
           title: '禁用启用',
           search: { show: false },
-          type: ['dict-switch', 'colspan'],
+          type: ['dict-switch'],
           dict: dict({
             data: [
-              { value: true, label: '禁用' },
-              { value: false, label: '启用' },
+              { value: true, label: '启用' },
+              { value: false, label: '禁用' },
             ],
           }),
         },
@@ -113,13 +113,26 @@ export default function ({ expose }) {
             width: 300,
             show: false,
           },
-          type: ['editor-wang5', 'colspan'], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+          type: 'editor-wang5', // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
             // 动态显隐字段
             // show: compute(({ form }) => {
             //   return form.change === "wang";
             // }),
-            rule: [{ required: true, message: '此项必填' }],
+            col: {
+              span: 24,
+            },
+            rule: [
+              {
+                required: true,
+                message: '此项必填',
+                validator: async (rule, value) => {
+                  if (value.trim() === '<p><br></p>') {
+                    throw new Error('内容不能为空');
+                  }
+                },
+              },
+            ],
             component: {
               disabled: compute(({ form }) => {
                 return form.disabled;
