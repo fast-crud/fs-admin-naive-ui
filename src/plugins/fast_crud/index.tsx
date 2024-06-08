@@ -115,6 +115,9 @@ function install(app: any, options: any = {}) {
           },
           display: 'flex', //表单布局
           labelWidth: '100px', //表单label宽度
+          wrapper: {
+            saveRemind: true,
+          },
         },
       };
 
