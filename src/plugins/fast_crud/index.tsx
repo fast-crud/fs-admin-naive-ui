@@ -117,6 +117,10 @@ function install(app: any, options: any = {}) {
           labelWidth: '100px', //表单label宽度
           wrapper: {
             saveRemind: true,
+            beforeClose() {
+              console.log('beforeClose');
+              return true;
+            },
           },
         },
       };
