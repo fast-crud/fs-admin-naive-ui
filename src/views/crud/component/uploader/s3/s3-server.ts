@@ -1,7 +1,7 @@
 // @ts-ignore
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-
+// TODO  模拟server， 你应该将此代码搬到你的server端
 export async function generateSignedUrl(bucket: string, key: string, type: 'put' | 'get' = 'get') {
   const client = new S3Client({
     // s3ForcePathStyle: true,

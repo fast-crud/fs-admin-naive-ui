@@ -182,7 +182,7 @@ function install(app: any, options: any = {}) {
       domain: 'https://d2p-demo.oss-cn-shenzhen.aliyuncs.com',
       bucket: 'd2p-demo',
       region: 'oss-cn-shenzhen',
-      accessKeyId: '',
+      accessKeyId: '', //客户端不建议使用此方式
       accessKeySecret: '',
       async getAuthorization() {
         // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
@@ -232,9 +232,9 @@ function install(app: any, options: any = {}) {
         //minio与s3完全适配
         endpoint: 'https://play.min.io',
         credentials: {
-          //不建议在客户端使用secretAccessKey来上传
-          accessKeyId: 'Q3AM3UQ867SPQQA43P2F', //访问登录名
-          secretAccessKey: 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG', //访问密码
+          //不建议在客户端使用secretAccessKey来上传，生产部署请使用getSignedUrl来获取授权
+          accessKeyId: '', //访问登录名
+          secretAccessKey: '', //访问密码
         },
       },
       //预签名配置，向后端获取上传的预签名连接
