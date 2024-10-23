@@ -24,6 +24,13 @@
         <n-alert type="warning" title="form-body-bottom 插槽" />
       </template>
 
+      <template #form-body-left>
+        <n-alert type="warning" title="form-body-left 插槽" />
+      </template>
+      <template #form-body-right>
+        <n-alert type="warning" title="form-body-right 插槽" />
+      </template>
+
       <template #form-footer-left>
         <n-button type="danger">form-footer-left 插槽</n-button>
       </template>
