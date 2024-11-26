@@ -103,9 +103,6 @@ export default function () {
           }),
           form: {
             component: {
-              onChange(args) {
-                utils.logger.info('onChange', args);
-              },
               on: {
                 selectedChange({ form, $event }) {
                   // $event就是原始的事件值，也就是选中的 option对象
