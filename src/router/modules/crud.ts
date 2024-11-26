@@ -958,6 +958,15 @@ const advancedRoutes = {
       path: 'custom-layout',
       component: () => import('@/views/crud/advanced/custom-layout/index.vue'),
     },
+    {
+      meta: {
+        title: '列表以card方式显示',
+        keepAlive: true,
+      },
+      name: 'AdvancedCard',
+      path: 'card',
+      component: () => import('@/views/crud/advanced/card/index.vue'),
+    },
   ],
 };
 
