@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0](https://github.com/jekip/naive-ui-admin/compare/v1.24.2...v1.25.0) (2025-01-12)
+
+### Features
+
+* 升级naive-ui版本，draggable改成dragenabled，修复naive拖动问题 ([0914c16](https://github.com/jekip/naive-ui-admin/commit/0914c16ef7f6b3f99b4ad12a1935d54e820e458f))
+
 ## [1.24.2](https://github.com/jekip/naive-ui-admin/compare/v1.24.1...v1.24.2) (2024-12-31)
 
 **Note:** Version bump only for package naive-ui-admin
