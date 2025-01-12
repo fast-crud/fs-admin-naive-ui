@@ -2,8 +2,8 @@ import axios from 'axios';
 import { get } from 'lodash-es';
 import Adapter from 'axios-mock-adapter';
 import { errorLog, errorCreate } from './tools';
-import { useUserStoreWidthOut } from '@/store/modules/user';
 import { getAppEnvConfig } from '@/utils/env';
+import { useUser } from '@/store/modules/user';
 
 /**
  * @description 创建请求实例
@@ -94,8 +94,8 @@ function createService() {
       }
       errorLog(error);
       if (status === 401) {
-        const userStore = useUserStoreWidthOut();
-        userStore.logout();
+        // const userStore = useUserStoreWidthOut();
+        // userStore.logout();
       }
       return Promise.reject(error);
     }
@@ -118,7 +118,7 @@ function createRequestFunction(service: any) {
       baseURL: VITE_GLOB_API_URL_PREFIX,
       data: {},
     };
-    const userStore = useUserStoreWidthOut();
+    const userStore = useUser();
     const token = userStore.getToken;
     if (token != null) {
       // @ts-ignore

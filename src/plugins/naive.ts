@@ -67,6 +67,14 @@ import {
   NBackTop,
   NSkeleton,
   NCascader,
+
+  //add by fs
+  NRadioButton,
+  NTreeSelect,
+  NImageGroup,
+  NImage,
+  NCollapse,
+  NCollapseItem,
 } from 'naive-ui';
 
 // https://www.naiveui.com/en-US/os-theme/docs/import-on-demand

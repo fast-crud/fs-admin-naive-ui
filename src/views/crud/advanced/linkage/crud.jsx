@@ -48,7 +48,7 @@ export default function ({ expose }) {
             show: true,
           },
           dict: dict({
-            url: '/crud/linkage/province',
+            url: '/mock/linkage/province',
             value: 'id',
             cache: true,
           }),
@@ -75,7 +75,7 @@ export default function ({ expose }) {
             url({ form }) {
               if (form && form.province != null) {
                 // 本数据字典的url是通过前一个select的选项决定的
-                return `/crud/linkage/city?province=${form.province}`;
+                return `/mock/linkage/city?province=${form.province}`;
               }
               return undefined; // 返回undefined 将不加载字典
             },
@@ -108,7 +108,7 @@ export default function ({ expose }) {
             prototype: true,
             url({ form }) {
               if (form && form.province != null && form.city != null) {
-                return `/crud/linkage/county?province=${form.province} &city=${form.city}`;
+                return `/mock/linkage/county?province=${form.province} &city=${form.city}`;
               }
               return undefined;
             },
