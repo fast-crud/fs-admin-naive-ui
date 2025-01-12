@@ -10,7 +10,7 @@
         <h2 v-show="!collapsed" class="title">{{ websiteConfig.title }}</h2>
       </div>
       <AsideMenu
-        v-model:collapsed="collapsed"
+        :collapsed="collapsed"
         v-model:location="getMenuLocation"
         :inverted="getInverted"
         mode="horizontal"
@@ -21,7 +21,7 @@
       <!-- 菜单收起 -->
       <div
         class="ml-1 layout-header-trigger layout-header-trigger-min"
-        @click="() => $emit('update:collapsed', !collapsed)"
+        @click="handleMenuCollapsed"
       >
         <n-icon size="18" v-if="collapsed">
           <MenuUnfoldOutlined />
@@ -42,7 +42,10 @@
       </div>
       <!-- 面包屑 -->
       <n-breadcrumb v-if="crumbsSetting.show">
-        <template v-for="routeItem in breadcrumbList" :key="routeItem.name">
+        <template
+          v-for="routeItem in breadcrumbList"
+          :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name"
+        >
           <n-breadcrumb-item v-if="routeItem.meta.title">
             <n-dropdown
               v-if="routeItem.children.length"
@@ -72,7 +75,7 @@
       <div
         class="layout-header-trigger layout-header-trigger-min"
         v-for="item in iconList"
-        :key="item.icon.name"
+        :key="item.icon"
       >
         <n-tooltip placement="bottom">
           <template #trigger>
@@ -98,12 +101,13 @@
       <div class="layout-header-trigger layout-header-trigger-min">
         <n-dropdown trigger="hover" @select="avatarSelect" :options="avatarOptions">
           <div class="avatar">
-            <n-avatar round>
-              {{ username }}
+            <n-avatar :src="websiteConfig.logo">
               <template #icon>
                 <UserOutlined />
               </template>
             </n-avatar>
+            <n-divider vertical />
+            <span>{{ username }}</span>
           </div>
         </n-dropdown>
       </div>
@@ -131,7 +135,7 @@
   import { NDialogProvider, useDialog, useMessage } from 'naive-ui';
   import { TABS_ROUTES } from '@/store/mutation-types';
   import { useUserStore } from '@/store/modules/user';
-  import { useLockscreenStore } from '@/store/modules/lockscreen';
+  import { useScreenLockStore } from '@/store/modules/screenLock';
   import ProjectSetting from './ProjectSetting.vue';
   import { AsideMenu } from '@/layout/components/Menu';
   import { useProjectSetting } from '@/hooks/setting/useProjectSetting';
@@ -148,39 +152,38 @@
         type: Boolean,
       },
     },
-    setup(props) {
+    emits: ['update:collapsed'],
+    setup(props, { emit }) {
       const userStore = useUserStore();
-      const useLockscreen = useLockscreenStore();
+      const useLockscreen = useScreenLockStore();
       const message = useMessage();
       const dialog = useDialog();
-      const { getNavMode, getNavTheme, getHeaderSetting, getMenuSetting, getCrumbsSetting } =
-        useProjectSetting();
-
-      const { username } = userStore?.info || {};
+      const { navMode, navTheme, headerSetting, menuSetting, crumbsSetting } = useProjectSetting();
 
       const drawerSetting = ref();
 
       const state = reactive({
-        username: username || '',
+        username: userStore?.info?.username ?? '',
         fullscreenIcon: 'FullscreenOutlined',
-        navMode: getNavMode,
-        navTheme: getNavTheme,
-        headerSetting: getHeaderSetting,
-        crumbsSetting: getCrumbsSetting,
+        navMode,
+        navTheme,
+        headerSetting,
+        crumbsSetting,
       });
 
       const getInverted = computed(() => {
-        const navTheme = unref(getNavTheme);
-        return ['light', 'header-dark'].includes(navTheme) ? props.inverted : !props.inverted;
+        return ['light', 'header-dark'].includes(unref(navTheme))
+          ? props.inverted
+          : !props.inverted;
       });
 
       const mixMenu = computed(() => {
-        return unref(getMenuSetting).mixMenu;
+        return unref(menuSetting).mixMenu;
       });
 
       const getChangeStyle = computed(() => {
         const { collapsed } = props;
-        const { minMenuWidth, menuWidth }: any = unref(getMenuSetting);
+        const { minMenuWidth, menuWidth } = unref(menuSetting);
         return {
           left: collapsed ? `${minMenuWidth}px` : `${menuWidth}px`,
           width: `calc(100% - ${collapsed ? `${minMenuWidth}px` : `${menuWidth}px`})`,
@@ -320,6 +323,10 @@
         openDrawer();
       }
 
+      function handleMenuCollapsed() {
+        emit('update:collapsed', !props.collapsed);
+      }
+
       return {
         ...toRefs(state),
         iconList,
@@ -338,6 +345,7 @@
         getMenuLocation,
         mixMenu,
         websiteConfig,
+        handleMenuCollapsed,
       };
     },
   });
@@ -349,7 +357,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0;
-    height: @header-height;
+    height: 64px;
     box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
     transition: all 0.2s ease-in-out;
     width: 100%;

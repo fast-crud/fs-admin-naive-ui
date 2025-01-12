@@ -17,17 +17,17 @@ export interface ProjectSettingState {
   permissionMode: string;
 }
 
-export interface IbodySetting {
+export interface IBodySetting {
   fixed: boolean;
 }
 
-export interface IheaderSetting {
+export interface IHeaderSetting {
   bgColor: string;
   fixed: boolean;
   isReload: boolean;
 }
 
-export interface ImenuSetting {
+export interface IMenuSetting {
   minMenuWidth: number;
   menuWidth: number;
   fixed: boolean;
@@ -36,12 +36,12 @@ export interface ImenuSetting {
   mobileWidth: number;
 }
 
-export interface IcrumbsSetting {
+export interface ICrumbsSetting {
   show: boolean;
   showIcon: boolean;
 }
 
-export interface ImultiTabsSetting {
+export interface IMultiTabsSetting {
   bgColor: string;
   fixed: boolean;
   show: boolean;
@@ -52,8 +52,9 @@ export interface GlobConfig {
   shortName: string;
   urlPrefix?: string;
   uploadUrl?: string;
-  prodMock: boolean;
-  imgUrl?: string;
+  useMock: boolean;
+  fileUrl?: string;
+  loggerMock: boolean;
 }
 
 export interface GlobEnvConfig {
@@ -63,12 +64,14 @@ export interface GlobEnvConfig {
   VITE_GLOB_API_URL: string;
   // 接口前缀
   VITE_GLOB_API_URL_PREFIX?: string;
-  // Project abbreviation
+  // 网站别名
   VITE_GLOB_APP_SHORT_NAME: string;
-  // 图片上传地址
+  // 文件上传地址
   VITE_GLOB_UPLOAD_URL?: string;
-  //图片前缀地址
-  VITE_GLOB_IMG_URL?: string;
-  //生产环境开启mock
-  VITE_GLOB_PROD_MOCK: boolean;
+  // 文件前缀地址
+  VITE_GLOB_FILE_URL?: string;
+  // 开启 mock
+  VITE_USE_MOCK: boolean;
+  // 是否开启控制台打印 mock 请求信息
+  VITE_LOGGER_MOCK: boolean;
 }

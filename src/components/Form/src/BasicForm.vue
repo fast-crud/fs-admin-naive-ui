@@ -8,7 +8,7 @@
             {{ schema.label }}
             <n-tooltip trigger="hover" :style="schema.labelMessageStyle">
               <template #trigger>
-                <n-icon size="18" class="cursor-pointer text-gray-400">
+                <n-icon size="18" class="text-gray-400 cursor-pointer">
                   <QuestionCircleOutlined />
                 </n-icon>
               </template>
@@ -90,6 +90,7 @@
             v-bind="getSubmitBtnOptions"
             @click="handleSubmit"
             :loading="loadingSub"
+            attr-type="submit"
             >{{ getProps.submitButtonText }}</n-button
           >
           <n-button
@@ -138,7 +139,7 @@
   import { deepMerge } from '@/utils';
 
   export default defineComponent({
-    name: 'BasicUpload',
+    name: 'BasicForm',
     components: { DownOutlined, UpOutlined, QuestionCircleOutlined },
     props: {
       ...basicProps,

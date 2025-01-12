@@ -206,7 +206,7 @@
         <n-divider title-placement="center">动画</n-divider>
 
         <div class="drawer-setting-item">
-          <div class="drawer-setting-item-title"> 禁用动画 </div>
+          <div class="drawer-setting-item-title"> 启用动画 </div>
           <div class="drawer-setting-item-action">
             <n-switch v-model:value="settingStore.isPageAnimate" />
           </div>
@@ -259,8 +259,7 @@
         title: props.title,
         isDrawer: false,
         placement: 'right',
-        alertText:
-          '该功能主要实时预览各种布局效果，更多完整配置在 projectSetting.ts 中设置，建议在生产环境关闭该布局预览功能。',
+        alertText: '该功能主要实时预览各种布局效果，更多完整配置在 projectSetting.ts 中设置',
         appThemeList: designStore.appThemeList,
       });
 

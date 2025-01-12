@@ -1,19 +1,21 @@
 <template>
-  <n-card :bordered="false" class="proCard">
+  <n-card :bordered="false">
     <BasicForm @register="register" @submit="handleSubmit" @reset="handleReset">
       <template #statusSlot="{ model, field }">
         <n-input v-model:value="model[field]" />
       </template>
     </BasicForm>
-
+  </n-card>
+  <n-card :bordered="false" class="mt-3">
     <BasicTable
       :columns="columns"
       :request="loadDataTable"
-      :row-key="(row) => row.id"
+      :row-key="(row:ListData) => row.id"
       ref="actionRef"
       :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
       :scroll-x="1090"
+      :striped="true"
     >
       <template #tableTitle>
         <n-button type="primary" @click="addTable">
@@ -26,9 +28,7 @@
         </n-button>
       </template>
 
-      <template #toolbar>
-        <n-button type="primary" @click="reloadTable">刷新数据</n-button>
-      </template>
+      <template #toolbar> </template>
     </BasicTable>
 
     <n-modal v-model:show="showModal" :show-icon="false" preset="dialog" title="新建">
@@ -63,15 +63,15 @@
 
 <script lang="ts" setup>
   import { h, reactive, ref } from 'vue';
-  // import { useMessage } from 'naive-ui';
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   import { getTableList } from '@/api/table/list';
-  import { columns } from './columns';
+  import { columns, ListData } from './columns';
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
+  import { type FormRules } from 'naive-ui';
 
-  const rules = {
+  const rules: FormRules = {
     name: {
       required: true,
       trigger: ['blur', 'input'],
@@ -216,7 +216,6 @@
 
   const router = useRouter();
   const formRef: any = ref(null);
-  // const message = useMessage();
   const actionRef = ref();
 
   const showModal = ref(false);
@@ -225,11 +224,6 @@
     name: '',
     address: '',
     date: null,
-  });
-
-  const params = ref({
-    pageSize: 5,
-    name: 'xiaoMa',
   });
 
   const actionColumn = reactive({
@@ -284,7 +278,7 @@
     },
   });
 
-  const [register, {}] = useForm({
+  const [register, { getFieldsValue }] = useForm({
     gridProps: { cols: '1 s:1 m:2 l:3 xl:4 2xl:4' },
     labelWidth: 80,
     schemas,
@@ -295,7 +289,7 @@
   }
 
   const loadDataTable = async (res) => {
-    return await getTableList({ ...formParams, ...params.value, ...res });
+    return await getTableList({ ...getFieldsValue(), ...res });
   };
 
   function onCheckedRow(rowKeys) {

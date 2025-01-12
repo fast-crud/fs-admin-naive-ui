@@ -1,4 +1,5 @@
-import { http } from '@/utils/http/axios';
+import { Alova } from '@/utils/http/alova/index';
+// import { http } from '@/utils/http/axios';
 
 export interface BasicResponseModel<T = any> {
   code: number;
@@ -16,9 +17,10 @@ export interface BasicPageParams {
  * @description: 获取用户信息
  */
 export function getUserInfo() {
-  return http.request({
-    url: '/admin_info',
-    method: 'get',
+  return Alova.Get<InResult>('/admin_info', {
+    meta: {
+      isReturnNativeResponse: true,
+    },
   });
 }
 
@@ -27,14 +29,17 @@ export function getUserInfo() {
  */
 export function login(params) {
   const noMock = import.meta.env.VITE_APP_PM_ENABLED === 'true' ? '/nomock' : '';
-  return http.request<BasicResponseModel>(
+  return Alova.Post<InResult>(
+    '/login',
     {
       url: noMock + '/login',
       method: 'POST',
       params,
     },
     {
-      isTransformResponse: false,
+      meta: {
+        isReturnNativeResponse: true,
+      },
     }
   );
 }
@@ -43,25 +48,14 @@ export function login(params) {
  * @description: 用户修改密码
  */
 export function changePassword(params, uid) {
-  return http.request(
-    {
-      url: `/user/u${uid}/changepw`,
-      method: 'POST',
-      params,
-    },
-    {
-      isTransformResponse: false,
-    }
-  );
+  return Alova.Post(`/user/u${uid}/changepw`, { params });
 }
 
 /**
  * @description: 用户登出
  */
 export function logout(params) {
-  return http.request({
-    url: '/login/logout',
-    method: 'POST',
+  return Alova.Post('/login/logout', {
     params,
   });
 }

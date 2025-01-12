@@ -1,12 +1,6 @@
 <template>
   <div class="editable-cell">
-    <div v-show="!isEdit" class="editable-cell-content" @click="handleEdit">
-      {{ getValues }}
-      <n-icon class="edit-icon" v-if="!column.editRow">
-        <FormOutlined />
-      </n-icon>
-    </div>
-    <div class="flex editable-cell-content" v-show="isEdit" v-click-outside="onClickOutside">
+    <div class="flex editable-cell-content" v-if="isEdit" v-click-outside="onClickOutside">
       <div class="editable-cell-content-comp">
         <CellComponent
           v-bind="getComponentProps"
@@ -17,17 +11,23 @@
           :class="getWrapperClass"
           ref="elRef"
           @options-change="handleOptionsChange"
-          @pressEnter="handleEnter"
+          @press-enter="handleEnter"
         />
       </div>
       <div class="editable-cell-action" v-if="!getRowEditable">
-        <n-icon class="mx-2 cursor-pointer">
+        <n-icon class="mx-2 cursor-pointer" title="保存">
           <CheckOutlined @click="handleSubmit" />
         </n-icon>
-        <n-icon class="mx-2 cursor-pointer">
+        <n-icon class="mx-2 cursor-pointer" title="取消">
           <CloseOutlined @click="handleCancel" />
         </n-icon>
       </div>
+    </div>
+    <div v-else class="flex items-center editable-cell-content" @click="handleEdit">
+      {{ getValues }}
+      <n-icon class="ml-1 edit-icon" v-if="!column.editRow">
+        <FormOutlined />
+      </n-icon>
     </div>
   </div>
 </template>

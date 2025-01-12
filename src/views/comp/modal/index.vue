@@ -8,7 +8,7 @@
         方式，ref方式，也支持，使用方式和其他组件一致，如：modalRef.value.closeModal()
       </n-card>
     </div>
-    <n-card :bordered="false" class="proCard mt-4">
+    <n-card :bordered="false" class="mt-4 proCard">
       <n-alert title="Modal嵌套Form" type="info">
         使用 useModal 进行弹窗展示和操作，并演示了在Modal内和Form组件，组合使用方法
       </n-alert>
@@ -54,8 +54,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, ref, reactive, toRefs } from 'vue';
+<script lang="ts" setup>
+  import { ref } from 'vue';
   import { useMessage } from 'naive-ui';
   import { basicModal, useModal } from '@/components/Modal';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
@@ -205,89 +205,62 @@
     },
   ];
 
-  export default defineComponent({
-    components: { basicModal, BasicForm },
-    setup() {
-      const modalRef: any = ref(null);
-      const message = useMessage();
+  const modalRef: any = ref(null);
+  const message = useMessage();
 
-      const [modalRegister, { openModal, closeModal, setSubLoading }] = useModal({
-        title: '新增预约',
-      });
-
-      const [
-        lightModalRegister,
-        {
-          openModal: lightOpenModal,
-          closeModal: lightCloseModal,
-          setSubLoading: lightSetSubLoading,
-        },
-      ] = useModal({
-        title: '确认对话框',
-        showIcon: true,
-        type: 'warning',
-        closable: false,
-        maskClosable: true,
-      });
-
-      const [register, { submit }] = useForm({
-        gridProps: { cols: 1 },
-        collapsedRows: 3,
-        labelWidth: 120,
-        layout: 'horizontal',
-        submitButtonText: '提交预约',
-        showActionButtonGroup: false,
-        schemas,
-      });
-
-      const state = reactive({
-        formValue: {
-          name: '小马哥',
-        },
-      });
-
-      async function okModal() {
-        const formRes = await submit();
-        if (formRes) {
-          closeModal();
-          message.success('提交成功');
-        } else {
-          message.error('验证失败，请填写完整信息');
-          setSubLoading(false);
-        }
-      }
-
-      function lightOkModal() {
-        lightCloseModal();
-        lightSetSubLoading(false);
-      }
-
-      function showLightModal() {
-        lightOpenModal();
-      }
-
-      function showModal() {
-        openModal();
-      }
-
-      function handleReset(values: Recordable) {
-        console.log(values);
-      }
-
-      return {
-        ...toRefs(state),
-        modalRef,
-        register,
-        modalRegister,
-        lightModalRegister,
-        handleReset,
-        showModal,
-        okModal,
-        lightOkModal,
-        showLightModal,
-      };
-    },
+  const [modalRegister, { openModal, closeModal, setSubLoading }] = useModal({
+    title: '新增预约',
   });
+
+  const [
+    lightModalRegister,
+    { openModal: lightOpenModal, closeModal: lightCloseModal, setSubLoading: lightSetSubLoading },
+  ] = useModal({
+    title: '确认对话框',
+    showIcon: true,
+    type: 'warning',
+    closable: false,
+    maskClosable: true,
+  });
+
+  const [register, { submit }] = useForm({
+    gridProps: { cols: 1 },
+    collapsedRows: 3,
+    labelWidth: 120,
+    layout: 'horizontal',
+    submitButtonText: '提交预约',
+    showActionButtonGroup: false,
+    schemas,
+  });
+
+  async function okModal() {
+    const formRes = await submit();
+    if (formRes) {
+      closeModal();
+      console.log('formRes', formRes);
+      message.success('提交成功');
+    } else {
+      message.error('验证失败，请填写完整信息');
+      setSubLoading(false);
+    }
+  }
+
+  function lightOkModal() {
+    lightCloseModal();
+    lightSetSubLoading(false);
+  }
+
+  function showLightModal() {
+    lightOpenModal();
+  }
+
+  function showModal() {
+    openModal();
+  }
+
+  function handleReset(values: Recordable) {
+    console.log(values);
+  }
 </script>
 
 <style lang="less">

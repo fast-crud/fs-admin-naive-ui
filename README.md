@@ -1,31 +1,56 @@
-## 简介
+## 🚀 简介
 
-[Naive Ui Admin](https://github.com/jekip/naive-ui-admin) 完全免费，且可商用，基于 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Naive UI](https://www.naiveui.com/)、[TypeScript](https://www.typescriptlang.org/) 的中后台解决方案，它使用了最新的前端技术栈，并提炼了典型的业务模型，页面，包括二次封装组件、动态菜单、权限校验、粒子化权限控制等功能，它可以帮助你快速搭建企业级中后台项目， 相信不管是从新技术使用还是其他方面，都能帮助到你。
-
-## 特性
-- 二次封装实用高扩展性组件
-- 响应式、多主题，多配置，快速集成，开箱即用
-- 最新技术栈，使用 `Vue3`、`Typescript`、`Pinia`、`Vite` 等前端前沿技术
-- 强大的鉴权系统，对路由、菜单、功能点等支持`三种鉴权模式`，满足不同的业务鉴权需求
-- 持续更新，实用性页面模板功能和交互，随意搭配组合，让构建页面变得简单化
+`Naive Ui Admin` 是一款 完全免费 且可商用的中后台解决方案，基于 🌟 `Vue3.0` 🌟、🚀 `Vite` 🚀、✨ [Naive UI](https://www.naiveui.com/) ✨ 和 🎉 `TypeScript` 🎉。
+它融合了最新的前端技术栈，提炼了典型的业务模型和页面，包括二次封装组件、动态菜单、权限校验等功能，助力快速搭建企业级中后台项目。
 
 
-## 预览
-- [naive-ui-admin](https://v1.naiveadmin.com)
+
+
+## 🌈 特性
+📦 二次封装的实用高扩展性组件
+🎨 响应式、多主题、多配置，快速集成，开箱即用
+🚀 强大的鉴权系统，支持 三种鉴权模式，满足多样业务需求
+🌐 持续更新的实用性页面模板和交互设计，简化页面构建
+
+
+## 🎥 预览
+- [naive-ui-admin](https://jekip.github.io)
 
 账号：admin，密码：123456（随意）
 
-## 提示
+## 💡 提示
 
-如果这个版本的功能和组件，并不能满足您的需求，不妨看看，我们全新 `NaiveAdmin v2` 他或许能让您眼前一亮O(∩_∩)O哈哈~
+如果您需要更多功能和组件，不妨尝试全新的 `NaiveAdmin`，它可能正是您寻找的解决方案
 
 [NaiveAdmin 官网](https://www.naiveadmin.com)
 
-[NaiveAdmin v2 预览](https://pro.naiveadmin.com)
+[NaiveAdmin 变更日志](https://www.yuque.com/u5825/zaqu0e)
 
-[NaiveAdmin v2 变更日志](https://www.naiveadmin.com/guide/changelog)
+[为什么选我们？](https://www.naiveadmin.com/choose/we)
 
-## 新品
+### Plus
+
+全新设计版本，增加了众多特性，值得一试
+
+基于 `NaiveUi` 组件库
+
+[NaiveAdmin Plus 预览](https://plus.naiveadmin.com)
+
+基于 `Antd` 组件库
+
+[NaiveAdmin Antd Plus 预览](https://plus-full.naiveadmin.com)
+
+### Arco vue
+
+智能设计体系，提供轻盈体验
+
+[NaiveAdmin Arco 预览](https://arco.naiveadmin.com)
+
+### Element Plus
+
+面向设计师和开发者的组件库
+
+[Element Plus Admin 预览](https://element.naiveadmin.com)
 
 ### Antd vue
 
@@ -33,26 +58,13 @@
 
 [NaiveAdmin Antd 预览](https://antd.naiveadmin.com)
 
-### Arco vue
+以上版本同时具备 `NaiveAdmin` 功能/组件/页面，一如既往、开箱即用，欢迎前往查看。
 
-新产品，智能设计体系，连接轻盈体验
+## 📚 文档
 
-[NaiveAdmin Arco 预览](https://arco.naiveadmin.com)
+[文档地址](https://docs.naiveadmin.com)
 
-### Element Plus
-
-新产品，面向设计师和开发者的组件库
-
-[Element Plus Admin 预览](https://element.naiveadmin.com)
-
-以上版本同时具备 `NaiveAdmin v2` 功能/组件/页面，一如既往、开箱即用，欢迎前往查看。
-
-
-## 文档
-
-[v1文档地址](https://docs.naiveadmin.com)
-
-## 准备
+## 🛠 准备
 
 - [node](http://nodejs.org/) 和 [git](https://git-scm.com/) -项目开发环境
 - [Vite](https://vitejs.dev/) - 熟悉 vite 特性
@@ -60,10 +72,11 @@
 - [TypeScript](https://www.typescriptlang.org/) - 熟悉`TypeScript`基本语法
 - [Es6+](http://es6.ruanyifeng.com/) - 熟悉 es6 基本语法
 - [Vue-Router-Next](https://next.router.vuejs.org/) - 熟悉 vue-router 基本使用
-- [Naive-ui-admin](https://www.naiveui.com/) - ui 基本使用
+- [NaiveUi](https://www.naiveui.com/) - ui 基本使用
 - [Mock.js](https://github.com/nuysoft/Mock) - mockjs 基本语法
 
-## 使用
+
+## 🏗️ 使用
 
 - 获取项目代码
 
@@ -76,30 +89,30 @@ git clone https://github.com/jekip/naive-ui-admin.git
 ```bash
 cd naive-ui-admin
 
-yarn install
+pnpm install
 
 ```
 
 - 运行
 
 ```bash
-yarn dev
+pnpm run dev
 ```
 
 - 打包
 
 ```bash
-yarn build
+pnpm build
 ```
 
-## 更新日志
+## 📜 更新日志
 
 [CHANGELOG](./CHANGELOG.md)
 
 
-## 如何贡献
+## 🤝 如何贡献
 
-非常欢迎你的加入！[提一个 Issue](https://github.com/jekip/naive-ui-admin/issues) 或者提交一个 Pull Request。
+非常欢迎你的加入！[提一个 Issue](https://github.com/jekip/naive-ui-admin/issues) 或者提交一个 `Pull Request`
 
 **Pull Request:**
 
@@ -109,7 +122,7 @@ yarn build
 4. 推送您的分支: `git push origin feat/xxxx`
 5. 提交`pull request`
 
-## Git 贡献提交规范
+## 📋 Git 贡献提交规范
 
 - 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
@@ -127,7 +140,7 @@ yarn build
   - `types` 类型定义文件更改
   - `wip` 开发中
 
-## 浏览器支持
+## 🌐 浏览器支持
 
 本地开发推荐使用`Chrome 80+` 浏览器
 
@@ -137,18 +150,19 @@ yarn build
 | :-: | :-: | :-: | :-: | :-: |
 | not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
-## 维护者
+## 👥 维护者
 [@Ah jung](https://github.com/jekip)
 
-## 交流
+## 💬 交流
 
-`Naive Ui Admin` 使用或者其他问题，都可以在群内讨论或提问。
+有关 `Naive Ui Admin` 的使用或其他问题，欢迎加入我们的讨论群组或提出问题。
 
-![abelianGroup](https://user-images.githubusercontent.com/19426584/160335146-c28dd205-4600-4d62-b2c6-6456034ab7b1.jpg)
+QQ1群：328347666 （已满）
+QQ2群：741353560
 
-## 赞助
-#### 如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 🍹。
+## 💖 赞助
+#### 如果您觉得这个项目对您有帮助，可以通过下面的链接为作者买一杯果汁，表示感谢！。
 
-![donate](https://jekip.github.io/docs/images/sponsor.png)
+![donate](https://assets.naiveadmin.com/images/sponsor.png)
 
 [Paypal Me](https://www.paypal.com/paypalme/majunping)

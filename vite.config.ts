@@ -48,8 +48,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd();
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
-  const { VITE_PUBLIC_PATH, VITE_PORT, VITE_GLOB_PROD_MOCK, VITE_PROXY } = viteEnv;
-  const prodMock = VITE_GLOB_PROD_MOCK;
+  const { VITE_PUBLIC_PATH, VITE_PORT, VITE_PROXY } = viteEnv;
   const isBuild = command === 'build';
   return {
     base: VITE_PUBLIC_PATH,
@@ -68,31 +67,17 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       ],
       dedupe: ['vue'],
     },
-    plugins: createVitePlugins(viteEnv, isBuild, prodMock),
+    plugins: createVitePlugins(viteEnv, isBuild),
     define: {
+      __APP_ENV__: JSON.stringify(env.APP_ENV),
       __APP_INFO__: JSON.stringify(__APP_INFO__),
-    },
-    css: {
-      preprocessorOptions: {
-        less: {
-          modifyVars: {},
-          javascriptEnabled: true,
-          additionalData: `@import "src/styles/var.less";`,
-        },
-      },
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
     },
     server: {
       host: true,
       port: VITE_PORT,
       proxy: createProxy(VITE_PROXY),
       ...devServerFs,
-      // proxy: {
-      //     '/api': {
-      //         target: '',
-      //         changeOrigin: true,
-      //         rewrite: (path) => path.replace(/^\/api/, '/api/v1')
-      //     }
-      // }
     },
     optimizeDeps: {
       include: [],
@@ -102,12 +87,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       target: 'es2018',
       cssTarget: 'chrome90',
       outDir: OUTPUT_DIR,
-      // terserOptions: {
-      //   compress: {
-      //     keep_infinity: true,
-      //     drop_console: VITE_DROP_CONSOLE,
-      //   },
-      // },
       reportCompressedSize: false,
       chunkSizeWarningLimit: 50000,
     },
