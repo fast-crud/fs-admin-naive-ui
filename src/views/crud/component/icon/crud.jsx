@@ -71,6 +71,11 @@ export default function ({ expose }) {
             },
           },
         },
+        selector: {
+          title: '图标选择器',
+          search: { show: true },
+          type: 'icon',
+        },
       },
     },
   };
