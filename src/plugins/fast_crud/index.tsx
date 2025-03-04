@@ -49,6 +49,18 @@ function install(app: any, options: any = {}) {
      */
     commonOptions(props: UseCrudProps): CrudOptions {
       const opts: CrudOptions = {
+        settings: {
+          plugins: {
+            mobile: {
+              enabled: true,
+              props: {
+                rowHandle: {
+                  width: 76,
+                },
+              },
+            },
+          },
+        },
         table: {
           size: 'small',
           pagination: false,
@@ -61,6 +73,7 @@ function install(app: any, options: any = {}) {
               return '-';
             },
           },
+          // scrollX: 2000,
         },
         search: {
           options: {
@@ -103,6 +116,27 @@ function install(app: any, options: any = {}) {
               currentPage++;
             }
             return { currentPage, pageSize, records: res.records, total: res.total };
+          },
+        },
+        columns: {
+          //最后一列空白，用于自动伸缩列宽
+          __blank__: {
+            title: '',
+            type: 'text',
+            form: {
+              show: false,
+            },
+            column: {
+              order: 99999,
+              width: -1,
+              columnSetShow: false,
+              resizable: false,
+              conditionalRender: {
+                match() {
+                  return false;
+                },
+              },
+            },
           },
         },
         form: {
@@ -314,6 +348,25 @@ function install(app: any, options: any = {}) {
           viewForm: { show: true },
         });
       }
+      return columnProps;
+    },
+  });
+
+  //默认宽度，支持自动拖动调整列宽
+  registerMergeColumnPlugin({
+    name: 'resize-column-plugin',
+    order: 2,
+    handle: (columnProps: ColumnCompositionProps) => {
+      if (!columnProps.column) {
+        columnProps.column = {};
+      }
+      if (columnProps.column.resizable == null) {
+        columnProps.column.resizable = true;
+        if (!columnProps.column.width) {
+          columnProps.column.width = 200;
+        }
+      }
+
       return columnProps;
     },
   });
