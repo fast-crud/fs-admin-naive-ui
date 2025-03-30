@@ -25,10 +25,10 @@ export const ErrorPageRoute: RouteRecordRaw = {
 
 export const RedirectRoute: RouteRecordRaw = {
   path: '/redirect',
-  name: RedirectName,
+  name: RedirectName + '_',
   component: Layout,
   meta: {
-    title: RedirectName,
+    title: RedirectName + '_',
     hideBreadcrumb: true,
   },
   children: [
