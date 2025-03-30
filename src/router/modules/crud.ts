@@ -331,6 +331,15 @@ const componentRoute = {
     },
     {
       meta: {
+        title: '代码编辑器',
+        keepAlive: true,
+      },
+      name: 'ComponentCode',
+      path: 'code',
+      component: () => import('@/views/crud/component/code/index.vue'),
+    },
+    {
+      meta: {
         title: '图标',
         keepAlive: true,
       },
