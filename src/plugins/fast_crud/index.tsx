@@ -82,6 +82,7 @@ function install(app: any, options: any = {}) {
         },
         rowHandle: {
           buttons: {
+            copy: { show: true, icon: 'CopyOutlined', size: 'small', text: null },
             view: { text: null, icon: 'EyeOutlined', size: 'small' },
             edit: { text: null, icon: 'EditOutlined', size: 'small' },
             remove: { type: 'error', text: null, icon: 'DeleteOutlined', size: 'small' },
