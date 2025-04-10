@@ -1,7 +1,13 @@
 import './styles/tailwind.css';
 import './styles/index.less';
 import { createApp } from 'vue';
-import { setupNaiveDiscreteApi, setupNaive, setupDirectives, setupFastCrud } from '@/plugins';
+import {
+  setupNaiveDiscreteApi,
+  setupNaive,
+  setupDirectives,
+  setupFastCrud,
+  setupMonaco,
+} from '@/plugins';
 import App from './App.vue';
 import router, { setupRouter } from './router';
 import { setupStore } from '@/store';
@@ -38,6 +44,8 @@ async function bootstrap() {
 
   // 挂载路由
   setupRouter(app);
+
+  setupMonaco();
 
   // 路由准备就绪后挂载 APP 实例
   // https://router.vuejs.org/api/interfaces/router.html#isready
