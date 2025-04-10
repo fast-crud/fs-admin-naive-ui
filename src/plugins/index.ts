@@ -6,3 +6,4 @@ export { setupGlobalMethods } from '@/plugins/globalMethods';
 export { setupFastCrud } from '@/plugins/fast_crud';
 import './iconify';
 import './iconfont';
+export { setupMonaco } from './monaco';
