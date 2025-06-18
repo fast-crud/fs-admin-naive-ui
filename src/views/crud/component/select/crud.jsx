@@ -103,6 +103,9 @@ export default function () {
           }),
           form: {
             component: {
+              renderLabel(item) {
+                return item.text + '-' + item.id;
+              },
               on: {
                 selectedChange({ form, $event }) {
                   // $event就是原始的事件值，也就是选中的 option对象
