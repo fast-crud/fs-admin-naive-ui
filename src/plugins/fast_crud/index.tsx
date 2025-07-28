@@ -25,7 +25,7 @@ import UiNaive from '@fast-crud/ui-naive';
 import { request, requestForMock } from '@/utils/http/service';
 import _ from 'lodash-es';
 import { GetSignedUrl } from '@/views/crud/component/uploader/s3/api';
-
+import { FsEditorCode } from "@fast-crud/editor-code";
 /**
  *  fast-crud的安装方法
  *  注意：在App.vue中，需要用fs-ui-context组件包裹RouterView，让fs-crud拥有message、notification、dialog的能力
@@ -329,6 +329,7 @@ function install(app: any, options: any = {}) {
   app.use(FsExtendsTime);
   app.use(FsExtendsCopyable);
   app.use(FsExtendsInput);
+  app.use(FsEditorCode);
 
   const { addTypes, getType } = useTypes();
   //此处演示修改官方字段类型
