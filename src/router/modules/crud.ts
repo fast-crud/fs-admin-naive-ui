@@ -684,6 +684,12 @@ const featureRoutes = {
       component: () => import('@/views/crud/feature/tree/index.vue'),
     },
     {
+      meta: { title: '自定义表头', keepAlive: true },
+      name: 'FeatureHeader',
+      path: 'header',
+      component: () => import('@/views/crud/feature/header/index.vue'),
+    },
+    {
       meta: { title: '多级表头', keepAlive: true },
       name: 'FeatureHeaderGroup',
       path: 'header-group',
