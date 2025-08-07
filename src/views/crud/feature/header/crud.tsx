@@ -1,7 +1,6 @@
 import * as api from './api.js';
 import {
   CreateCrudOptionsProps,
-  dict,
   CreateCrudOptionsRet,
   EditReq,
   DelReq,
