@@ -90,6 +90,9 @@ export default function () {
         statusLocal: {
           title: '单选本地',
           type: 'dict-select',
+          search: {
+            show: true,
+          },
           dict: dict({
             value: 'id',
             label: 'text',
@@ -105,6 +108,14 @@ export default function () {
             component: {
               renderLabel(item) {
                 return item.text + '-' + item.id;
+              },
+              slots: {
+                header() {
+                  return <div>头部</div>;
+                },
+                action() {
+                  return <div>操作区</div>;
+                },
               },
               on: {
                 selectedChange({ form, $event }) {
