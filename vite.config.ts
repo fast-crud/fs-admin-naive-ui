@@ -84,7 +84,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       exclude: ['vue-demi'],
     },
     build: {
-      target: 'es2018',
+      target: 'esnext',
       cssTarget: 'chrome90',
       outDir: OUTPUT_DIR,
       reportCompressedSize: false,
