@@ -75,7 +75,7 @@ function install(app: any, options: any = {}) {
               return '-';
             },
           },
-          // scrollX: 2000,
+          scrollX: 1600,
         },
         search: {
           options: {
@@ -83,6 +83,7 @@ function install(app: any, options: any = {}) {
           },
         },
         rowHandle: {
+          fixed: 'right',
           buttons: {
             copy: { show: true, icon: 'CopyOutlined', size: 'small', text: null },
             view: { text: null, icon: 'EyeOutlined', size: 'small' },

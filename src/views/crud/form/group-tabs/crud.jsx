@@ -49,6 +49,9 @@ export default function ({ expose }) {
         store: {
           title: '库存',
           type: 'number',
+          form: {
+            rules: [{ required: true, message: '此项必填' }],
+          },
         },
         intro: {
           title: '简介',
@@ -69,8 +72,10 @@ export default function ({ expose }) {
         group: {
           groupType: 'tabs', //collapse， tabs
           accordion: false,
+          displayDirective: 'show',
           groups: {
             base: {
+              displayDirective: 'show',
               slots: {
                 tab: (scope) => {
                   return (
@@ -85,12 +90,22 @@ export default function ({ expose }) {
               columns: ['code', 'title', 'images'],
             },
             price: {
-              tab: '库存价格',
+              slots: {
+                tab: (scope) => {
+                  return <span style={{ color: scope.hasError ? 'red' : 'green' }}>库存价格</span>;
+                },
+              },
+              displayDirective: 'show',
               icon: 'n-icon-price-tag',
               columns: ['store', 'price'],
             },
             info: {
-              tab: '详情',
+              slots: {
+                tab: (scope) => {
+                  return <span style={{ color: scope.hasError ? 'red' : 'green' }}>详情</span>;
+                },
+              },
+              displayDirective: 'show',
               collapsed: true, //默认折叠
               icon: 'n-icon-warning-outline',
               columns: ['intro', 'content'],
