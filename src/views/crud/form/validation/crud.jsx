@@ -1,5 +1,5 @@
 import * as api from './api';
-import { dict, useExpose } from '@fast-crud/fast-crud';
+import { dict, useExpose, compute } from '@fast-crud/fast-crud';
 export default function ({ expose }) {
   const { getFormRef, getFormData } = expose;
   const validatePass1 = async (rule, value) => {
@@ -126,6 +126,19 @@ export default function ({ expose }) {
           type: 'text',
           form: {
             rules: [{ type: 'url', message: '请填写正确的url', trigger: 'blur' }],
+          },
+        },
+        computedRules: {
+          title: '动态计算',
+          type: 'text',
+          form: {
+            helper: '当url填写时，此项不校验',
+            rules: compute(({ form }) => {
+              if (form.url) {
+                return [{ required: false, message: 'url不填写时，此项必填' }];
+              }
+              return [{ required: true, message: 'url不填写时，此项必填' }];
+            }),
           },
         },
       },

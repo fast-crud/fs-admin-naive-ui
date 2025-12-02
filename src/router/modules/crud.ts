@@ -123,6 +123,15 @@ const basicRoute: RouteRecordRaw = {
       },
       component: () => import('@/views/crud/basis/reset/index.vue'),
     },
+    {
+      name: 'BasisPlugin',
+      path: 'plugin',
+      meta: {
+        title: '插件',
+        keepAlive: true,
+      },
+      component: () => import('@/views/crud/basis/plugin/index.vue'),
+    },
   ],
 };
 
