@@ -92,6 +92,10 @@ export default function () {
           type: 'dict-select',
           search: {
             show: true,
+            autoSearchTrigger: false,
+            component: {
+              filterable: true,
+            },
           },
           dict: dict({
             value: 'id',
@@ -296,6 +300,13 @@ export default function () {
         },
         statusSimple: {
           title: '普通选择',
+          search: {
+            show: true,
+            // autoSearchTrigger: false,
+            component: {
+              filterable: true,
+            },
+          },
           form: {
             helper: '直接使用n-select组件',
             component: {
