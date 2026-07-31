@@ -36,6 +36,7 @@ export default async function ({
           type: 'text',
           search: { show: true },
           column: {
+            columnSetTitle: 'Text',
             title() {
               return (
                 <span class={'flex '}>
